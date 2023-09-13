@@ -7,7 +7,6 @@ config.autoAddCss = false;
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import Header from "./components/header/Header";
 
 export default function RootLayout({
   children,
@@ -25,10 +24,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
-        <Header />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
