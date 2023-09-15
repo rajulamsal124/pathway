@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+
+import { notifications } from "@/data/notifications";
+import Messages from "../component/Messages";
 import MyCourses from "../component/MyCourses";
 import Link from "next/link";
-import { notifications } from "../../../../data/notifications";
-import { sidebarItems } from "../../../../data/dashBoardSidebar";
+import { sidebarItems } from "@/data/dashBoardSidebar";
 
 export default function HeaderDashboard() {
   const [messageOpen, setMessageOpen] = useState(false);
@@ -104,18 +106,14 @@ export default function HeaderDashboard() {
                 </div>
 
                 <div className="header__logo ml-30 md:ml-20">
-                  <Link
-                    data-barba
-                    href="/dashboard"
-                    className="d-flex items-center text-17 lh-1 fw-500"
-                  >
-                    <Image
+                  <Link data-barba href="/dashboard">
+                    {/* <Image
                       width={140}
                       height={50}
                       className="-light-d-none"
                       src="/assets/img/general/logo.svg"
                       alt="logo"
-                    />
+                    /> */}
                     {/* <Image
                       width={140}
                       height={50}
@@ -123,7 +121,7 @@ export default function HeaderDashboard() {
                       src="/assets/img/general/logo-dark.svg"
                       alt="logo"
                     /> */}
-                    Pathway Finder
+                    <h3>Tafe Gippsland</h3>
                   </Link>
                 </div>
               </div>
@@ -133,10 +131,10 @@ export default function HeaderDashboard() {
               <div className="d-flex items-center">
                 <div className="text-white d-flex items-center lg:d-none mr-15">
                   <div className="dropdown bg-transparent px-0 py-0">
-                    {/* <div className="d-flex items-center text-14 text-dark-1">
+                    <div className="d-flex items-center text-14 text-dark-1">
                       All Pages
                       <i className="text-9 icon-chevron-down ml-10"></i>
-                    </div> */}
+                    </div>
                     <div className="dropdown__item -dark-bg-dark-2 -dark-border-white-10">
                       <div className="text-14 y-gap-15">
                         <div>
@@ -147,38 +145,13 @@ export default function HeaderDashboard() {
                             Dashboard
                           </Link>
                         </div>
+
                         <div>
-                          <Link
-                            href="/dshb-courses"
-                            className="d-block text-dark-1"
-                          >
-                            My Courses
-                          </Link>
-                        </div>
-                        <div>
-                          <Link
-                            href="/dshb-bookmarks"
-                            className="d-block text-dark-1"
-                          >
-                            Bookmarks
-                          </Link>
-                        </div>
-                        <div>
-                          <Link
-                            href="/dshb-listing"
-                            className="d-block text-dark-1"
-                          >
+                          <Link href="/courses" className="d-block text-dark-1">
                             Add Listing
                           </Link>
                         </div>
-                        <div>
-                          <Link
-                            href="/dshb-reviews"
-                            className="d-block text-dark-1"
-                          >
-                            Reviews
-                          </Link>
-                        </div>
+
                         <div>
                           <Link
                             href="/dshb-settings"
@@ -191,7 +164,7 @@ export default function HeaderDashboard() {
                     </div>
                   </div>
 
-                  <MyCourses />
+                  {/* <MyCourses /> */}
                 </div>
 
                 <div className="d-flex items-center sm:d-none">
@@ -280,7 +253,7 @@ export default function HeaderDashboard() {
                   </div>
                 </div>
 
-                <div
+                {/* <div
                   className="relative d-flex items-center ml-10"
                   onClick={() => setIsOnProfile((pre) => !pre)}
                 >
@@ -322,11 +295,12 @@ export default function HeaderDashboard() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
+        {/* <Messages setMessageOpen={setMessageOpen} messageOpen={messageOpen} /> */}
       </header>
     </>
   );

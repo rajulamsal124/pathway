@@ -5,8 +5,9 @@ import EditProfile from "./EditProfile";
 import Password from "./Password";
 import SocialProfiles from "./SocialProfiles";
 import CloseAccount from "./CloseAccount";
-import FooterCopyright from "@/components/layout/footers/FooterCopyright";
+
 import Notification from "./Notifications";
+import FooterCopyright from "../../layout/footers/FooterCopyright";
 
 const buttons = [
   "Edit Profile",

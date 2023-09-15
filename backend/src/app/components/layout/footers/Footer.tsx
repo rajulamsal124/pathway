@@ -2,9 +2,10 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import Socials from "@/components/common/Socials";
+
 import FooterLinks from "../component/FooterLinks";
 import Links from "../component/Links";
+import Socials from "../../common/Socials";
 export default function Footer() {
   const handleSubmit = (e) => {
     e.preventDefault();

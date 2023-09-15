@@ -1,22 +1,14 @@
 "use client";
+
+import { sidebarItems } from "@/data/dashBoardSidebar";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-interface MenuItem {
-  href: string;
-  text: string;
-}
-
-interface SidebarMenuProps {
-  menuItems: MenuItem[];
-}
-
-const Sidebar: React.FC<SidebarMenuProps> = ({ menuItems }) => {
+export default function Sidebar() {
   const pathname = usePathname();
-
   return (
     <div className="sidebar -dashboard">
-      {menuItems.map((elm, i) => (
+      {sidebarItems.map((elm, i) => (
         <div
           key={i}
           className={`sidebar__item   ${
@@ -28,13 +20,11 @@ const Sidebar: React.FC<SidebarMenuProps> = ({ menuItems }) => {
             href={elm.href}
             className="d-flex items-center text-17 lh-1 fw-500 "
           >
-            {/* <i className={`${elm.iconClass} mr-15`}></i> */}
+            <i className={`${elm.iconClass} mr-15`}></i>
             {elm.text}
           </Link>
         </div>
       ))}
     </div>
   );
-};
-
-export default Sidebar;
+}

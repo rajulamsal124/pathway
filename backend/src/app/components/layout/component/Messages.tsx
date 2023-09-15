@@ -1,7 +1,7 @@
 "use client";
+import { accordionItems } from "@/data/accordionItems";
 import Image from "next/image";
 import React, { useState } from "react";
-import { accordionItems } from "../../../../data/accordionItems";
 
 export default function Messages({ setMessageOpen, messageOpen }) {
   const [currentTab, setCurrentTab] = useState("message");

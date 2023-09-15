@@ -7,7 +7,7 @@ export default function page() {
   const menuItems = [
     { href: "/dashboard", text: "Dashboard" },
     { href: "/about", text: "About" },
-    { href: "/pathway", text: "Pathway" },
+    { href: "/courses", text: "Courses" },
   ];
   return (
     <div className="barba-container" data-barba="container">

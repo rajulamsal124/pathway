@@ -2,12 +2,11 @@
 
 import MobileFooter from "./MobileFooter";
 
-import { menuList } from "../../../data/menu";
-
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { menuList } from "@/data/menu";
 
 export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,11 +17,11 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
   useEffect(() => {
     menuList.forEach((elm) => {
       elm?.links?.forEach((elm2) => {
-        if (elm2.href?.split('/')[1] == pathname?.split('/')[1]) {
+        if (elm2.href?.split("/")[1] == pathname?.split("/")[1]) {
           setMenuItem(elm.title);
         } else {
           elm2?.links?.map((elm3) => {
-            if (elm3.href?.split('/')[1] == pathname?.split('/')[1]) {
+            if (elm3.href?.split("/")[1] == pathname?.split("/")[1]) {
               setMenuItem(elm.title);
               setSubmenu(elm2.title);
             }
@@ -73,7 +72,7 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                       className="title"
                       onClick={() =>
                         setMenuNesting((pre) =>
-                          pre[0] == elm.title ? [] : [elm.title],
+                          pre[0] == elm.title ? [] : [elm.title]
                         )
                       }
                     >
@@ -107,7 +106,8 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                             <Link
                               key={i}
                               className={
-                                pathname?.split('/')[1] == itm.href?.split('/')[1]
+                                pathname?.split("/")[1] ==
+                                itm.href?.split("/")[1]
                                   ? "activeMenu link"
                                   : "link inActiveMenu"
                               }
@@ -125,7 +125,7 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                                   setMenuNesting((pre) =>
                                     pre[1] == itm.title
                                       ? [pre[0]]
-                                      : [pre[0], itm.title],
+                                      : [pre[0], itm.title]
                                   )
                                 }
                               >
@@ -158,7 +158,8 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                                     <Link
                                       key={index3}
                                       className={
-                                        pathname?.split('/')[1] == itm2.href?.split('/')[1]
+                                        pathname?.split("/")[1] ==
+                                        itm2.href?.split("/")[1]
                                           ? "activeMenu link"
                                           : "link inActiveMenu"
                                       }

@@ -7,6 +7,7 @@ config.autoAddCss = false;
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import AuthProvider from "./auth/Provider";
 
 export default function RootLayout({
   children,
@@ -24,7 +25,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

@@ -1,9 +1,21 @@
-import React from 'react'
+import React from "react";
+import Preloader from "./components/common/Preloader";
+import Header from "./components/layout/headers/Header";
+import PageLinks from "./components/common/PageLinks";
+import NotFound from "./components/not-found/NotFound";
+import Footer from "./components/layout/footers/Footer";
 
-const NotFoundPage = () => {
+export default function NotFoundpage() {
   return (
-    <div>The requested page doesn&apos;t exist.</div>
-  )
-}
+    <div className="main-content  ">
+      <Preloader />
 
-export default NotFoundPage
+      <Header />
+      <div className="content-wrapper js-content-wrapper overflow-hidden">
+        <PageLinks />
+        <NotFound />
+        <Footer />
+      </div>
+    </div>
+  );
+}

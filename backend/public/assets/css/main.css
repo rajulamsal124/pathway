@@ -8857,7 +8857,7 @@ h6 {
 }
 
 .sidebar.-dashboard .sidebar__item.-is-active {
-  background-color: var(--color-dark-1);
+  background-color: var(--color-dark-6);
   color: white !important;
 }
 
@@ -9185,7 +9185,7 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
+  width: 80vw;
   height: 100%;
 }
 

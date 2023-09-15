@@ -1,6 +1,7 @@
 import React from "react";
-import { footerLinks } from "../../../data/footerLinks";
+
 import Link from "next/link";
+import { footerLinks } from "@/data/footerLinks";
 export default function FooterLinks({ allClasses }) {
   return (
     <>

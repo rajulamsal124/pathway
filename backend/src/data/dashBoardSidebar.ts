@@ -5,15 +5,10 @@ export const sidebarItems = [
     iconClass: "text-20 icon-discovery",
     text: "Dashboard",
   },
-  {
-    id: 2,
-    href: "/dshb-courses",
-    iconClass: "text-20 icon-play-button",
-    text: "My Courses",
-  },
+
   {
     id: 5,
-    href: "/dshb-listing",
+    href: "/courses",
     iconClass: "text-20 icon-list",
     text: "Create Course",
   },
