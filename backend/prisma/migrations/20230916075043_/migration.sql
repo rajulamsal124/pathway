@@ -77,13 +77,15 @@ CREATE TABLE `CourseCategory` (
 -- CreateTable
 CREATE TABLE `Course` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(191) NOT NULL,
-    `shortDescription` VARCHAR(191) NULL,
-    `description` VARCHAR(191) NULL,
+    `title` VARCHAR(191) NOT NULL,
+    `shortDescription` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
     `courseCategoryId` INTEGER NOT NULL,
+    `image` LONGBLOB NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
+    UNIQUE INDEX `Course_title_key`(`title`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

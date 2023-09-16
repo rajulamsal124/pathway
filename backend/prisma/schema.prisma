@@ -79,13 +79,16 @@ model CourseCategory {
 
 model Course {
   id               Int            @id @default(autoincrement())
-  name             String
-  shortDescription String?
-  description      String? // Optional field for course description
+  title            String
+  shortDescription String
+  description      String // Optional field for course description
   courseCategoryId Int
+  image            Bytes?
   category         CourseCategory @relation(fields: [courseCategoryId], references: [id])
   createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
+  updatedAt        DateTime       @default(now()) @updatedAt
+
+  @@unique([title])
 }
 
 model Role {
