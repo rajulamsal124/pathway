@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import schema from "./schema";
-import { prisma } from "@/prisma/client";
+import { prisma } from "prisma/client";
 
 export async function GET(request: NextRequest) {
   const users = await prisma.user.findMany();
@@ -21,10 +21,7 @@ export async function POST(request: NextRequest) {
   });
 
   if (user)
-    return NextResponse.json(
-      { error: "User already exists" },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "User already exists" }, { status: 400 });
 
   const newUser = await prisma.user.create({
     data: {
