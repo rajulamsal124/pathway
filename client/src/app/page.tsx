@@ -11,6 +11,7 @@ import Brands from "@/components/common/Brands";
 
 import Footer from "@/components/layout/footers/Footer";
 import Preloader from "@/components/common/Preloader";
+import CourseListFive from "@/components/courseList/CourseListFive";
 export const metadata = {
   title:
     "Home || Tafegippsland - Professional LMS Online Education Course NextJS Template",
@@ -24,7 +25,8 @@ export default function page() {
       <HeaderTwo />
       <div className="main-content overflow-hidden   ">
         <HeroTwo />
-        <CoursesThree />
+        {/* <CoursesThree /> */}
+        <CourseListFive />
         <FindLearningPath />
         <LearningSolutions />
         <CategoriesTwo />
