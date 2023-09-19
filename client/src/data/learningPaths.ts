@@ -3,7 +3,7 @@ export const learningPath = [
     id: "item1",
     iconBg: "bg-green-2",
     iconSrc: "/assets/img/home-2/learning/icons/1.svg",
-    title: "Leadership development",
+    title: "School Leaver",
     description:
       "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries",
   },
@@ -11,7 +11,7 @@ export const learningPath = [
     id: "item2",
     iconBg: "bg-purple-2",
     iconSrc: "/assets/img/home-2/learning/icons/2.svg",
-    title: "Digital transformation",
+    title: "Career Changer",
     description:
       "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries",
   },
@@ -19,7 +19,7 @@ export const learningPath = [
     id: "item3",
     iconBg: "bg-orange-2",
     iconSrc: "/assets/img/home-2/learning/icons/3.svg",
-    title: "Innovation & design thinking",
+    title: "Life Long Learner",
     description:
       "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries",
   },

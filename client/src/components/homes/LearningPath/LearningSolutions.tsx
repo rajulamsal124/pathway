@@ -41,12 +41,11 @@ export default function LearningSolutions() {
         <div className="row y-gap-30 items-center">
           <div className="col-lg-6 order-2 order-lg-1">
             <h2 className="text-45 lg:text-40 md:text-30 text-dark-1">
-              Online learning solutions
-              <br className="xl:d-none" /> that meet your needs.
+              Why Choose Us
+              {/* <br className="xl:d-none" /> that meet your needs. */}
             </h2>
             <p className="text-dark-1 mt-20">
-              Use the list below to bring attention to your product’s key
-              <br className="lg:d-none" /> differentiator.
+              Empowering Your Journey: The Ultimate Pathway to Success Awaits.
             </p>
 
             <div className="row y-gap-30 pt-60 lg:pt-40">

@@ -3929,7 +3929,7 @@ h6 {
 }
 
 .coursesCard.-type-1:hover {
-  color: var(--color-green-3);
+  color: var(--color-green-8);
 }
 
 .coursesCard.-type-1:hover .coursesCard__image_overlay {
@@ -14841,7 +14841,7 @@ h6 {
 }
 
 .layout-pt-md {
-  padding-top: 60px;
+  padding-top: 8px;
 }
 
 .layout-pb-md {
@@ -14849,7 +14849,7 @@ h6 {
 }
 
 .layout-pt-lg {
-  padding-top: 120px;
+  padding-top: 50px;
 }
 
 .layout-pb-lg {
