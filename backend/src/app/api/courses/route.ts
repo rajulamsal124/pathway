@@ -1,10 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "prisma/client";
 import schema from "./schema";
-export async function GET(req: NextRequest) {
-  const course = await prisma.course.findMany();
-  return NextResponse.json(course);
+export async function GET(request: NextRequest, response: NextResponse) {
+  try {
+    const courses = await prisma.course.findMany({
+      include: {
+        category: true, // Include the related CourseCategory
+      },
+    });
+
+    const coursesWithImage = courses.map((course) => {
+      return {
+        ...course,
+        image: course.image ? course.image.toString("base64") : undefined,
+      };
+    });
+
+    return NextResponse.json(coursesWithImage);
+  } catch (error) {
+    return NextResponse.json({ message: "error on server" }, { status: 500 });
+  }
 }
+
 export async function POST(request: NextRequest) {
   const body = await request.json();
   console.log(body);

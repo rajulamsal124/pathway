@@ -60,6 +60,7 @@ model DecisionPoint {
   id               Int              @id @default(autoincrement())
   title            String
   description      String?
+  courses          Course[] // Added this line to establish the back relation
   courseCategories CourseCategory[]
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
@@ -78,15 +79,24 @@ model CourseCategory {
 }
 
 model Course {
-  id               Int            @id @default(autoincrement())
-  title            String
-  shortDescription String
-  description      String // Optional field for course description
-  courseCategoryId Int
-  image            Bytes?
-  category         CourseCategory @relation(fields: [courseCategoryId], references: [id])
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @default(now()) @updatedAt
+  id                  Int            @id @default(autoincrement())
+  title               String
+  shortDescription    String
+  description         String // Optional field for course description
+  level               String
+  duration            String
+  providerName        String
+  providerUrl         String
+  providerDescription String
+  rolesName           String
+  rolesDescription    String
+  courseCategoryId    Int
+  decisionPointId     Int?
+  decisionPoint       DecisionPoint? @relation(fields: [decisionPointId], references: [id])
+  image               Bytes?
+  category            CourseCategory @relation(fields: [courseCategoryId], references: [id])
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @default(now()) @updatedAt
 
   @@unique([title])
 }
