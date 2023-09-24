@@ -19,7 +19,7 @@ export default function Overview() {
           className="show-more__content "
           style={showMore ? { maxHeight: "370px" } : {}}
         >
-          <p className="">
+          <p>
             Phasellus enim magna, varius et commodo ut, ultricies vitae velit.
             Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel
             justo. In libero urna, venenatis sit amet ornare non, suscipit nec

@@ -13,26 +13,26 @@ export const footerLinks = [
   {
     title: "CATEGORIES",
     links: [
-      { href: "/courses/1", label: "Development" },
-      { href: "/courses-single-2/3", label: "Business" },
-      { href: "/courses-single-3/3", label: "Finance & Accounting" },
-      { href: "/courses-single-4/3", label: "IT & Software" },
-      { href: "/courses-single-5/3", label: "Office Productivity" },
-      { href: "/courses-single-6/3", label: "Design" },
-      { href: "/courses/1", label: "Marketing" },
+      { href: "#", label: "Food Procutions" },
+      { href: "#", label: "Robotics/Drones" },
+      { href: "#", label: "Numbers" },
+      { href: "#", label: "People" },
+      { href: "#", label: "Nature" },
+      { href: "#", label: "Animals" },
+      { href: "#", label: "Plant" },
     ],
   },
-  {
-    title: "Others",
-    links: [
-      { href: "/courses/1", label: "Lifestyle" },
-      { href: "/courses-single-2/3", label: "Photography & Video" },
-      { href: "/courses-single-3/3", label: "Health & Fitness" },
-      { href: "/courses-single-4/3", label: "Music" },
-      { href: "/courses-single-5/3", label: "UX Design" },
-      { href: "/courses-single-6/3", label: "SEO" },
-    ],
-  },
+  // {
+  //   title: "Others",
+  //   links: [
+  //     { href: "/courses/1", label: "Lifestyle" },
+  //     { href: "/courses-single-2/3", label: "Photography & Video" },
+  //     { href: "/courses-single-3/3", label: "Health & Fitness" },
+  //     { href: "/courses-single-4/3", label: "Music" },
+  //     { href: "/courses-single-5/3", label: "UX Design" },
+  //     { href: "/courses-single-6/3", label: "SEO" },
+  //   ],
+  // },
   {
     title: "SUPPORT",
     links: [

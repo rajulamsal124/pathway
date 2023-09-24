@@ -17,7 +17,7 @@ export default function TestimonialsFour() {
           <div className="col-auto">
             <div className="sectionTitle ">
               <h2 className="sectionTitle__title text-white">
-                People Say About Tafegippsland
+                People Say About Gippsland
               </h2>
 
               <p className="sectionTitle__text text-white">

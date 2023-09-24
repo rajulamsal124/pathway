@@ -9,7 +9,7 @@ export default function FooterCopyright() {
           <div className="row items-center justify-between">
             <div className="col-auto">
               <div className="text-13 lh-1">
-                © {new Date().getFullYear()} Tafegippsland. All Right Reserved.
+                © {new Date().getFullYear()} Gippsland. All Right Reserved.
               </div>
             </div>
 

@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="header -type-1 container ">
+      <header className="header -type-1 container-fluid ">
         <div className="header__container">
           <div className="row justify-between items-center">
             <div className="col-auto">
@@ -33,11 +33,11 @@ export default function Header() {
                 </div>
 
                 {/* header explore start */}
-                <HeaderExplore
+                {/* <HeaderExplore
                   allClasses={
                     "header__explore text-green-1 ml-60 xl:ml-30 xl:d-none"
                   }
-                />
+                /> */}
                 {/* header explore end */}
               </div>
             </div>

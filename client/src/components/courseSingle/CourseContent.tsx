@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { lessonItems } from "@/data/aboutcourses";
 
 import React, { useState } from "react";
-import ModalVideoComponent from "../common/ModalVideo";
+// import ModalVideoComponent from "../common/ModalVideo";
 
 export default function CourseContent() {
   const [activeItemId, setActiveItemId] = useState(0);
@@ -100,11 +100,11 @@ export default function CourseContent() {
           </div>
         </div>
       </div>
-      <ModalVideoComponent
+      {/* <ModalVideoComponent
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         videoId={"LlCwHnp3kL4"}
-      />
+      /> */}
     </>
   );
 }

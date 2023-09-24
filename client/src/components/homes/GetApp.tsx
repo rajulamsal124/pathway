@@ -25,8 +25,9 @@ export default function GetApp() {
                 <br /> <span>Anywhere</span>
               </h2>
               <p className="app-content__text">
-                Take classes on the go with the Tafegippsland app. Stream or download
-                to watch on the plane, the subway, or wherever you learn best.
+                Take classes on the go with the Gippsland app. Stream or
+                download to watch on the plane, the subway, or wherever you
+                learn best.
               </p>
               <div className="app-content__buttons">
                 <Link href="#">

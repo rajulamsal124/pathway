@@ -67,7 +67,7 @@ export default function Footer() {
           <div className="row justify-between items-center y-gap-20">
             <div className="col-auto">
               <div className="d-flex items-center h-100 text-white">
-                © {new Date().getFullYear()} Tafegippsland. All Right Reserved.
+                © {new Date().getFullYear()} Gippsland. All Right Reserved.
               </div>
             </div>
 

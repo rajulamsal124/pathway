@@ -73,7 +73,7 @@ export default function HeroTwo() {
               data-aos-delay="500"
             >
               <h1 className="mainSlider__title text-white">
-                Learn Your Way With Tafegippsland To{" "}
+                Learn Your Way With Gippsland To{" "}
                 <span className="text-green-5 underline">Food Production</span>
               </h1>
 

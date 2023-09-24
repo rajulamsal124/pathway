@@ -82,10 +82,10 @@ export default function HeaderTwo() {
                 allClasses={"menu__nav text-white -is-active"}
                 headerPosition={""}
               />
-              <MobileMenu
+              {/* <MobileMenu
                 activeMobileMenu={activeMobileMenu}
                 setActiveMobileMenu={setActiveMobileMenu}
-              />
+              /> */}
 
               {/* <div className="header-right__icons text-white d-flex items-center ml-30">
                 <SearchToggle />

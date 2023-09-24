@@ -7,9 +7,9 @@ import Terms from "@/components/terms/Terms";
 import React from "react";
 export const metadata = {
   title:
-    "Terms || Tafegippsland - Professional LMS Online Education Course NextJS Template",
+    "Terms || Gippsland - Professional LMS Online Education Course NextJS Template",
   description:
-    "Elevate your e-learning content with Tafegippsland, the most impressive LMS template for online courses, education and LMS platforms.",
+    "Elevate your e-learning content with Gippsland, the most impressive LMS template for online courses, education and LMS platforms.",
 };
 export default function page() {
   return (
