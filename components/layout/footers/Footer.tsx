@@ -23,7 +23,7 @@ export default function Footer() {
                   src="/assets/img/footer/footer-logo.svg"
                   alt="logo"
                 /> */}
-                <h3 className="text-white">Tafe Gippsland</h3>
+                <h3 className="text-white">Gippsland</h3>
               </div>
             </div>
             <div className="col-auto">
