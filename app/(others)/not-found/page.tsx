@@ -1,4 +1,4 @@
-import NotFound from "@/components/not-found/NotFound"
+import NotFound from "@/components/not-found/NotFound.1"
 
 import Preloader from "@/components/common/Preloader"
 import Footer from "@/components/layout/footers/Footer"
