@@ -6,15 +6,21 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const course = await prisma.course.findUnique({
-    where: { id: parseInt(params.id) },
-  })
-
-  if (!course)
-    return NextResponse.json({ error: "course not found" }, { status: 404 })
-
-  return NextResponse.json(course)
+  try {
+    const course = await prisma.course.findUnique({
+      where: { id: parseInt(params.id) },
+    })
+  
+    if (!course)
+      return NextResponse.json({ error: "course not found" }, { status: 404 })
+    const courseWithImage= course.image ? { ...course, image: course.image.toString('base64') } : undefined
+    return NextResponse.json(courseWithImage)
+  } catch (error) {
+    return NextResponse.json({message: "error on server"}, { status: 500 })
+  }
+  
 }
+
 
 // export async function PUT(
 //   request: NextRequest,

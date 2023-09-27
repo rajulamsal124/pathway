@@ -3,24 +3,30 @@ import { NextRequest, NextResponse } from "next/server"
 
 import schema from "./schema"
 import { prisma } from "@/prisma/client"
-export async function GET(request: NextRequest, response: NextResponse) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
-    const courses = await prisma.course.findMany({
+    const course = await prisma.course.findUnique({
+      where: { id: parseInt(params.id) },
       include: {
         category: true, // Include the related CourseCategory
       },
-    })
+    });
 
-    const coursesWithImage = courses.map((course) => {
-      return {
-        ...course,
-        image: course.image ? course.image.toString("base64") : undefined,
-      }
-    })
+    if (!course)
+      return NextResponse.json({ error: "Course not found" }, { status: 404 });
 
-    return NextResponse.json(coursesWithImage)
+    // Convert the image to a Base64 encoded string if it exists
+    if (course.image) {
+      const imageBase64 = course.image.toString('base64');
+      course.imageBase64 = imageBase64;
+    }
+
+    return NextResponse.json(course);
   } catch (error) {
-    return NextResponse.json({ message: "error on server" }, { status: 500 })
+    return NextResponse.json({ message: "Error on server" }, { status: 500 });
   }
 }
 

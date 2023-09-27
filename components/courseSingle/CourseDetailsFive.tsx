@@ -1,29 +1,45 @@
-"use client"
+/* eslint-disable no-unused-vars */
+"use client";
 
-import Reviews from "./Reviews"
-import Overview from "./Overview"
-import CourseContent from "./CourseContent"
-import Star from "../common/Star"
-import { coursesData } from "@/data/courses"
-import React, { useState, useEffect } from "react"
+import Reviews from "./Reviews";
+import Overview from "./Overview";
+import CourseContent from "./CourseContent";
 
-import ModalVideoComponent from "../common/ModalVideo"
-import Image from "next/image"
+
+import React, { useState, useEffect } from "react";
+
+import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
   { id: 2, href: "#course-content", text: "Course Content", isActive: false },
   { id: 3, href: "#instructors", text: "Instructors", isActive: false },
   { id: 4, href: "#reviews", text: "Reviews", isActive: false },
-]
-
+];
+async function fetchCourses(id) {
+  const res = await fetch(`http://localhost:3000/api/courses/${id}`); // Assuming your API endpoint accepts the course ID
+  const course = await res.json();
+  return course;
+}
 export default function CourseDetailsFive({ id }) {
-  const [pageItem, setPageItem] = useState(coursesData[0])
-  const [isOpen, setIsOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState(1)
+  const [pageItem, setPageItem] = useState(null); // Initialize as null
+  const [isOpen, setIsOpen] = useState(false); // Fix useState syntax
+  const [activeTab, setActiveTab] = useState(1);
 
-  useEffect(() => {
-    setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0])
-  }, [])
+  const { data, isLoading, isError } = useQuery(["course", id], () =>
+  fetchCourses(id)
+);
+
+if (isLoading) {
+  return <div>Loading...</div>;
+}
+
+if (isError) {
+  return <div>Error fetching data</div>;
+}
+
+const course = data;
+ 
   return (
     <>
       <div className="js-pin-container relative ">
@@ -57,35 +73,7 @@ export default function CourseDetailsFive({ id }) {
                     </div>
                   </div> */}
 
-                  <div>
-                    <h1 className="text-30 lh-14 pr-60 lg:pr-0">
-                      {pageItem.title}
-                    </h1>
-                  </div>
-
-                  <p className="col-xl-9 mt-20">
-                    Use XD to get a job in UI Design, User Interface, User
-                    Experience design, UX design & Web Design Use XD to get a
-                    job in UI Design, User Interface, User Experience design, UX
-                    design & Web Design Use XD to get a job in UI Design, User
-                    Interface, User Experience design, UX design & Web Design
-                    Use XD to get a job in UI Design, User Interface, User
-                    Experience design, UX design & Web Design Use XD to get a
-                    job in UI Design, User Interface, User Experience design, UX
-                    design & Web Design Use XD to get a job in UI Design, User
-                    Interface, User Experience design, UX design & Web Design
-                    Use XD to get a job in UI Design, User Interface, User
-                    Experience design, UX design & Web Design Use XD to get a
-                    job in UI Design, User Interface, User Experience design, UX
-                    design & Web Design Use XD to get a job in UI Design, User
-                    Interface, User Experience design, UX design & Web Design
-                    Use XD to get a job in UI Design, User Interface, User
-                    Experience design, UX design & Web Design Use XD to get a
-                    job in UI Design, User Interface, User Experience design, UX
-                    design & Web Design Use XD to get a job in UI Design, User
-                    Interface, User Experience design, UX design & Web Design
-                  </p>
-
+              
                   {/* <div className="d-flex x-gap-30 y-gap-10 items-center flex-wrap pt-20">
                     <div className="d-flex items-center text-light-1">
                       <div className="text-14 lh-1 text-yellow-1 mr-10">
@@ -124,16 +112,16 @@ export default function CourseDetailsFive({ id }) {
                     </div>
                   </div> */}
                 </div>
-
+                <h1 className="text-36 lh-48 font-700">{course.title}</h1>
                 <div className="col-lg-5">
                   <div className="relative pt-40">
-                    <Image
-                      width={690}
-                      height={342}
-                      className="w-1/1"
-                      src={pageItem.imageSrc}
-                      alt="image"
-                    />
+                  <Image
+                          width={510}
+                          height={360}
+                          className="w-1/1"
+                          src={`data:image/jpeg;base64,${course.image}`}
+                          alt="image"
+                        />
                     <div className="absolute-full-center d-flex justify-center items-center">
                       <div
                         onClick={() => setIsOpen(true)}
@@ -210,11 +198,7 @@ export default function CourseDetailsFive({ id }) {
           </div>
         </section>
       </div>
-      <ModalVideoComponent
-        videoId={"LlCwHnp3kL4"}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
+    
     </>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-"use client"
-import React from "react"
-import { reviews } from "@/data/aboutcourses"
-import Star from "../common/Star"
+"use client";
+import React from "react";
+import { reviews } from "@/data/aboutcourses";
+
 export default function Reviews() {
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
   return (
     <div id="reviews" className="pt-60 lg:pt-40">
       <div className="blogPost -comments">
@@ -15,9 +15,9 @@ export default function Reviews() {
             <div className="col-md-4">
               <div className="d-flex items-center justify-center flex-column py-50 text-center bg-light-6 rounded-8">
                 <div className="text-60 lh-11 text-dark-1 fw-500">4.8</div>
-                <div className="d-flex x-gap-5 mt-10">
+                {/* <div className="d-flex x-gap-5 mt-10">
                   <Star star={5} textSize={"text-11"} />
-                </div>
+                </div> */}
                 <div className="mt-10">Course Rating</div>
               </div>
             </div>
@@ -31,9 +31,9 @@ export default function Reviews() {
                         <div className="progress-bar__bg bg-light-12"></div>
                         <div className="progress-bar__bar bg-purple-1 w-1/1"></div>
                       </div>
-                      <div className="d-flex x-gap-5 pr-15">
+                      {/* <div className="d-flex x-gap-5 pr-15">
                         <Star star={5} />
-                      </div>
+                      </div> */}
                       <div className="text-dark-1">70%</div>
                     </div>
                   </div>
@@ -44,9 +44,9 @@ export default function Reviews() {
                         <div className="progress-bar__bg bg-light-12"></div>
                         <div className="progress-bar__bar bg-purple-1 w-1/2"></div>
                       </div>
-                      <div className="d-flex x-gap-5 pr-15">
+                      {/* <div className="d-flex x-gap-5 pr-15">
                         <Star star={5} />
-                      </div>
+                      </div> */}
                       <div className="text-dark-1">15%</div>
                     </div>
                   </div>
@@ -57,9 +57,9 @@ export default function Reviews() {
                         <div className="progress-bar__bg bg-light-12"></div>
                         <div className="progress-bar__bar bg-purple-1 w-1/3"></div>
                       </div>
-                      <div className="d-flex x-gap-5 pr-15">
+                      {/* <div className="d-flex x-gap-5 pr-15">
                         <Star star={5} />
-                      </div>
+                      </div> */}
                       <div className="text-dark-1">20%</div>
                     </div>
                   </div>
@@ -70,9 +70,9 @@ export default function Reviews() {
                         <div className="progress-bar__bg bg-light-12"></div>
                         <div className="progress-bar__bar bg-purple-1 w-1/5"></div>
                       </div>
-                      <div className="d-flex x-gap-5 pr-15">
+                      {/* <div className="d-flex x-gap-5 pr-15">
                         <Star star={5} />
-                      </div>
+                      </div> */}
                       <div className="text-dark-1">3%</div>
                     </div>
                   </div>
@@ -83,9 +83,9 @@ export default function Reviews() {
                         <div className="progress-bar__bg bg-light-12"></div>
                         <div className="progress-bar__bar bg-purple-1 w-1/7"></div>
                       </div>
-                      <div className="d-flex x-gap-5 pr-15">
+                      {/* <div className="d-flex x-gap-5 pr-15">
                         <Star star={5} />
-                      </div>
+                      </div> */}
                       <div className="text-dark-1">2%</div>
                     </div>
                   </div>
@@ -155,9 +155,9 @@ export default function Reviews() {
 
         <div className="mt-30">
           <h4 className="text-16 fw-500">What is it like to Course?</h4>
-          <div className="d-flex x-gap-10 pt-10">
+          {/* <div className="d-flex x-gap-10 pt-10">
             <Star star={5} textSize={"text-14"} />
-          </div>
+          </div> */}
         </div>
 
         <form
@@ -199,5 +199,5 @@ export default function Reviews() {
         </form>
       </div>
     </div>
-  )
+  );
 }

@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import Star from "../common/Star"
+import Star from "../common/Star";
 
-import { coursesData } from "@/data/courses"
-import React, { useState, useEffect } from "react"
+import { coursesData } from "@/data/courses";
+import React, { useState, useEffect } from "react";
 
-import PinContent from "./PinContent"
-import Overview from "./Overview"
-import CourseContent from "./CourseContent"
-import Instractor from "./Instractor"
-import Reviews from "./Reviews"
+import PinContent from "./PinContent";
+import Overview from "./Overview";
+import CourseContent from "./CourseContent";
+import Instractor from "./Instractor";
+import Reviews from "./Reviews";
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
   { id: 2, href: "#course-content", text: "Course Content", isActive: false },
   { id: 3, href: "#instructors", text: "Instructors", isActive: false },
   { id: 4, href: "#reviews", text: "Reviews", isActive: false },
-]
+];
 
 export default function CourseDetailsTwo({ id }) {
-  const [pageItem, setPageItem] = useState(coursesData[0])
+  const [pageItem, setPageItem] = useState(coursesData[0]);
 
   useEffect(() => {
-    setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0])
-  }, [])
+    setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0]);
+  }, []);
 
   return (
     <div id="js-pin-container" className="js-pin-container relative">
@@ -141,5 +141,5 @@ export default function CourseDetailsTwo({ id }) {
         </div>
       </section>
     </div>
-  )
+  );
 }

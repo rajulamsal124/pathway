@@ -1,10 +1,10 @@
-"use client"
-import { faCheck } from "@fortawesome/free-solid-svg-icons"
-import { learnList, requirements } from "@/data/aboutcourses"
-import React, { useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+"use client";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { learnList, requirements } from "@/data/aboutcourses";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Overview() {
-  const [showMore, setShowMore] = useState(false)
+  const [showMore, setShowMore] = useState(false);
 
   return (
     <div id="overview" className="pt-60 lg:pt-40 to-over">
@@ -96,5 +96,5 @@ export default function Overview() {
         </ul>
       </div>
     </div>
-  )
+  );
 }
