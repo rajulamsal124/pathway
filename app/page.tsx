@@ -8,7 +8,6 @@ import LearningSolutions from "@/components/LearningPath/LearningSolutions"
 import CategoriesTwo from "@/components/categories/CategoriesThree"
 import FindLearningPath from "@/components/LearningPath/FindLearningPath"
 
-
 export default function page() {
   return (
     <>

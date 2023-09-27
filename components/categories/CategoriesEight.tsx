@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from "next/image"
 
-import React from "react";
-import { topCatagoriesEight } from "../../../data/topCategories";
-import Link from "next/link";
+import React from "react"
+import { topCatagoriesEight } from "../../../data/topCategories"
+import Link from "next/link"
 export default function CategoriesEight() {
   return (
     <section className="layout-pt-lg layout-pb-md">
@@ -42,5 +42,5 @@ export default function CategoriesEight() {
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,19 +1,19 @@
-"use client";
-import Image from "next/image";
-import { Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+"use client"
+import Image from "next/image"
+import { Navigation, Pagination } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/react"
 
-import "swiper/css";
+import "swiper/css"
 
-import "swiper/css/pagination";
-import { useEffect, useState } from "react";
-import { topCatagoriesSix } from "../../../data/topCategories";
-import Link from "next/link";
+import "swiper/css/pagination"
+import { useEffect, useState } from "react"
+import { topCatagoriesSix } from "../../../data/topCategories"
+import Link from "next/link"
 export default function CategoriesSix() {
-  const [showSlider, setShowSlider] = useState(false);
+  const [showSlider, setShowSlider] = useState(false)
   useEffect(() => {
-    setShowSlider(true);
-  }, []);
+    setShowSlider(true)
+  }, [])
 
   return (
     <section className="layout-pt-lg layout-pb-lg">
@@ -116,5 +116,5 @@ export default function CategoriesSix() {
         </div>
       </div>
     </section>
-  );
+  )
 }

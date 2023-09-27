@@ -1,6 +1,6 @@
-import React from "react";
-import { learningPathTwo } from "../../../data/learningPaths";
-import Image from "next/image";
+import React from "react"
+import { learningPathTwo } from "../../../data/learningPaths"
+import Image from "next/image"
 export default function LearningPath() {
   return (
     <section className="layout-pt-lg layout-pb-lg">
@@ -43,5 +43,5 @@ export default function LearningPath() {
         </div>
       </div>
     </section>
-  );
+  )
 }

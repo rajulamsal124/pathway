@@ -1,6 +1,6 @@
-import React from "react";
-import { topCatagoriesSeven } from "@/data/topCategories";
-import Link from "next/link";
+import React from "react"
+import { topCatagoriesSeven } from "@/data/topCategories"
+import Link from "next/link"
 export default function CategoriesSeven() {
   return (
     <section className="layout-pt-lg layout-pb-lg">
@@ -40,5 +40,5 @@ export default function CategoriesSeven() {
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import { learningfeatures } from "../../../data/learningPaths";
-import Image from "next/image";
+import React from "react"
+import { learningfeatures } from "../../../data/learningPaths"
+import Image from "next/image"
 export default function LearningPathsSix() {
   return (
     <section className="layout-pt-lg layout-pb-lg">
@@ -53,5 +53,5 @@ export default function LearningPathsSix() {
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,23 +1,23 @@
-"use client";
-import { learningPath } from "@/data/learningPaths";
-import gsap from "gsap";
-import Image from "next/image";
-import React, { useEffect } from "react";
+"use client"
+import { learningPath } from "@/data/learningPaths"
+import gsap from "gsap"
+import Image from "next/image"
+import React, { useEffect } from "react"
 
 export default function LearningSolutions() {
   useEffect(() => {
     const parallaxIt = () => {
-      const target = document.querySelectorAll(".js-mouse-move-container");
+      const target = document.querySelectorAll(".js-mouse-move-container")
 
       target.forEach((container) => {
-        const targets = container.querySelectorAll(".js-mouse-move");
+        const targets = container.querySelectorAll(".js-mouse-move")
 
         targets.forEach((el) => {
-          const movement = el.getAttribute("data-move");
+          const movement = el.getAttribute("data-move")
 
           document.addEventListener("mousemove", (e) => {
-            const relX = e.pageX - container.offsetLeft;
-            const relY = e.pageY - container.offsetTop;
+            const relX = e.pageX - container.offsetLeft
+            const relY = e.pageY - container.offsetTop
 
             gsap.to(el, {
               x:
@@ -27,14 +27,14 @@ export default function LearningSolutions() {
                 ((relY - container.offsetHeight / 2) / container.offsetHeight) *
                 Number(movement),
               duration: 0.2,
-            });
-          });
-        });
-      });
-    };
+            })
+          })
+        })
+      })
+    }
 
-    parallaxIt();
-  }, []);
+    parallaxIt()
+  }, [])
 
   return (
     <section className="layout-pt-md layout-pb-lg bg-green-1 js-mouse-move-container">
@@ -185,5 +185,5 @@ export default function LearningSolutions() {
         </div>
       </div>
     </section>
-  );
+  )
 }

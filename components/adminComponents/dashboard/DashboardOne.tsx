@@ -11,7 +11,6 @@ import PieChartComponent from "./PieCharts"
 import Image from "next/image"
 import Link from "next/link"
 
-
 export default function DashboardOne() {
   return (
     <div className="dashboard__main">
@@ -333,8 +332,6 @@ export default function DashboardOne() {
           </div>
         </div>
       </div>
-
-   
     </div>
   )
 }

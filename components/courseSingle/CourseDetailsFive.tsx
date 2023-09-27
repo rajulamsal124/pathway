@@ -1,29 +1,29 @@
-"use client";
+"use client"
 
-import Reviews from "./Reviews";
-import Overview from "./Overview";
-import CourseContent from "./CourseContent";
-import Star from "../common/Star";
-import { coursesData } from "@/data/courses";
-import React, { useState, useEffect } from "react";
+import Reviews from "./Reviews"
+import Overview from "./Overview"
+import CourseContent from "./CourseContent"
+import Star from "../common/Star"
+import { coursesData } from "@/data/courses"
+import React, { useState, useEffect } from "react"
 
-import ModalVideoComponent from "../common/ModalVideo";
-import Image from "next/image";
+import ModalVideoComponent from "../common/ModalVideo"
+import Image from "next/image"
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
   { id: 2, href: "#course-content", text: "Course Content", isActive: false },
   { id: 3, href: "#instructors", text: "Instructors", isActive: false },
   { id: 4, href: "#reviews", text: "Reviews", isActive: false },
-];
+]
 
 export default function CourseDetailsFive({ id }) {
-  const [pageItem, setPageItem] = useState(coursesData[0]);
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState(1);
+  const [pageItem, setPageItem] = useState(coursesData[0])
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState(1)
 
   useEffect(() => {
-    setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0]);
-  }, []);
+    setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0])
+  }, [])
   return (
     <>
       <div className="js-pin-container relative ">
@@ -216,5 +216,5 @@ export default function CourseDetailsFive({ id }) {
         setIsOpen={setIsOpen}
       />
     </>
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import React from "react";
-import { features } from "../../../data/learningPaths";
-import Image from "next/image";
-import Star from "@/components/common/Star";
+import React from "react"
+import { features } from "../../../data/learningPaths"
+import Image from "next/image"
+import Star from "@/components/common/Star"
 export default function LearningPathSeven() {
   return (
     <section className="layout-pt-lg layout-pb-lg">
@@ -138,5 +138,5 @@ export default function LearningPathSeven() {
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import { reviews } from "@/data/aboutcourses";
-import Star from "../common/Star";
+"use client"
+import React from "react"
+import { reviews } from "@/data/aboutcourses"
+import Star from "../common/Star"
 export default function Reviews() {
   const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
   return (
     <div id="reviews" className="pt-60 lg:pt-40">
       <div className="blogPost -comments">
@@ -199,5 +199,5 @@ export default function Reviews() {
         </form>
       </div>
     </div>
-  );
+  )
 }

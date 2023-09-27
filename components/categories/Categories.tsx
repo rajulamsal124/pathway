@@ -1,20 +1,20 @@
-"use client";
-import Image from "next/image";
-import { Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+"use client"
+import Image from "next/image"
+import { Navigation, Pagination } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/react"
 
-import "swiper/css";
-import { topCategories } from "../../../data/topCategories";
+import "swiper/css"
+import { topCategories } from "../../../data/topCategories"
 
-import "swiper/css/pagination";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import "swiper/css/pagination"
+import { useEffect, useState } from "react"
+import Link from "next/link"
 
 const CategoriesHomeOne = () => {
-  const [showSlider, setShowSlider] = useState(false);
+  const [showSlider, setShowSlider] = useState(false)
   useEffect(() => {
-    setShowSlider(true);
-  }, []);
+    setShowSlider(true)
+  }, [])
 
   return (
     <>
@@ -113,7 +113,7 @@ const CategoriesHomeOne = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default CategoriesHomeOne;
+export default CategoriesHomeOne

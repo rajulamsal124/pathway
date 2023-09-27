@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
-import Image from "next/image";
-import Link from "next/link";
-import { topCategoriesTwo } from "@/data/topCategories";
+import Image from "next/image"
+import Link from "next/link"
+import { topCategoriesTwo } from "@/data/topCategories"
 export default function CategoriesTwo() {
   return (
     <section className="layout-pt-lg layout-pb-lg">
@@ -57,5 +57,5 @@ export default function CategoriesTwo() {
         </div>
       </div>
     </section>
-  );
+  )
 }

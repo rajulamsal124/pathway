@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React from "react";
+import Link from "next/link"
+import React from "react"
 
 export default function FindLearningPath() {
   return (
@@ -42,5 +42,5 @@ export default function FindLearningPath() {
         </div>
       </div>
     </section>
-  );
+  )
 }

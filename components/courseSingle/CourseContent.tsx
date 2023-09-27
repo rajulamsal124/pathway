@@ -1,14 +1,14 @@
-"use client";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { lessonItems } from "@/data/aboutcourses";
+"use client"
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { lessonItems } from "@/data/aboutcourses"
 
-import React, { useState } from "react";
-import ModalVideoComponent from "../common/ModalVideo";
+import React, { useState } from "react"
+import ModalVideoComponent from "../common/ModalVideo"
 
 export default function CourseContent() {
-  const [activeItemId, setActiveItemId] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const [activeItemId, setActiveItemId] = useState(0)
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
       <div id="course-content" className="pt-60 lg:pt-40">
@@ -106,5 +106,5 @@ export default function CourseContent() {
         videoId={"LlCwHnp3kL4"}
       />
     </>
-  );
+  )
 }

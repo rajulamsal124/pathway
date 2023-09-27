@@ -1,20 +1,20 @@
-"use client";
-import Image from "next/image";
-import { Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+"use client"
+import Image from "next/image"
+import { Navigation, Pagination } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/react"
 
-import "swiper/css";
-import { topCategories } from "../../../data/topCategories";
+import "swiper/css"
+import { topCategories } from "../../../data/topCategories"
 
-import "swiper/css/pagination";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import "swiper/css/pagination"
+import { useEffect, useState } from "react"
+import Link from "next/link"
 
 export default function CategoriesNine() {
-  const [showSlider, setShowSlider] = useState(false);
+  const [showSlider, setShowSlider] = useState(false)
   useEffect(() => {
-    setShowSlider(true);
-  }, []);
+    setShowSlider(true)
+  }, [])
 
   return (
     <section className="layout-pt-lg layout-pb-md">
@@ -113,5 +113,5 @@ export default function CategoriesNine() {
         </div>
       </div>
     </section>
-  );
+  )
 }
