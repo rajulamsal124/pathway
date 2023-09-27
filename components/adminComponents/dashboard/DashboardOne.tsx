@@ -10,7 +10,7 @@ import Charts from "./Charts"
 import PieChartComponent from "./PieCharts"
 import Image from "next/image"
 import Link from "next/link"
-import FooterCopyright from "@/components/layout/footers/FooterCopyright"
+
 
 export default function DashboardOne() {
   return (
@@ -334,7 +334,7 @@ export default function DashboardOne() {
         </div>
       </div>
 
-      {/* <FooterCopyright /> */}
+   
     </div>
   )
 }

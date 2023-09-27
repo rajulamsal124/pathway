@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { NextRequest, NextResponse } from "next/server"
 
 import schema from "./schema"
 import { prisma } from "@/prisma/client"
-export async function GET() {
+export async function GET(request: NextRequest, response: NextResponse) {
   try {
     const courses = await prisma.course.findMany({
       include: {
@@ -17,7 +18,7 @@ export async function GET() {
       }
     })
 
-    return NextResponse.json({ course: coursesWithImage })
+    return NextResponse.json(coursesWithImage)
   } catch (error) {
     return NextResponse.json({ message: "error on server" }, { status: 500 })
   }
