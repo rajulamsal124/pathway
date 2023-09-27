@@ -1,8 +1,6 @@
 import { coursesData } from "@/data/dashboard"
 import React from "react"
 import CourseCardTwoDash from "./DashBoardCards/CourseCardTwoDash"
-import FooterCopyright from "../layout/footers/FooterCopyright"
-import Pagination from "../common/Pagination"
 
 export default function BookMarks() {
   return (
@@ -32,17 +30,13 @@ export default function BookMarks() {
                 </div>
 
                 <div className="row justify-center pt-30">
-                  <div className="col-auto">
-                    <Pagination />
-                  </div>
+                  <div className="col-auto"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* <FooterCopyright /> */}
     </div>
   )
 }

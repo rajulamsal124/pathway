@@ -2,9 +2,7 @@
 
 import { sections } from "@/data/adminitrationFeatures"
 import React, { useState } from "react"
-import FooterCopyright from "../layout/footers/FooterCopyright"
-import Link from "next/link"
-import PageLinksTwo from "../common/PageLinksTwo"
+
 const tabs = [
   { id: 1, title: "Site administration" },
   { id: 2, title: "Users" },
@@ -24,8 +22,6 @@ export default function Administration() {
         <div className="row pb-50 mb-10">
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Site Administration</h1>
-
-            <PageLinksTwo />
           </div>
         </div>
 
@@ -80,8 +76,6 @@ export default function Administration() {
           </div>
         </div>
       </div>
-
-      {/* <FooterCopyright /> */}
     </div>
   )
 }

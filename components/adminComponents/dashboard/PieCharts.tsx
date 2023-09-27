@@ -5,7 +5,6 @@ const {
   Tooltip,
   Legend,
   PieChart,
-  Cell,
   ResponsiveContainer,
 } = require("recharts")
 
@@ -14,7 +13,6 @@ const data = [
   { name: "Referal", value: 300 },
   { name: "Organic", value: 300 },
 ]
-const COLORS = ["#336CFB", "#336CFB", "#336CFB", "#336CFB"]
 const PieChartComponent = () => {
   return (
     <ResponsiveContainer width="100%" height={250}>

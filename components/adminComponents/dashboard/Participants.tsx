@@ -1,12 +1,10 @@
 "use client"
 
-import { grades, partcipents } from "@/data/dashboard"
-import { letters, alphabetItems } from "@/data/dictionary"
+import { partcipents } from "@/data/dashboard"
+import { letters } from "@/data/dictionary"
 
-import React, { useState, useEffect } from "react"
-import FooterCopyright from "../layout/footers/FooterCopyright"
+import React, { useState } from "react"
 import Image from "next/image"
-import PageLinksTwo from "../common/PageLinksTwo"
 
 export default function Participants() {
   const [currentLetter, setCurrentLetter] = useState("A")
@@ -16,8 +14,6 @@ export default function Participants() {
         <div className="row pb-50 mb-10">
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Participants</h1>
-
-            <PageLinksTwo />
           </div>
         </div>
 
@@ -495,8 +491,6 @@ export default function Participants() {
           </div>
         </div>
       </div>
-
-      {/* <FooterCopyright /> */}
     </div>
   )
 }

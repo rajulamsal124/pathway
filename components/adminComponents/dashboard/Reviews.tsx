@@ -1,6 +1,6 @@
 import { reviews } from "@/data/reviews"
 import React from "react"
-import Star from "../common/Star"
+
 import Image from "next/image"
 import Link from "next/link"
 
@@ -50,10 +50,6 @@ export default function Reviews() {
                                 {elm.date}
                               </span>
                             </h4>
-
-                            <div className="d-flex x-gap-5 items-center mt-15">
-                              <Star star={elm.rating} />
-                            </div>
                           </div>
 
                           <h5 className="text-15 fw-500 mt-15">{elm.title}</h5>

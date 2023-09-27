@@ -1,8 +1,6 @@
 "use client"
 
 import React from "react"
-import FooterCopyright from "../layout/footers/FooterCopyright"
-import PageLinksTwo from "../common/PageLinksTwo"
 
 export default function Survey() {
   const handleSubmit = (e) => {
@@ -14,8 +12,6 @@ export default function Survey() {
         <div className="row pb-50 mb-10">
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Survey</h1>
-
-            <PageLinksTwo />
           </div>
         </div>
 
@@ -227,8 +223,6 @@ export default function Survey() {
           </div>
         </div>
       </div>
-
-      {/* <FooterCopyright /> */}
     </div>
   )
 }

@@ -1,5 +1,3 @@
-
-
 import NotFound from "@/app/not-found"
 import Preloader from "@/components/common/Preloader"
 import Footer from "@/components/layout/footers/Footer"

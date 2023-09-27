@@ -1,6 +1,6 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
 
 interface AboutProps {}
 
@@ -88,7 +88,7 @@ const About: React.FC<AboutProps> = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default About;
+export default About

@@ -2,26 +2,26 @@ import { NextRequest, NextResponse } from "next/server"
 
 import schema from "./schema"
 import { prisma } from "@/prisma/client"
-// export async function GET(request: NextRequest, response: NextResponse) {
-//   try {
-//     const courses = await prisma.course.findMany({
-//       include: {
-//         category: true, // Include the related CourseCategory
-//       },
-//     })
+export async function GET() {
+  try {
+    const courses = await prisma.course.findMany({
+      include: {
+        category: true, // Include the related CourseCategory
+      },
+    })
 
-//     const coursesWithImage = courses.map((course) => {
-//       return {
-//         ...course,
-//         image: course.image ? course.image.toString("base64") : undefined,
-//       }
-//     })
+    const coursesWithImage = courses.map((course) => {
+      return {
+        ...course,
+        image: course.image ? course.image.toString("base64") : undefined,
+      }
+    })
 
-//     return NextResponse.json(coursesWithImage)
-//   } catch (error) {
-//     return NextResponse.json({ message: "error on server" }, { status: 500 })
-//   }
-// }
+    return NextResponse.json({ course: coursesWithImage })
+  } catch (error) {
+    return NextResponse.json({ message: "error on server" }, { status: 500 })
+  }
+}
 
 export async function POST(request: NextRequest) {
   const body = await request.json()

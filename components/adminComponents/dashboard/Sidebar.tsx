@@ -4,10 +4,8 @@ import React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-
 export default function Sidebar() {
   const pathname = usePathname()
-
 
   // Define your navigation links here
   const sidebarItems = [
@@ -43,7 +41,6 @@ export default function Sidebar() {
               </div>
             ))}
           </div>
-          
         </div>
       </div>
     </div>

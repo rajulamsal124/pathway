@@ -29,7 +29,10 @@ export default function RootLayout({ children }) {
     <html lang="en" className="">
       <head></head>
       <body>
-        <Providers> {children} <Toaster /></Providers>
+        <Providers>
+          {" "}
+          {children} <Toaster />
+        </Providers>
       </body>
     </html>
   )
