@@ -12,7 +12,7 @@ export default function Sidebar() {
   // Define your navigation links here
   const sidebarItems = [
     { href: "/dashboard", text: "Dashboard", iconClass: "icon-dashboard" },
-    { href: "/courses", text: "Create Course", iconClass: "icon-profile" },
+    { href: "/dshb-courses", text: "Create Course", iconClass: "icon-profile" },
     { href: "/dshb-settings", text: "Settings", iconClass: "icon-settings" },
     // Add more links as needed
   ]

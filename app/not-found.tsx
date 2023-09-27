@@ -1,7 +1,8 @@
-import NotFound from "@/components/not-found/NotFound"
+
 
 import Footer from "@/components/layout/footers/Footer"
 import Header from "@/components/layout/headers/Header"
+import NotFound from "@/components/not-found/NotFound"
 import React from "react"
 export const metadata = {
   title:
