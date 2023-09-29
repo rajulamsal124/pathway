@@ -10,17 +10,17 @@ export async function GET(
     const course = await prisma.course.findUnique({
       where: { id: parseInt(params.id) },
     })
-  
+
     if (!course)
       return NextResponse.json({ error: "course not found" }, { status: 404 })
-    const courseWithImage= course.image ? { ...course, image: course.image.toString('base64') } : undefined
+    const courseWithImage = course.image
+      ? { ...course, image: course.image.toString("base64") }
+      : undefined
     return NextResponse.json(courseWithImage)
   } catch (error) {
-    return NextResponse.json({message: "error on server"}, { status: 500 })
+    return NextResponse.json({ message: "error on server" }, { status: 500 })
   }
-  
 }
-
 
 // export async function PUT(
 //   request: NextRequest,

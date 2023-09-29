@@ -1,22 +1,23 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React from "react"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Link from "next/link"
+import { useCourseData } from "@/hooks/useCourses"
 
-async function fetchCourses() {
-  const res = await fetch("http://localhost:3000/api/courses")
-  const courses = await res.json()
-  console.log(courses)
-  return courses
-}
+// async function fetchCourses() {
+//   const res = await fetch("http://localhost:3000/api/courses")
+//   const courses = await res.json()
+//   console.log(courses)
+//   return courses
+// }
 
 export default function CourseList() {
-  const { data } = useQuery({
-    queryKey: ["courses"],
-    queryFn: fetchCourses,
-  })
+  const { courseData, loading } = useCourseData()
+  console.log(courseData)
+  if(loading)
+    return <div>Loading...</div>
   return (
     <>
       <section className="page-header -type-1">
@@ -41,8 +42,7 @@ export default function CourseList() {
       <section className="layout-pt-md layout-pb-lg">
         <div className="container">
           <div className="row y-gap-30">
-            {data &&
-              data.map((course, i) => (
+            {courseData.map((course, i) => (
                 <div key={i} className="col-xl-3 col-lg-4 col-md-6">
                   <div className="coursesCard -type-1 ">
                     <div className="relative">
@@ -79,12 +79,12 @@ export default function CourseList() {
 
                     <div className="h-100">
                       <div className="text-20 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link
-                          className="linkCustom"
-                          href={`${process.env.NEXT_PUBLIC_URL}/courses/${course.id}`}
-                        >
-                          {course.title}
-                        </Link>
+                       <Link
+  className="linkCustom"
+  href={`${process.env.NEXT_PUBLIC_URL}/courses/${course.id}`}
+>
+  {course.title}
+</Link>
                       </div>
 
                       <div className="d-flex x-gap-10 items-center pt-10">

@@ -1,32 +1,25 @@
-/* eslint-disable no-unused-vars */
 import { NextRequest, NextResponse } from "next/server"
 
 import schema from "./schema"
 import { prisma } from "@/prisma/client"
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET() {
   try {
-    const course = await prisma.course.findUnique({
-      where: { id: parseInt(params.id) },
+    const courses = await prisma.course.findMany({
       include: {
         category: true, // Include the related CourseCategory
       },
-    });
+    })
 
-    if (!course)
-      return NextResponse.json({ error: "Course not found" }, { status: 404 });
+    const coursesWithImage = courses.map((course) => {
+      return {
+        ...course,
+        image: course.image ? course.image.toString("base64") : undefined,
+      }
+    })
 
-    // Convert the image to a Base64 encoded string if it exists
-    if (course.image) {
-      const imageBase64 = course.image.toString('base64');
-      course.imageBase64 = imageBase64;
-    }
-
-    return NextResponse.json(course);
+    return NextResponse.json(coursesWithImage)
   } catch (error) {
-    return NextResponse.json({ message: "Error on server" }, { status: 500 });
+    return NextResponse.json({ message: "error on server" }, { status: 500 })
   }
 }
 

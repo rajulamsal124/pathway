@@ -1,10 +1,8 @@
-
-
-import Preloader from "@/components/common/Preloader";
-import CourseList from "@/components/courses/courseList/CourseList";
-import Footer from "@/components/layout/footers/Footer";
-import Header from "@/components/layout/headers/Header";
-import React from "react";
+import Preloader from "@/components/common/Preloader"
+import CourseList from "@/components/courses/courseList/CourseList"
+import Footer from "@/components/layout/footers/Footer"
+import Header from "@/components/layout/headers/Header"
+import React from "react"
 
 export default function page() {
   return (
@@ -16,5 +14,5 @@ export default function page() {
         <Footer />
       </div>
     </div>
-  );
+  )
 }
