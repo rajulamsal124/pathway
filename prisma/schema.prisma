@@ -57,7 +57,7 @@ model VerificationToken {
 }
 
 model DecisionPoint {
-  id               Int              @id @default(autoincrement())
+  id               String              @id @default(cuid())
   title            String
   description      String?
   courses          Course[] // Added this line to establish the back relation
@@ -69,17 +69,18 @@ model DecisionPoint {
 }
 
 model CourseCategory {
-  id              Int           @id @default(autoincrement())
+  id              String           @id @default(cuid())
+  title           String?
   type            CategoryType
   courses         Course[]
-  decisionPointId Int
+  decisionPointId String
   decisionPoint   DecisionPoint @relation(fields: [decisionPointId], references: [id])
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 }
 
 model Course {
-  id                  Int            @id @default(autoincrement())
+  id                  String          @id @default(cuid())
   title               String
   shortDescription    String
   description         String // Optional field for course description
@@ -88,22 +89,24 @@ model Course {
   providerName        String
   providerUrl         String
   providerDescription String
-  rolesName           String
-  rolesDescription    String
-  courseCategoryId    Int
-  decisionPointId     Int?
+  courseCategoryId    String 
+  decisionPointId     String
   decisionPoint       DecisionPoint? @relation(fields: [decisionPointId], references: [id])
   image               Bytes?
   category            CourseCategory @relation(fields: [courseCategoryId], references: [id])
+  roleId              String?
+  role                CourseRole?          @relation(fields: [roleId], references: [id])
   createdAt           DateTime       @default(now())
   updatedAt           DateTime       @default(now()) @updatedAt
 
   @@unique([title])
 }
 
-model Role {
-  id        Int      @id @default(autoincrement())
-  type      RoleType
+model CourseRole {
+  id        String      @id @default(cuid())
+  rolesName String
+  type      RoleType 
+  courses   Course[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

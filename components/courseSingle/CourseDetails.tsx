@@ -10,6 +10,7 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { useCourseById } from "@/hooks/useCourses"
 import Link from "next/link"
+import { useRouter } from "next/router"
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Details", isActive: true },
@@ -23,20 +24,18 @@ const menuItems = [
   // { id: 4, href: "#reviews", text: "", isActive: false },
 ]
 
-export default function CourseDetails({ id }) {
+export default function CourseDetails({id}) {
   const [pageItem, setPageItem] = useState(null) // Initialize as null
   const [isOpen, setIsOpen] = useState(false) // Fix useState syntax
   const [activeTab, setActiveTab] = useState(1)
-
-  const { course, loading } = useCourseById(id);
-
+  
+  const { course, loading } = useCourseById(id)
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
-  if(!course)
-    return <div>Course not found</div>
-
+  if (!course) return <div>Course not found</div>
+  console.log("course", course)
   return (
     <>
       <div className="js-pin-container relative">
@@ -76,7 +75,9 @@ export default function CourseDetails({ id }) {
                   </h1>
                 </div>
 
-                <p className="col-xl-9 text-green-8">{course.shortDescription}</p>
+                <p className="col-xl-9 text-green-8">
+                  {course.shortDescription}
+                </p>
 
                 {/* <div className="d-flex x-gap-30 y-gap-10 items-center flex-wrap pt-20">
                   <div className="d-flex items-center text-light-1">
@@ -170,10 +171,13 @@ export default function CourseDetails({ id }) {
                           activeTab == 2 ? "is-active" : ""
                         } `}
                       >
-                       {course.providerName}
-                       {course.providerDescription}
-                       <button className="btn btn-primary"><Link href={course.providerUrl}>View {course.providerName}</Link></button>
-                       
+                        {course.providerName}
+                        {course.providerDescription}
+                        <button className="btn btn-primary">
+                          <a href={course?.providerUrl}>
+                            View {course.providerName}
+                          </a>
+                        </button>
                       </div>
                       <div
                         className={`tabs__pane -tab-item-3 ${

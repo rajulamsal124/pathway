@@ -1,53 +1,68 @@
 import { useState, useEffect } from "react"
-import { ICourse } from "@/types/types"
+import { ICourse, ICourseResponse } from "@/types/types"
 
-export function useCourseData() {
+export function useCourseData(allFilters: any[]) {
   const [courseData, setCourseData] = useState<ICourse[]>([])
   const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string | null>(null)
+  const [error] = useState<string | null>(null)
 
   useEffect(() => {
     // Replace this with your actual API endpoint
-    fetch("http://localhost:3000/api/courses")
+
+    let newFilter = null
+
+    if (allFilters && allFilters?.length > 0) {
+      newFilter = allFilters
+        .map((item) => {
+          return `${Object.keys(item)[0]}=${Object.values(item)[0]}`
+        })
+        .join("&&")
+    }
+
+    let url = "http://localhost:3000/api/courses"
+    if (newFilter) {
+      url += `?${newFilter}`
+    }
+
+    fetch(url)
       .then((response) => response.json())
-      .then((data: ICourse[]) => {
-        setCourseData(data)
+      .then((data: ICourseResponse) => {
+        setCourseData(data?.courses)
         setLoading(false)
       })
       .catch((error) => {
         console.error("Error fetching course data:", error)
         setLoading(false)
       })
-  }, [])
+  }, [allFilters])
 
   return {
     courseData,
     loading,
-    error
+    error,
   }
 }
 
-
-export function useCourseById(courseId:number) {
-  const [course, setCourse] = useState<ICourse | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+export function useCourseById(courseId: number) {
+  const [course, setCourse] = useState<ICourse | null>(null)
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // Replace this with your actual API endpoint
     fetch(`http://localhost:3000/api/courses/${courseId}`)
       .then((response) => response.json())
-      .then((data: ICourse) => {
-        setCourse(data);
-        setLoading(false);
+      .then((data: ICourseResponse) => {
+        setCourse(data?.courses)
+        setLoading(false)
       })
       .catch((error) => {
-        console.error("Error fetching course data by ID:", error);
-        setLoading(false);
-      });
-  }, [courseId]);
+        console.error("Error fetching course data by ID:", error)
+        setLoading(false)
+      })
+  }, [courseId])
 
   return {
     course,
     loading,
-  };
+  }
 }

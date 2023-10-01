@@ -8,6 +8,7 @@ import CourseSlider from "@/components/courseSingle/CourseSlider"
 import Footer from "@/components/layout/footers/Footer"
 
 import Header from "@/components/layout/headers/Header"
+import { useRouter } from "next/router"
 import React from "react"
 
 // export const metadata = {
@@ -17,7 +18,8 @@ import React from "react"
 //     "Elevate your e-learning content with Tafegippsland, the most impressive LMS template for online courses, education and LMS platforms.",
 // };
 
-export default function page({ params }) {
+export default function page({params}) {
+  console.log("params", params)
   return (
     <div className="main-content  ">
       <Preloader />
@@ -28,5 +30,6 @@ export default function page({ params }) {
         <Footer />
       </div>
     </div>
+    // <>hello</>
   )
 }

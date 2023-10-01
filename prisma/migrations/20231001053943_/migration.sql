@@ -53,7 +53,7 @@ CREATE TABLE `VerificationToken` (
 
 -- CreateTable
 CREATE TABLE `DecisionPoint` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -65,9 +65,9 @@ CREATE TABLE `DecisionPoint` (
 
 -- CreateTable
 CREATE TABLE `CourseCategory` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id` VARCHAR(191) NOT NULL,
     `type` ENUM('SCHOOLLEAVER', 'CAREERCHANGER', 'LIFELONGLEARNER') NOT NULL,
-    `decisionPointId` INTEGER NOT NULL,
+    `decisionPointId` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
@@ -76,7 +76,7 @@ CREATE TABLE `CourseCategory` (
 
 -- CreateTable
 CREATE TABLE `Course` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
     `shortDescription` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
@@ -85,11 +85,10 @@ CREATE TABLE `Course` (
     `providerName` VARCHAR(191) NOT NULL,
     `providerUrl` VARCHAR(191) NOT NULL,
     `providerDescription` VARCHAR(191) NOT NULL,
-    `rolesName` VARCHAR(191) NOT NULL,
-    `rolesDescription` VARCHAR(191) NOT NULL,
-    `courseCategoryId` INTEGER NOT NULL,
-    `decisionPointId` INTEGER NULL,
+    `courseCategoryId` VARCHAR(191) NOT NULL,
+    `decisionPointId` VARCHAR(191) NOT NULL,
     `image` LONGBLOB NULL,
+    `roleId` VARCHAR(191) NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
@@ -98,8 +97,9 @@ CREATE TABLE `Course` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Role` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+CREATE TABLE `CourseRole` (
+    `id` VARCHAR(191) NOT NULL,
+    `rolesName` VARCHAR(191) NOT NULL,
     `type` ENUM('ONFARM', 'OFFFARM') NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
@@ -117,7 +117,10 @@ ALTER TABLE `Session` ADD CONSTRAINT `Session_userId_fkey` FOREIGN KEY (`userId`
 ALTER TABLE `CourseCategory` ADD CONSTRAINT `CourseCategory_decisionPointId_fkey` FOREIGN KEY (`decisionPointId`) REFERENCES `DecisionPoint`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Course` ADD CONSTRAINT `Course_decisionPointId_fkey` FOREIGN KEY (`decisionPointId`) REFERENCES `DecisionPoint`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Course` ADD CONSTRAINT `Course_decisionPointId_fkey` FOREIGN KEY (`decisionPointId`) REFERENCES `DecisionPoint`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Course` ADD CONSTRAINT `Course_courseCategoryId_fkey` FOREIGN KEY (`courseCategoryId`) REFERENCES `CourseCategory`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Course` ADD CONSTRAINT `Course_roleId_fkey` FOREIGN KEY (`roleId`) REFERENCES `CourseRole`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

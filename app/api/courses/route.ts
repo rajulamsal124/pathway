@@ -2,22 +2,41 @@ import { NextRequest, NextResponse } from "next/server"
 
 import schema from "./schema"
 import { prisma } from "@/prisma/client"
-export async function GET() {
+
+export async function GET(req: NextRequest) {
   try {
+    const { searchParams } = new URL(req.url)
+    const decisionPoint = searchParams.get("decisionPoint")
+
+    // if decisionPoint add decisionPointFilter
+    let decisionPointFilter: any = null
+    if (decisionPoint) {
+      decisionPointFilter = {
+        decisionPoint: {
+          title: {
+            contains: decisionPoint,
+            mode: "insensitive",
+          },
+        },
+      }
+    }
     const courses = await prisma.course.findMany({
+      where: {
+        ...decisionPointFilter,
+      },
       include: {
-        category: true, // Include the related CourseCategory
+        category: true,
+        decisionPoint: true,
+        role: true,
       },
     })
-
     const coursesWithImage = courses.map((course) => {
       return {
         ...course,
         image: course.image ? course.image.toString("base64") : undefined,
       }
     })
-
-    return NextResponse.json(coursesWithImage)
+    return NextResponse.json({ courses: coursesWithImage })
   } catch (error) {
     return NextResponse.json({ message: "error on server" }, { status: 500 })
   }
