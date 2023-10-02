@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react"
 import { notifications } from "@/data/notifications"
 import Link from "next/link"
