@@ -1,5 +1,4 @@
 "use client"
-import MobileMenu from "../component/MobileMenu"
 import Menu from "../component/Menu"
 import Link from "next/link"
 import React, { useState, useEffect } from "react"
@@ -10,7 +9,6 @@ export interface HeaderProps {
   headerPosition?: string
 }
 const Headers: React.FC<HeaderProps> = () => {
-  const [activeMobileMenu, setActiveMobileMenu] = useState(false)
   const [scrollPosition, setScrollPosition] = useState(0)
 
   useEffect(() => {
