@@ -1,28 +1,25 @@
-import { NextRequest, NextResponse } from "next/server"
-
-import schema from "./schema"
 import { prisma } from "@/prisma/client"
+import { NextRequest, NextResponse } from "next/server"
+import schema from "./schema"
 
-export async function GET(req: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url)
-    const decisionPoint = searchParams.get("decisionPoint")
+    const { searchParams } = new URL(request.url)
+    const category = searchParams.get("category")
 
-    // if decisionPoint add decisionPointFilter
-    let decisionPointFilter: any = null
-    if (decisionPoint) {
-      decisionPointFilter = {
-        decisionPoint: {
-          title: {
-            contains: decisionPoint,
-            mode: "insensitive",
-          },
+    let FilteredData: any = {}
+
+    if (category) {
+      FilteredData = {
+        category: {
+          title: category,
         },
       }
     }
+
     const courses = await prisma.course.findMany({
       where: {
-        ...decisionPointFilter,
+        ...FilteredData,
       },
       include: {
         category: true,
@@ -30,18 +27,23 @@ export async function GET(req: NextRequest) {
         role: true,
       },
     })
+
     const coursesWithImage = courses.map((course) => {
       return {
         ...course,
         image: course.image ? course.image.toString("base64") : undefined,
       }
     })
+
     return NextResponse.json({ courses: coursesWithImage })
   } catch (error) {
-    return NextResponse.json({ message: "error on server" }, { status: 500 })
+    console.error(error)
+    return NextResponse.json(
+      { message: "Error on the server" },
+      { status: 500 }
+    )
   }
 }
-
 export async function POST(request: NextRequest) {
   const body = await request.json()
   console.log(body)

@@ -1,22 +1,22 @@
+/* eslint-disable no-unused-vars */
 "use client"
 
-import {
-  categories,
-  coursesData,
-  duration,
-  instractorNames,
-  languages,
-  levels,
-  prices,
-  rating,
-  sortingOptions,
-} from "@/data/courses"
+// import {
+//   categories,
+//   coursesData,
+//   duration,
+//   instractorNames,
+//   languages,
+//   levels,
+//   prices,
+//   rating,
+//   sortingOptions,
+// } from "@/data/courses"
 import React, { useState, useEffect } from "react"
-import Star from "../common/Star"
-import Image from "next/image"
-import Link from "next/link"
-import PaginationTwo from "../common/PaginationTwo"
-import { CategoryFilter } from "../common/courseFilter/component"
+import {
+  CategoryFilter,
+  DecisionPointFilter,
+} from "../common/courseFilter/component"
 
 interface IProps {
   courseData: any[]
@@ -30,196 +30,146 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
     if (allFilters && allFilters?.length > 0) {
       onApplyFilter(allFilters)
     }
-  }, [allFilters])
+  }, [allFilters, onApplyFilter])
 
-  const [filterCategories, setFilterCategories] = useState([])
-  const [filterRatingRange, setFilterRatingRange] = useState([])
-  const [filterInstractors, setFilterInstractors] = useState([])
-  const [filterPrice, setFilterPrice] = useState("All")
-  const [filterLevels, setFilterLevels] = useState([])
-  const [filterlanguange, setFilterlanguange] = useState([])
-  const [filterDuration, setFilterDuration] = useState([])
+  // const [filterCategories, setFilterCategories] = useState([])
+  // const [filterRatingRange, setFilterRatingRange] = useState([])
+  // const [filterInstractors, setFilterInstractors] = useState([])
+  // const [filterPrice, setFilterPrice] = useState("All")
+  // const [filterLevels, setFilterLevels] = useState([])
+  // const [filterlanguange, setFilterlanguange] = useState([])
+  // const [filterDuration, setFilterDuration] = useState([])
 
-  const [currentSortingOption, setCurrentSortingOption] = useState("Default")
+  // const [currentSortingOption, setCurrentSortingOption] = useState("Default")
 
-  const [filteredData, setFilteredData] = useState([])
+  // const [filteredData, setFilteredData] = useState([])
 
-  const [sortedFilteredData, setSortedFilteredData] = useState([])
+  // const [sortedFilteredData, setSortedFilteredData] = useState([])
 
-  const [pageNumber, setPageNumber] = useState(1)
-
-  useEffect(() => {
-    const refItems = coursesData.filter((elm) => {
-      if (filterPrice == "All") {
-        return true
-      } else if (filterPrice == "Free") {
-        return !elm.paid
-      } else if (filterPrice == "Paid") {
-        return elm.paid
-      }
-    })
-
-    let filteredArrays = []
-
-    if (filterInstractors.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterInstractors.includes(elm.authorName)
-      )
-      filteredArrays = [...filteredArrays, filtered]
-    }
-    if (filterCategories.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterCategories.includes(elm.category)
-      )
-      filteredArrays = [...filteredArrays, filtered]
-    }
-    if (filterLevels.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterLevels.includes(elm.level)
-      )
-      filteredArrays = [...filteredArrays, filtered]
-    }
-    if (filterlanguange.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterlanguange.includes(elm.languange)
-      )
-      filteredArrays = [...filteredArrays, filtered]
-    }
-    if (filterRatingRange.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          elm.rating >= filterRatingRange[0] &&
-          elm.rating <= filterRatingRange[1]
-      )
-      filteredArrays = [...filteredArrays, filtered]
-    }
-    if (filterDuration.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          elm.duration >= filterDuration[0] && elm.duration <= filterDuration[1]
-      )
-      filteredArrays = [...filteredArrays, filtered]
-    }
-
-    const commonItems = refItems.filter((item) =>
-      filteredArrays.every((array) => array.includes(item))
-    )
-    setFilteredData(commonItems)
-    setPageNumber(1)
-  }, [
-    filterCategories,
-    filterRatingRange,
-    filterInstractors,
-    filterPrice,
-    filterLevels,
-    filterlanguange,
-    filterDuration,
-  ])
+  // const [pageNumber, setPageNumber] = useState(1)
 
   // useEffect(() => {
-  //   if (currentSortingOption == "Default") {
-  //     setSortedFilteredData(filteredData)
-  //   } else if (currentSortingOption == "Rating (asc)") {
-  //     setSortedFilteredData(
-  //       [...filteredData].sort((a, b) => a.rating - b.rating)
-  //     )
-  //   } else if (currentSortingOption == "Rating (dsc)") {
-  //     setSortedFilteredData(
-  //       [...filteredData].sort((a, b) => b.rating - a.rating)
-  //     )
-  //   } else if (currentSortingOption == "Price (asc)") {
-  //     setSortedFilteredData(
-  //       [...filteredData].sort((a, b) => a.discountedPrice - b.discountedPrice)
-  //     )
-  //   } else if (currentSortingOption == "Price (dsc)") {
-  //     setSortedFilteredData(
-  //       [...filteredData].sort((a, b) => b.discountedPrice - a.discountedPrice)
-  //     )
-  //   } else if (currentSortingOption == "Duration (asc)") {
-  //     setSortedFilteredData(
-  //       [...filteredData].sort((a, b) => a.duration - b.duration)
-  //     )
-  //   } else if (currentSortingOption == "Duration (dsc)") {
-  //     setSortedFilteredData(
-  //       [...filteredData].sort((a, b) => b.duration - a.duration)
-  //     )
-  //   }
-  // }, [currentSortingOption, filteredData])
+  //   const refItems = coursesData.filter((elm) => {
+  //     if (filterPrice == "All") {
+  //       return true
+  //     } else if (filterPrice == "Free") {
+  //       return !elm.paid
+  //     } else if (filterPrice == "Paid") {
+  //       return elm.paid
+  //     }
+  //   })
 
-  const handleFilterCategories = (item) => {
-    if (filterCategories.includes(item)) {
-      setFilterCategories([])
-    } else {
-      setFilterCategories([item])
-    }
-    document.getElementById("dd52button").classList.toggle("-is-dd-active")
-    document.getElementById("dd52content").classList.toggle("-is-el-visible")
-  }
-  const handleFilterRatingRange = (item) => {
-    setFilterRatingRange(item)
-    document.getElementById("dd53button").classList.toggle("-is-dd-active")
-    document.getElementById("dd53content").classList.toggle("-is-el-visible")
-  }
-  const handleFilterInstractors = (item) => {
-    if (filterInstractors.includes(item)) {
-      setFilterInstractors([])
-    } else {
-      setFilterInstractors([item])
-    }
-    document.getElementById("dd54button").classList.toggle("-is-dd-active")
-    document.getElementById("dd54content").classList.toggle("-is-el-visible")
-  }
-  const handleFilterPrice = (item) => {
-    setFilterPrice(item)
-    document.getElementById("dd55button").classList.toggle("-is-dd-active")
-    document.getElementById("dd55content").classList.toggle("-is-el-visible")
-  }
-  const handleFilterLevels = (item) => {
-    if (filterLevels.includes(item)) {
-      const filtered = filterLevels.filter((elm) => elm != item)
-      setFilterLevels([])
-    } else {
-      setFilterLevels([item])
-    }
-    document.getElementById("dd56button").classList.toggle("-is-dd-active")
-    document.getElementById("dd56content").classList.toggle("-is-el-visible")
-  }
-  const handleFilterlanguange = (item) => {
-    if (filterlanguange.includes(item)) {
-      setFilterlanguange([])
-    } else {
-      setFilterlanguange([item])
-    }
-    document.getElementById("dd57button").classList.toggle("-is-dd-active")
-    document.getElementById("dd57content").classList.toggle("-is-el-visible")
-  }
-  const handleFilterDuration = (item) => {
-    setFilterDuration(item)
-    document.getElementById("dd58button").classList.toggle("-is-dd-active")
-    document.getElementById("dd58content").classList.toggle("-is-el-visible")
-  }
+  //   let filteredArrays = []
+
+  //   if (filterInstractors.length > 0) {
+  //     const filtered = refItems.filter((elm) =>
+  //       filterInstractors.includes(elm.authorName)
+  //     )
+  //     filteredArrays = [...filteredArrays, filtered]
+  //   }
+  //   if (filterCategories.length > 0) {
+  //     const filtered = refItems.filter((elm) =>
+  //       filterCategories.includes(elm.category)
+  //     )
+  //     filteredArrays = [...filteredArrays, filtered]
+  //   }
+  //   if (filterLevels.length > 0) {
+  //     const filtered = refItems.filter((elm) =>
+  //       filterLevels.includes(elm.level)
+  //     )
+  //     filteredArrays = [...filteredArrays, filtered]
+  //   }
+  //   if (filterlanguange.length > 0) {
+  //     const filtered = refItems.filter((elm) =>
+  //       filterlanguange.includes(elm.languange)
+  //     )
+  //     filteredArrays = [...filteredArrays, filtered]
+  //   }
+  //   if (filterRatingRange.length > 0) {
+  //     const filtered = refItems.filter(
+  //       (elm) =>
+  //         elm.rating >= filterRatingRange[0] &&
+  //         elm.rating <= filterRatingRange[1]
+  //     )
+  //     filteredArrays = [...filteredArrays, filtered]
+  //   }
+  //   if (filterDuration.length > 0) {
+  //     const filtered = refItems.filter(
+  //       (elm) =>
+  //         elm.duration >= filterDuration[0] && elm.duration <= filterDuration[1]
+  //     )
+  //     filteredArrays = [...filteredArrays, filtered]
+  //   }
+
+  //   const commonItems = refItems.filter((item) =>
+  //     filteredArrays.every((array) => array.includes(item))
+  //   )
+  //   setFilteredData(commonItems)
+  //   setPageNumber(1)
+  // }, [
+  //   filterCategories,
+  //   filterRatingRange,
+  //   filterInstractors,
+  //   filterPrice,
+  //   filterLevels,
+  //   filterlanguange,
+  //   filterDuration,
+  // ])
+
+  // const handleFilterCategories = (item) => {
+  //   if (filterCategories.includes(item)) {
+  //     setFilterCategories([])
+  //   } else {
+  //     setFilterCategories([item])
+  //   }
+  //   document.getElementById("dd52button").classList.toggle("-is-dd-active")
+  //   document.getElementById("dd52content").classList.toggle("-is-el-visible")
+  // }
+  // const handleFilterRatingRange = (item) => {
+  //   setFilterRatingRange(item)
+  //   document.getElementById("dd53button").classList.toggle("-is-dd-active")
+  //   document.getElementById("dd53content").classList.toggle("-is-el-visible")
+  // }
+  // const handleFilterInstractors = (item) => {
+  //   if (filterInstractors.includes(item)) {
+  //     setFilterInstractors([])
+  //   } else {
+  //     setFilterInstractors([item])
+  //   }
+  //   document.getElementById("dd54button").classList.toggle("-is-dd-active")
+  //   document.getElementById("dd54content").classList.toggle("-is-el-visible")
+  // }
+  // const handleFilterPrice = (item) => {
+  //   setFilterPrice(item)
+  //   document.getElementById("dd55button").classList.toggle("-is-dd-active")
+  //   document.getElementById("dd55content").classList.toggle("-is-el-visible")
+  // }
+  // const handleFilterLevels = (item) => {
+  //   if (filterLevels.includes(item)) {
+  //     const filtered = filterLevels.filter((elm) => elm != item)
+  //     setFilterLevels([])
+  //   } else {
+  //     setFilterLevels([item])
+  //   }
+  //   document.getElementById("dd56button").classList.toggle("-is-dd-active")
+  //   document.getElementById("dd56content").classList.toggle("-is-el-visible")
+  // }
+  // const handleFilterlanguange = (item) => {
+  //   if (filterlanguange.includes(item)) {
+  //     setFilterlanguange([])
+  //   } else {
+  //     setFilterlanguange([item])
+  //   }
+  //   document.getElementById("dd57button").classList.toggle("-is-dd-active")
+  //   document.getElementById("dd57content").classList.toggle("-is-el-visible")
+  // }
+  // const handleFilterDuration = (item) => {
+  //   setFilterDuration(item)
+  //   document.getElementById("dd58button").classList.toggle("-is-dd-active")
+  //   document.getElementById("dd58content").classList.toggle("-is-el-visible")
+  // }
   return (
     <>
-      <section className="page-header -type-1">
-        <div className="container">
-          <div className="page-header__content">
-            <div className="row">
-              <div className="col-auto">
-                <div>
-                  <h1 className="page-header__title">User Interface Courses</h1>
-                </div>
-
-                <div>
-                  <p className="page-header__text">
-                    Write an introductory description of the category.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="layout-pt-md layout-pb-lg">
         <div className="container">
           <div className="row y-gap-20 items-center justify-between pb-30">
@@ -234,6 +184,12 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
             <div className="col-12">
               <div className="row x-gap-20 y-gap-20">
                 <CategoryFilter
+                  onChangeCategory={(value) => {
+                    const filterValue = [...allFilters, { categories: value }]
+                    setAllFilters(filterValue)
+                  }}
+                />
+                <DecisionPointFilter
                   onChangeDecisionPoint={(value) => {
                     const filterValue = [
                       ...allFilters,
@@ -243,7 +199,7 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                   }}
                 />
 
-                <div className="col-auto">
+                {/* <div className="col-auto">
                   <div
                     id="dd53button"
                     className="dropdown js-dropdown js-ratings-active"
@@ -264,7 +220,7 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                       <span className="js-dropdown-title">
                         {filterRatingRange.length
                           ? `${filterRatingRange[0]} to ${filterRatingRange[1]}`
-                          : "Ratings"}
+                          : "Decision Point"}
                       </span>
                       <i className="icon text-9 ml-40 icon-chevron-down"></i>
                     </div>
@@ -313,9 +269,9 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="col-auto">
+                {/* <div className="col-auto">
                   <div
                     id="dd54button"
                     className="dropdown js-dropdown js-instructors-active"
@@ -384,9 +340,9 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="col-auto">
+                {/* <div className="col-auto">
                   <div
                     id="dd55button"
                     className="dropdown js-dropdown js-price-active"
@@ -432,7 +388,7 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

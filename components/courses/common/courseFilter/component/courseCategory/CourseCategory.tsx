@@ -1,12 +1,13 @@
+/* eslint-disable no-unused-vars */
 "use client"
 import { useCategoryData } from "@/hooks/useCourseCategory"
 import { useState, useEffect } from "react"
 
 interface IProps {
-  onChangeDecisionPoint: (value: string) => void
+  onChangeCategory: (value: string) => void
 }
 
-const CategoryFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
+const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
   const [filterCategories, setFilterCategories] = useState<any>([])
 
   const handleFilterCategories = (item: any) => {
@@ -23,9 +24,9 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
 
   useEffect(() => {
     if (filterCategories && filterCategories?.length > 0) {
-      onChangeDecisionPoint(filterCategories[0])
+      onChangeCategory(filterCategories[0])
     }
-  }, [filterCategories])
+  }, [filterCategories, onChangeCategory])
 
   if (loading) return <h1>Loading...</h1>
 
@@ -48,7 +49,7 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
           data-el-toggle-active=".js-category-active"
         >
           <span className="js-dropdown-title">
-            {filterCategories.length ? filterCategories[0] : "Decision Point"}
+            {filterCategories.length ? filterCategories[0] : "Category"}
           </span>
           <i className="icon text-9 ml-40 icon-chevron-down"></i>
         </div>

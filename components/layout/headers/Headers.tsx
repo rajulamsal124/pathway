@@ -72,7 +72,7 @@ const Headers: React.FC<HeaderProps> = () => {
                     src="/assets/img/general/logo.svg"
                     alt="logo"
                   /> */}
-                  <h3 className="text-white">Tafe Gippsland</h3>
+                  <h3 className="text-white">Gippsland Pathway</h3>
                 </Link>
               </div>
             </div>

@@ -4,7 +4,6 @@ import {
   ICourse,
   ICourseCategory,
   IDecisionPoint,
-  IProvider,
   IRole,
 } from "@/types/types"
 const CourseFilter: React.FC<{

@@ -42,8 +42,7 @@ export default function CourseList() {
             </div>
           </div>
         </div>
-      </section>
-      <section className="layout-pt-md layout-pb-lg">
+
         <div className="container">
           <div className="row y-gap-30">
             {courseData?.map((course, i) => (

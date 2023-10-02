@@ -1,28 +1,20 @@
-"use client"
-
-import Image from "next/image"
 import React, { useEffect, useState } from "react"
-
 import { notifications } from "@/data/notifications"
-import Messages from "../component/Messages"
-import MyCourses from "../component/MyCourses"
 import Link from "next/link"
-import { sidebarItems } from "@/data/dashBoardSidebar"
-
+import Image from "next/image"
 export default function HeaderDashboard() {
-  const [messageOpen, setMessageOpen] = useState(false)
+  const [isfullScreen, setIsfullScreen] = useState<boolean>(false)
+  const [isOnNotification, setIsOnNotification] = useState<boolean>(false)
+  const [documentElement, setDocumentElement] = useState<HTMLElement | null>(
+    null
+  )
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault()
+  // }
 
-  const [isfullScreen, setIsfullScreen] = useState(false)
-  const [isOnNotification, setIsOnNotification] = useState(false)
-  const [isOnProfile, setIsOnProfile] = useState(false)
-
-  const [documentElement, setDocumentElement] = useState()
   const handleFullScreenToggle = () => {
-    setIsfullScreen((pre) => !pre)
+    setIsfullScreen((prev) => !prev)
     if (!isfullScreen) {
       openFullscreen()
     } else {
@@ -33,15 +25,18 @@ export default function HeaderDashboard() {
   useEffect(() => {
     setDocumentElement(document.documentElement)
   }, [])
+
   const openFullscreen = () => {
     if (documentElement?.requestFullscreen) {
-      documentElement?.requestFullscreen()
-    } else if (documentElement?.webkitRequestFullscreen) {
+      documentElement.requestFullscreen()
+    } else if ((documentElement as any)?.webkitRequestFullscreen) {
+      // Use type assertion (as any)
       /* Safari */
-      documentElement?.webkitRequestFullscreen()
-    } else if (documentElement?.msRequestFullscreen) {
+      ;(documentElement as any).webkitRequestFullscreen() // Type assertion
+    } else if ((documentElement as any)?.msRequestFullscreen) {
+      // Use type assertion (as any)
       /* IE11 */
-      documentElement?.msRequestFullscreen()
+      ;(documentElement as any).msRequestFullscreen() // Type assertion
     }
   }
 
@@ -50,32 +45,31 @@ export default function HeaderDashboard() {
       document.getElementsByTagName("html")[0].classList.toggle("-dark-mode")
     }
   }
-
   const closeFullscreen = () => {
     if (document?.exitFullscreen) {
-      document?.exitFullscreen()
-    } else if (document?.webkitExitFullscreen) {
+      document.exitFullscreen()
+    } else if ((document as any)?.webkitExitFullscreen) {
+      // Use type assertion (as any)
       /* Safari */
-      document?.webkitExitFullscreen()
-    } else if (document?.msExitFullscreen) {
+      ;(document as any).webkitExitFullscreen() // Type assertion
+    } else if ((document as any)?.msExitFullscreen) {
+      // Use type assertion (as any)
       /* IE11 */
-      document?.msExitFullscreen()
+      ;(document as any).msExitFullscreen() // Type assertion
     }
   }
-  const handleResize = () => {}
-  useEffect(() => {
+
+  const handleResize = () => {
     if (window.innerWidth < 990) {
-      document
-        .getElementById("dashboardOpenClose")
-        .classList.add("-is-sidebar-hidden")
-    }
-    const handleResize = () => {
-      if (window.innerWidth < 990) {
-        document
-          .getElementById("dashboardOpenClose")
-          .classList.add("-is-sidebar-hidden")
+      const dashboardOpenClose = document.getElementById("dashboardOpenClose")
+      if (dashboardOpenClose) {
+        dashboardOpenClose.classList.add("-is-sidebar-hidden")
       }
     }
+  }
+
+  useEffect(() => {
+    handleResize()
 
     // Add event listener to window resize event
     window.addEventListener("resize", handleResize)
@@ -85,6 +79,7 @@ export default function HeaderDashboard() {
       window.removeEventListener("resize", handleResize)
     }
   }, [])
+
   return (
     <>
       <header className="header -dashboard -dark-bg-dark-1 js-header">
@@ -97,7 +92,7 @@ export default function HeaderDashboard() {
                     onClick={() => {
                       document
                         .getElementById("dashboardOpenClose")
-                        .classList.toggle("-is-sidebar-hidden")
+                        .classList.toggle("-is-sidebar-hidden");
                     }}
                     className="d-flex items-center js-dashboard-home-9-sidebar-toggle"
                   >
@@ -106,7 +101,7 @@ export default function HeaderDashboard() {
                 </div>
 
                 <div className="header__logo ml-30 md:ml-20">
-                  <Link data-barba href="/dashboard">
+                  <Link href="/dashboard">
                     {/* <Image
                       width={140}
                       height={50}
@@ -121,7 +116,7 @@ export default function HeaderDashboard() {
                       src="/assets/img/general/logo-dark.svg"
                       alt="logo"
                     /> */}
-                    <h3>Tafe Gippsland</h3>
+                    <h3>Gippsland Pathway Expoler</h3>
                   </Link>
                 </div>
               </div>
@@ -179,14 +174,14 @@ export default function HeaderDashboard() {
 
                   <div className="relative">
                     <button
-                      onClick={() => handleFullScreenToggle()}
+                      onClick={handleFullScreenToggle}
                       className="d-flex text-light-1 items-center justify-center size-50 rounded-16 -hover-dshb-header-light"
                     >
                       <i className="text-24 icon icon-maximize"></i>
                     </button>
                   </div>
 
-                  <div
+                  {/* <div
                     className="relative"
                     onClick={() => setMessageOpen(true)}
                   >
@@ -197,11 +192,11 @@ export default function HeaderDashboard() {
                     >
                       <i className="text-24 icon icon-email"></i>
                     </a>
-                  </div>
+                  </div> */}
 
                   <div
                     className="relative"
-                    onClick={() => setIsOnNotification((pre) => !pre)}
+                    onClick={() => setIsOnNotification((prev) => !prev)}
                   >
                     <a
                       href="#"
@@ -255,7 +250,7 @@ export default function HeaderDashboard() {
 
                 {/* <div
                   className="relative d-flex items-center ml-10"
-                  onClick={() => setIsOnProfile((pre) => !pre)}
+                  onClick={() => setIsOnProfile((prev) => !prev)}
                 >
                   <a href="#" data-el-toggle=".js-profile-toggle">
                     <Image
@@ -279,7 +274,7 @@ export default function HeaderDashboard() {
                             <div
                               key={i}
                               className={`sidebar__item ${
-                                elm.id == 1 ? "-is-active -dark-bg-dark-2" : ""
+                                elm.id === 1 ? "-is-active -dark-bg-dark-2" : ""
                               }`}
                             >
                               <a
