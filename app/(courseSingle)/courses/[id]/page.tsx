@@ -8,18 +8,12 @@ import CourseSlider from "@/components/courseSingle/CourseSlider"
 import Footer from "@/components/layout/footers/Footer"
 
 import Header from "@/components/layout/headers/Header"
-import { useRouter } from "next/router"
 import React from "react"
+interface ICourseSingleProps {
+  params: any
+}
 
-// export const metadata = {
-//   title:
-//     "Couese-single-6 || Tafegippsland - Professional LMS Online Education Course NextJS Template",
-//   description:
-//     "Elevate your e-learning content with Tafegippsland, the most impressive LMS template for online courses, education and LMS platforms.",
-// };
-
-export default function page({params}) {
-  console.log("params", params)
+export default function page({ params }: ICourseSingleProps) {
   return (
     <div className="main-content  ">
       <Preloader />
@@ -30,6 +24,5 @@ export default function page({params}) {
         <Footer />
       </div>
     </div>
-    // <>hello</>
   )
 }
