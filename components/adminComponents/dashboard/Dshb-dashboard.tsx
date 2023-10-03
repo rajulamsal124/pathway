@@ -11,7 +11,6 @@ import CourseCardTwo from "./DashBoardCards/CourseCardTwo"
 import Image from "next/image"
 
 import Charts from "./Charts"
-import CalendarTwo from "./calendar/CalenderTwo"
 
 export default function DshbDashboard() {
   return (
@@ -95,7 +94,7 @@ export default function DshbDashboard() {
                               .getElementById("dd5button")
                               .classList.toggle("-is-dd-active")
                             document
-                              .getElementById("dd5content")
+                              .getElementById("dd5contenat")
                               .classList.toggle("-is-el-visible")
                           }}
                           className="dropdown js-dropdown js-past-active"
