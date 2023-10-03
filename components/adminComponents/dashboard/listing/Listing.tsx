@@ -2,9 +2,6 @@
 
 import React from "react"
 
-import Media from "./Media"
-import Curriculum from "./Curriculum"
-
 export default function Listing() {
   const handleSubmit = (e: any) => {
     e.preventDefault()
@@ -149,12 +146,8 @@ export default function Listing() {
               <div className="d-flex items-center py-20 px-30 border-bottom-light">
                 <h2 className="text-17 lh-1 fw-500">Curriculum</h2>
               </div>
-
-              <Curriculum />
             </div>
           </div>
-
-          <Media />
         </div>
       </div>
     </div>
