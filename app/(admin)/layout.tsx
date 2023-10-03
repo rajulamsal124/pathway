@@ -2,7 +2,7 @@ import Sidebar from "@/components/adminComponents/dashboard/Sidebar"
 import Preloader from "@/components/common/Preloader"
 import HeaderDashboard from "@/components/layout/headers/HeaderDashboard"
 import type { Metadata } from "next"
-import { getServerSession } from "next-auth"
+import { Session, getServerSession } from "next-auth"
 import SessionProvider from "@/components/adminComponents/SessionProvider"
 import { Toaster } from "react-hot-toast"
 
@@ -15,6 +15,7 @@ export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode
+  session: Session
 }) {
   const session = await getServerSession()
   return (

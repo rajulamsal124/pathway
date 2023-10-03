@@ -1,6 +1,6 @@
 "use client"
 
-import { Navigation, Pagination } from "swiper/modules"
+import { Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 import "swiper/css"
@@ -8,8 +8,9 @@ import "swiper/css/pagination"
 import { useEffect, useState } from "react"
 
 import React from "react"
-import { slidesData } from "../../data/hero"
+
 import { useRouter } from "next/navigation"
+import { slidesData } from "@/data/hero"
 export default function Hero() {
   const router = useRouter()
   const [showSlider, setShowSlider] = useState(false)

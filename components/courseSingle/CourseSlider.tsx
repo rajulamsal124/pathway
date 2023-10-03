@@ -1,7 +1,7 @@
 "use client"
 import { coursesData } from "@/data/courses"
 import React, { useEffect, useState } from "react"
-import { Navigation, Pagination } from "swiper/modules"
+import { Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import Image from "next/image"
 import Link from "next/link"

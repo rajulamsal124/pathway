@@ -4,11 +4,11 @@ import { Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 import "swiper/css"
-import { topCategories } from "../../../data/topCategories"
 
 import "swiper/css/pagination"
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { topCategories } from "@/data/topCategories"
 
 const CategoriesHomeOne = () => {
   const [showSlider, setShowSlider] = useState(false)

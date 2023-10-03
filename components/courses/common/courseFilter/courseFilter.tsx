@@ -1,11 +1,7 @@
+/* eslint-disable no-unused-vars */
 "use client"
 import React from "react"
-import {
-  ICourse,
-  ICourseCategory,
-  IDecisionPoint,
-  IRole,
-} from "@/types/types"
+import { ICourse, ICourseCategory, IDecisionPoint, IRole } from "@/types/types"
 const CourseFilter: React.FC<{
   courses: ICourse[]
   categories: ICourseCategory[]
@@ -31,11 +27,11 @@ const CourseFilter: React.FC<{
         onChange={(e) => onFilterChange("category", e.target.value)}
       >
         <option value="">All Categories</option>
-        {/* {categories.map((category) => (
+        {categories.map((category) => (
           <option key={category.id} value={category.id}>
             {category.categoryName}
           </option>
-        ))} */}
+        ))}
       </select>
 
       {/* Decision Point Filter */}
@@ -45,11 +41,11 @@ const CourseFilter: React.FC<{
         onChange={(e) => onFilterChange("decisionPoint", e.target.value)}
       >
         <option value="">All Decision Points</option>
-        {/* {decisionPoints.map((decisionPoint) => (
+        {decisionPoints.map((decisionPoint) => (
           <option key={decisionPoint.id} value={decisionPoint.id}>
             {decisionPoint.decisionPointName}
           </option>
-        ))} */}
+        ))}
       </select>
 
       {/* Role Filter */}
@@ -59,11 +55,11 @@ const CourseFilter: React.FC<{
         onChange={(e) => onFilterChange("role", e.target.value)}
       >
         <option value="">All Roles</option>
-        {/* {roles.map((role) => (
+        {roles.map((role) => (
           <option key={role.id} value={role.id}>
             {role.rolesName}
           </option>
-        ))} */}
+        ))}
       </select>
 
       {/* Search Bar */}
