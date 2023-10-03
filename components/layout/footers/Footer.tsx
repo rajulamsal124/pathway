@@ -1,8 +1,6 @@
 "use client"
-import Image from "next/image"
-import React from "react"
-import Link from "next/link"
 
+import React from "react"
 import FooterLinks from "../component/FooterLinks"
 import Links from "../component/Links"
 import Socials from "@/components/common/socials/Socials"
@@ -17,12 +15,6 @@ export default function Footer() {
           <div className="row y-gap-20 justify-between items-center">
             <div className="col-auto">
               <div className="footer-header__logo">
-                {/* <Image
-                  width={140}
-                  height={50}
-                  src="/assets/img/footer/footer-logo.svg"
-                  alt="logo"
-                /> */}
                 <h3 className="text-white">Gippsland</h3>
               </div>
             </div>
@@ -69,16 +61,6 @@ export default function Footer() {
             <div className="col-auto">
               <div className="d-flex items-center h-100 text-white">
                 © {new Date().getFullYear()} Gippsland. All Right Reserved.
-              </div>
-            </div>
-
-            <div className="col-auto">
-              <div className="d-flex x-gap-20 y-gap-20 items-center flex-wrap">
-                <div>
-                  <div className="d-flex x-gap-15 text-white">
-                    <Links />
-                  </div>
-                </div>
               </div>
             </div>
           </div>

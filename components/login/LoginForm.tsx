@@ -37,7 +37,8 @@ export default function LoginForm() {
       if (!res?.error) {
         router.push(callbackUrl)
       } else {
-        setError("invalid email or password")
+        error && toast.error(error)
+        setError("Invalid credentials")
       }
       toast.success("Logged in successfully")
       router.push("/dashboard")

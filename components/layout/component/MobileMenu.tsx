@@ -2,19 +2,17 @@
 
 import MobileFooter from "./MobileFooter"
 
-import { menuList } from "../../../data/menu"
-
 import Link from "next/link"
-import Image from "next/image"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
+import { menuList } from "@/data/menu"
 
 export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
   const [showMenu, setShowMenu] = useState(false)
   const [menuNesting, setMenuNesting] = useState([])
   const [menuItem, setMenuItem] = useState("")
   const [submenu, setSubmenu] = useState("")
-
+  const pathname = usePathname()
   useEffect(() => {
     menuList.forEach((elm) => {
       elm?.links?.forEach((elm2) => {
@@ -30,11 +28,11 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
         }
       })
     })
-  }, [])
+  }, [pathname])
   useEffect(() => {
     setShowMenu(true)
   }, [])
-  const pathname = usePathname()
+
   return (
     <div
       className={`header-menu js-mobile-menu-toggle ${
