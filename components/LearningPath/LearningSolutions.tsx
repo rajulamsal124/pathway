@@ -16,15 +16,18 @@ export default function LearningSolutions() {
           const movement = el.getAttribute("data-move")
 
           document.addEventListener("mousemove", (e) => {
-            const relX = e.pageX - container.offsetLeft
-            const relY = e.pageY - container.offsetTop
+            const containerElement = container as HTMLElement
+            const relX = e.pageX - containerElement.offsetLeft
+            const relY = e.pageY - containerElement.offsetTop
 
             gsap.to(el, {
               x:
-                ((relX - container.offsetWidth / 2) / container.offsetWidth) *
+                ((relX - containerElement.offsetWidth / 2) /
+                  containerElement.offsetWidth) *
                 Number(movement),
               y:
-                ((relY - container.offsetHeight / 2) / container.offsetHeight) *
+                ((relY - containerElement.offsetHeight / 2) /
+                  containerElement.offsetHeight) *
                 Number(movement),
               duration: 0.2,
             })
