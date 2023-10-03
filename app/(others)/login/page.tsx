@@ -7,16 +7,18 @@ import React from "react"
 
 export default function page() {
   return (
-    <div className="main-content  ">
-      <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <section className="form-page js-mouse-move-container">
-          <div className="container">
-            <div className="row justify-center items-center">
-              <LoginForm />
+    <>
+      <div className="main-content  ">
+        <div className="content-wrapper js-content-wrapper overflow-hidden">
+          <section className="form-page js-mouse-move-container">
+            <div className="container">
+              <div className="row justify-center items-center">
+                <LoginForm />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   )
 }

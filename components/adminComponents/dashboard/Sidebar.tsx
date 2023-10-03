@@ -16,33 +16,35 @@ export default function Sidebar() {
   ]
 
   return (
-    <div className="content-wrapper js-content-wrapper overflow-hidden">
-      <div
-        id="dashboardOpenClose"
-        className="dashboard -home-9 js-dashboard-home-9"
-      >
-        <div className="dashboard__sidebar scroll-bar-1">
-          <div className="sidebar -dashboard">
-            {sidebarItems.map((elm, i) => (
-              <div
-                key={i}
-                className={`sidebar__item   ${
-                  pathname == elm.href ? "-is-active" : ""
-                } `}
-              >
-                <Link
+    <>
+      <div className="content-wrapper js-content-wrapper overflow-hidden">
+        <div
+          id="dashboardOpenClose"
+          className="dashboard -home-9 js-dashboard-home-9"
+        >
+          <div className="dashboard__sidebar scroll-bar-1">
+            <div className="sidebar -dashboard">
+              {sidebarItems.map((elm, i) => (
+                <div
                   key={i}
-                  href={elm.href}
-                  className="d-flex items-center text-17 lh-1 fw-500 "
+                  className={`sidebar__item   ${
+                    pathname == elm.href ? "-is-active" : ""
+                  } `}
                 >
-                  <i className={`${elm.iconClass} mr-15`}></i>
-                  {elm.text}
-                </Link>
-              </div>
-            ))}
+                  <Link
+                    key={i}
+                    href={elm.href}
+                    className="d-flex items-center text-17 lh-1 fw-500 "
+                  >
+                    <i className={`${elm.iconClass} mr-15`}></i>
+                    {elm.text}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

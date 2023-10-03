@@ -10,7 +10,8 @@ export default async function page() {
   }
   return (
     <>
-      <DashboardOne />
+      <h1>Dashboard</h1>
+      {/* <DashboardOne /> */}
     </>
   )
 }
