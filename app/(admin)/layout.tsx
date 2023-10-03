@@ -20,22 +20,20 @@ export default async function AdminLayout({
 }) {
   const session = await getServerSession()
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <SessionProvider session={session}>
-          <Preloader />
-          <HeaderDashboard />
-          <div className="row">
-            <div className="container">
-              <div className="col-xl-6 col-lg-4">
-                <Sidebar />
-              </div>
+    <div>
+      <SessionProvider session={session}>
+        <Preloader />
+        <HeaderDashboard />
+        <div className="row">
+          <div className="container">
+            <div className="col-xl-6 col-lg-4">
+              <Sidebar />
             </div>
           </div>
-          {children}
-          <Toaster />
-        </SessionProvider>
-      </body>
-    </html>
+        </div>
+        {children}
+        <Toaster />
+      </SessionProvider>
+    </div>
   )
 }
