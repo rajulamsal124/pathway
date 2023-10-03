@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react"
-import EditProfile from "./EditProfile"
 import Password from "./Password"
 import SocialProfiles from "./SocialProfiles"
 import CloseAccount from "./CloseAccount"
@@ -51,7 +50,6 @@ export default function Settings() {
                 </div>
 
                 <div className="tabs__content py-30 px-30 js-tabs-content">
-                  <EditProfile activeTab={activeTab} />
                   <Password activeTab={activeTab} />
                   <SocialProfiles activeTab={activeTab} />
                   <Notification activeTab={activeTab} />
