@@ -72,11 +72,24 @@ export async function POST(request: NextRequest) {
       : undefined
     const newCourse = await prisma.course.create({
       data: {
-        title: body.title,
-        shortDescription: body.shortDescription,
-        description: body.description,
-        courseCategoryId: body.courseCategoryId,
-        image: imageBuffer,
+        id: body?.id,
+        title: body?.title,
+        shortDescription: body?.shortDescription,
+        description: body?.description,
+        courseCategoryId: body?.courseCategoryId,
+        image: body.imageBuffer,
+        level: body.level,
+        duration: body?.duration,
+        providerName: body?.providerName,
+        providerUrl: body?.providerUrl,
+        providerDescription: body?.providerDescription,
+        roleId: body?.roleId,
+        role: body?.role,
+        decisionPointId: body?.decisionPointId,
+        category: body?.category,
+        decisionPoint: body?.decisionPoint,
+        createdAt: body?.createdAt,
+        updatedAt: body?.updatedAt,
       },
     })
     return NextResponse.json(newCourse)
