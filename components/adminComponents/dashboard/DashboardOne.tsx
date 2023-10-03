@@ -6,8 +6,6 @@ import { teamMembers } from "@/data/instractors"
 import { notifications } from "@/data/notifications"
 import React from "react"
 
-import Charts from "./Charts"
-import PieChartComponent from "./PieCharts"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -52,13 +50,21 @@ export default function DashboardOne() {
                 <div className="">
                   <div
                     id="ddtwobutton"
+                    // onClick={() => {
+                    //   document
+                    //     .getElementById("ddtwobutton")
+                    //     .classList.toggle("-is-dd-active")
+                    //   document
+                    //     .getElementById("ddtwocontent")
+                    //     .classList.toggle("-is-el-visible")
+                    // }}
                     onClick={() => {
                       document
-                        .getElementById("ddtwobutton")
-                        .classList.toggle("-is-dd-active")
+                        ?.getElementById("ddtwobutton")
+                        ?.classList.toggle("-is-dd-active")
                       document
-                        .getElementById("ddtwocontent")
-                        .classList.toggle("-is-el-visible")
+                        ?.getElementById("ddtwocontent")
+                        ?.classList.toggle("-is-el-visible")
                     }}
                     className="dropdown js-dropdown js-category-active"
                   >
@@ -104,9 +110,6 @@ export default function DashboardOne() {
                   </div>
                 </div>
               </div>
-              <div className="py-40 px-30">
-                <Charts />
-              </div>
             </div>
           </div>
 
@@ -119,11 +122,11 @@ export default function DashboardOne() {
                     id="dd3button"
                     onClick={() => {
                       document
-                        .getElementById("dd3button")
-                        .classList.toggle("-is-dd-active")
+                        ?.getElementById("dd3button")
+                        ?.classList.toggle("-is-dd-active")
                       document
-                        .getElementById("dd3content")
-                        .classList.toggle("-is-el-visible")
+                        ?.getElementById("dd3content")
+                        ?.classList.toggle("-is-el-visible")
                     }}
                     className="dropdown js-dropdown js-category-active"
                   >
@@ -168,9 +171,6 @@ export default function DashboardOne() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="py-40 px-30">
-                <PieChartComponent />
               </div>
             </div>
           </div>
