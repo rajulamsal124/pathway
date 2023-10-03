@@ -1,6 +1,7 @@
 import React from "react"
-import { learningfeatures } from "../../../data/learningPaths"
+
 import Image from "next/image"
+import { learningfeatures } from "@/data/learningPaths"
 export default function LearningPathsSix() {
   return (
     <section className="layout-pt-lg layout-pb-lg">

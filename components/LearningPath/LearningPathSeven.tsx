@@ -1,7 +1,8 @@
 import React from "react"
-import { features } from "../../../data/learningPaths"
+
 import Image from "next/image"
-import Star from "@/components/common/Star"
+import { features } from "@/data/learningPaths"
+
 export default function LearningPathSeven() {
   return (
     <section className="layout-pt-lg layout-pb-lg">
@@ -127,9 +128,6 @@ export default function LearningPathSeven() {
                       Ali Tufan
                     </div>
                     <div className="mt-3">UX/UI Designer</div>
-                    <div className="d-flex x-gap-5 mt-3">
-                      <Star star={5} textSize={"text-11"} />
-                    </div>
                   </div>
                 </div>
               </div>
