@@ -3,13 +3,15 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import MobileFooter from "./MobileFooter"
-import Image from "next/image"
 import { menuList } from "@/data/menu"
 import { usePathname } from "next/navigation"
+interface IMenuProps {
+  allClasses: any
+  headerPosition: any
+}
 
-export default function Menu({ allClasses, headerPosition }) {
+const Menu: React.FC<IMenuProps> = ({ allClasses, headerPosition }) => {
   const [menuItem, setMenuItem] = useState("")
-  const [submenu, setSubmenu] = useState("")
   const pathname = usePathname()
 
   useEffect(() => {
@@ -21,7 +23,6 @@ export default function Menu({ allClasses, headerPosition }) {
           elm2?.links?.map((elm3) => {
             if (elm3.href?.split("/")[1] == pathname.split("/")[1]) {
               setMenuItem(elm.title)
-              setSubmenu(elm2.title)
             }
           })
         }
@@ -73,10 +74,7 @@ export default function Menu({ allClasses, headerPosition }) {
             </li>
           </ul>
         </div>
-
-        {/* mobile footer start */}
         <MobileFooter />
-        {/* mobile footer end */}
       </div>
       <div
         className="header-menu-close"
@@ -91,3 +89,4 @@ export default function Menu({ allClasses, headerPosition }) {
     </div>
   )
 }
+export default Menu

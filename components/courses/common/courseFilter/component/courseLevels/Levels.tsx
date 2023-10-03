@@ -1,13 +1,11 @@
-'use client'
+"use client"
 
 interface IProps {
-    levelsList: any[]
+  levelsList: any[]
 }
 
-const LevelsFilter: React.FC<IProps> = ({levelsList }) => {
-    return (
-        <h1>Hello world from levels filter</h1>
-    )
+const LevelsFilter: React.FC<IProps> = () => {
+  return <h1>Hello world from levels filter</h1>
 }
 
-export { LevelsFilter}
+export { LevelsFilter }

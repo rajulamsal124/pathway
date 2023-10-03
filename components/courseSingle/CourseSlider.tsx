@@ -1,9 +1,8 @@
 "use client"
 import { coursesData } from "@/data/courses"
 import React, { useEffect, useState } from "react"
-import { Navigation, Pagination } from "swiper"
+import { Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
-import Star from "../common/Star"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -74,18 +73,6 @@ export default function CourseSlider() {
                         </div>
 
                         <div className="h-100 pt-15">
-                          {/* <div className="d-flex items-center">
-                            <div className="text-14 lh-1 text-yellow-1 mr-10">
-                              {elm.rating}
-                            </div>
-                            <div className="d-flex x-gap-5 items-center">
-                              <Star star={elm.rating} />
-                            </div>
-                            <div className="text-13 lh-1 ml-10">
-                              ({elm.ratingCount})
-                            </div>
-                          </div> */}
-
                           <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
                             <Link
                               className="linkCustom"
@@ -94,74 +81,6 @@ export default function CourseSlider() {
                               {elm.title}
                             </Link>
                           </div>
-
-                          {/* <div className="d-flex x-gap-10 items-center pt-10">
-                            <div className="d-flex items-center">
-                              <div className="mr-8">
-                                <Image
-                                  width={16}
-                                  height={17}
-                                  src="/assets/img/coursesCards/icons/1.svg"
-                                  alt="icon"
-                                />
-                              </div>
-                              <div className="text-14 lh-1">
-                                {elm.lessonCount} lesson
-                              </div>
-                            </div>
-
-                            <div className="d-flex items-center">
-                              <div className="mr-8">
-                                <Image
-                                  width={16}
-                                  height={17}
-                                  src="/assets/img/coursesCards/icons/2.svg"
-                                  alt="icon"
-                                />
-                              </div>
-                              <div className="text-14 lh-1">{`${Math.floor(
-                                elm.duration / 60,
-                              )}h ${Math.floor(elm.duration % 60)}m`}</div>
-                            </div>
-
-                            <div className="d-flex items-center">
-                              <div className="mr-8">
-                                <Image
-                                  width={16}
-                                  height={17}
-                                  src="/assets/img/coursesCards/icons/3.svg"
-                                  alt="icon"
-                                />
-                              </div>
-                              <div className="text-14 lh-1">{elm.level}</div>
-                            </div>
-                          </div> */}
-
-                          {/* <div className="coursesCard-footer">
-                            <div className="coursesCard-footer__author">
-                              <Image
-                                width={30}
-                                height={30}
-                                src={elm.authorImageSrc}
-                                alt="image"
-                              />
-                              <div>{elm.authorName}</div>
-                            </div>
-
-                            <div className="coursesCard-footer__price">
-                              {elm.paid ? (
-                                <>
-                                  <div>${elm.originalPrice}</div>
-                                  <div>${elm.discountedPrice}</div>
-                                </>
-                              ) : (
-                                <>
-                                  <div></div>
-                                  <div>Free</div>
-                                </>
-                              )}
-                            </div>
-                          </div> */}
                         </div>
                       </div>
                     </div>

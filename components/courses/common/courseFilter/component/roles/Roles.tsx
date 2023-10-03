@@ -4,7 +4,7 @@ interface IProps {
   rolesList: any[]
 }
 
-const RolesFilter: React.FC<IProps> = ({ rolesList }) => {
+const RolesFilter: React.FC<IProps> = () => {
   return <h1>Hello world from roles filter</h1>
 }
 

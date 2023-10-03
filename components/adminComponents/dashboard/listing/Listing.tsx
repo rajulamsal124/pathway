@@ -4,10 +4,9 @@ import React from "react"
 
 import Media from "./Media"
 import Curriculum from "./Curriculum"
-import FooterCopyright from "@/components/layout/footers/FooterCopyright"
 
 export default function Listing() {
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault()
   }
   return (
@@ -55,7 +54,7 @@ export default function Listing() {
                     <textarea
                       required
                       placeholder="Description"
-                      rows="7"
+                      rows={7}
                     ></textarea>
                   </div>
 
@@ -67,7 +66,7 @@ export default function Listing() {
                     <textarea
                       required
                       placeholder="Description"
-                      rows="7"
+                      rows={7}
                     ></textarea>
                   </div>
 
@@ -79,7 +78,7 @@ export default function Listing() {
                     <textarea
                       required
                       placeholder="Description"
-                      rows="7"
+                      rows={7}
                     ></textarea>
                   </div>
 
@@ -91,7 +90,7 @@ export default function Listing() {
                     <textarea
                       required
                       placeholder="Description"
-                      rows="7"
+                      rows={7}
                     ></textarea>
                   </div>
 
@@ -158,8 +157,6 @@ export default function Listing() {
           <Media />
         </div>
       </div>
-
-      {/* <FooterCopyright /> */}
     </div>
   )
 }
