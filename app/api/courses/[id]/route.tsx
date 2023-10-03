@@ -21,7 +21,7 @@ export async function GET(
     const courseWithImage = course.image
       ? { ...course, image: course.image.toString("base64") }
       : undefined
-    return NextResponse.json({ courses: courseWithImage})
+    return NextResponse.json({ courses: courseWithImage })
   } catch (error) {
     return NextResponse.json({ message: "error on server" }, { status: 500 })
   }
@@ -87,7 +87,7 @@ export async function PUT(
     })
 
   const course = await prisma.course.findUnique({
-    where: { id:params.id },
+    where: { id: params.id },
   })
 
   if (!course)
@@ -121,7 +121,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   const course = await prisma.course.findUnique({
-    where: { id: params.id},
+    where: { id: params.id },
   })
 
   if (!course)

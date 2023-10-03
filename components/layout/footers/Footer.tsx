@@ -2,7 +2,6 @@
 
 import React from "react"
 import FooterLinks from "../component/FooterLinks"
-import Links from "../component/Links"
 import Socials from "@/components/common/socials/Socials"
 export default function Footer() {
   const handleSubmit = (e) => {

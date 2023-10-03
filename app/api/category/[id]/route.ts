@@ -1,19 +1,19 @@
 import { NextRequest, NextResponse } from "next/server"
 
-import schema from "../schema"
 import { prisma } from "@/prisma/client"
+import schema from "../schema"
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const decision = await prisma.decisionPoint.findUnique({
-    where: { id: parseInt(params.id) },
+  const category = await prisma.courseCategory.findUnique({
+    where: { id: params.id },
   })
 
-  if (!decision)
+  if (!category)
     return NextResponse.json({ error: "Decision not found" }, { status: 404 })
 
-  return NextResponse.json(decision)
+  return NextResponse.json(category)
 }
 
 export async function PUT(
@@ -28,7 +28,7 @@ export async function PUT(
     })
 
   const decision = await prisma.decisionPoint.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   })
 
   if (!decision)

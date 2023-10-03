@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const decision = await prisma.decisionPoint.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   })
 
   if (!decision)

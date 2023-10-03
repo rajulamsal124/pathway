@@ -4,6 +4,7 @@ import Link from "next/link"
 import React from "react"
 import { ChangeEvent, useState } from "react"
 import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
 
 export default function SignUpForm() {
   const router = useRouter()
@@ -18,7 +19,7 @@ export default function SignUpForm() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
+    loading && setLoading(true)
     setFormValues({ name: "", email: "", password: "", confirmPassword: "" })
 
     try {
@@ -32,11 +33,11 @@ export default function SignUpForm() {
 
       setLoading(false)
       if (!res.ok) {
+        error && toast.error(error)
         setError((await res.json()).message)
         return
       }
       router.push("/login")
-      // signIn(undefined, { callbackUrl: "/sign" });
     } catch (error: any) {
       setLoading(false)
       setError(error)

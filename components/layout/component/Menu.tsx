@@ -28,7 +28,7 @@ const Menu: React.FC<IMenuProps> = ({ allClasses, headerPosition }) => {
         }
       })
     })
-  }, [])
+  }, [pathname])
 
   return (
     <div
