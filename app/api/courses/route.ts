@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
         shortDescription: body?.shortDescription,
         description: body?.description,
         courseCategoryId: body?.courseCategoryId,
-        image: body.imageBuffer,
+        image: imageBuffer,
         level: body.level,
         duration: body?.duration,
         providerName: body?.providerName,
