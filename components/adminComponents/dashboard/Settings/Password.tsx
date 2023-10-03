@@ -2,8 +2,8 @@
 
 import React from "react"
 
-export default function Password({ activeTab }) {
-  const handleSubmit = (e) => {
+export default function Password({ activeTab }: any) {
+  const handleSubmit = (e: any) => {
     e.preventDefault()
   }
   return (

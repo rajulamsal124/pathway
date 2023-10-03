@@ -7,7 +7,6 @@ import SocialProfiles from "./SocialProfiles"
 import CloseAccount from "./CloseAccount"
 
 import Notification from "./Notifications"
-import FooterCopyright from "@/components/layout/footers/FooterCopyright"
 
 const buttons = [
   "Edit Profile",
@@ -63,8 +62,6 @@ export default function Settings() {
           </div>
         </div>
       </div>
-
-      {/* <FooterCopyright /> */}
     </div>
   )
 }

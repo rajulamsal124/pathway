@@ -2,8 +2,8 @@
 
 import React from "react"
 
-export default function SocialProfiles({ activeTab }) {
-  const handleSubmit = (e) => {
+export default function SocialProfiles({ activeTab }: any) {
+  const handleSubmit = (e: any) => {
     e.preventDefault()
   }
   return (

@@ -115,19 +115,6 @@ export default function CourseList() {
                         <div className="text-14 lh-1">{course.level}</div>
                       </div>
                     </div>
-                    <div className="coursesCard-footer">
-                      <div className="coursesCard-footer__author">
-                        <Image
-                          width={30}
-                          height={30}
-                          src={`data:image/jpeg;base64,${course.image}`}
-                          alt="image"
-                        />
-                        {/* <div>{course?.category?.type}</div> */}
-                      </div>
-
-                      <div className="text-14 lh-1">{course.rolesName}</div>
-                    </div>
                   </div>
                 </div>
               </div>
