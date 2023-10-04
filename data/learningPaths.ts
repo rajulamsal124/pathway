@@ -3,25 +3,25 @@ export const learningPath = [
     id: "item1",
     iconBg: "bg-green-2",
     iconSrc: "/assets/img/home-2/learning/icons/1.svg",
-    title: "Leadership development",
+    title: "School Leaver",
     description:
-      "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries",
+      " and tools to help students make informed decisions about their careers and education.",
   },
   {
     id: "item2",
     iconBg: "bg-purple-2",
     iconSrc: "/assets/img/home-2/learning/icons/2.svg",
-    title: "Digital transformation",
+    title: "Lifelong learning",
     description:
-      "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries",
+      "Individuals can be driven by technological advancements, changing job markets, to adapt and thrive in a rapidly evolving society.",
   },
   {
     id: "item3",
     iconBg: "bg-orange-2",
     iconSrc: "/assets/img/home-2/learning/icons/3.svg",
-    title: "Innovation & design thinking",
+    title: "Career Changer",
     description:
-      "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries",
+      "Changing careers can be a challenging and daunting process, but we offer a wealth of resources and guidance to help career changers navigate this transition successfully.",
   },
 ]
 

@@ -1,6 +1,5 @@
 "use client"
 
-import { Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 import "swiper/css"
@@ -25,11 +24,11 @@ export default function Hero() {
           <Swiper
             // {...setting}
 
-            modules={[Navigation, Pagination]}
-            navigation={{
-              nextEl: ".hero-slider-next",
-              prevEl: ".hero-slider-prev",
-            }}
+            // modules={[Navigation, Pagination]}
+            // navigation={{
+            //   nextEl: ".hero-slider-next",
+            //   prevEl: ".hero-slider-prev",
+            // }}
             spaceBetween={0}
             slidesPerView={1}
             breakpoints={{
@@ -74,7 +73,7 @@ export default function Hero() {
               data-aos-delay="500"
             >
               <h1 className="mainSlider__title text-white">
-                Learn Your Way With Gippsland To{" "}
+                Your future in
                 <span className="text-green-5 underline">Food Production</span>
               </h1>
 

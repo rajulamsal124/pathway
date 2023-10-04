@@ -15,6 +15,7 @@ export function useCategoryData() {
             return {
               id: item?.id,
               title: item?.title,
+              type: item?.type,
             }
           })
           setCourseCategory(newData)

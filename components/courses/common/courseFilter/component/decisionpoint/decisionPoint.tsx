@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars, react-hooks/exhaustive-deps */
 "use client"
 import React, { useState, useEffect } from "react"
 import { useDecisionPointData } from "@/hooks/useCourseDecisionPoint"
@@ -28,7 +28,7 @@ const DecisionPointFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
     if (filterDecisionPoint) {
       onChangeDecisionPoint(filterDecisionPoint)
     }
-  }, [filterDecisionPoint, onChangeDecisionPoint])
+  }, [filterDecisionPoint])
 
   if (loading) return <h1>Loading...</h1>
 
@@ -61,9 +61,10 @@ const DecisionPointFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
           className="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-ratings-toggle"
         >
           <div className="text-14 y-gap-15 js-dropdown-list">
-            <div
+            {/* <div
               onClick={() => {
                 setFilterDecisionPoint("")
+                handleFilterDecisionPoint("all")
                 const ddButton = document?.getElementById("dd53button")
                 const ddContent = document?.getElementById("dd53content")
                 ddButton?.classList.toggle("-is-dd-active")
@@ -77,7 +78,7 @@ const DecisionPointFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
               >
                 All
               </span>
-            </div>
+            </div> */}
             {decisionPoint.map((elm, i) => (
               <div key={i} onClick={() => handleFilterDecisionPoint(elm.title)}>
                 <span

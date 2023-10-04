@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars, , react-hooks/exhaustive-deps */
 "use client"
 import { useCategoryData } from "@/hooks/useCourseCategory"
 import { useState, useEffect } from "react"
@@ -26,7 +26,7 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
     if (filterCategories && filterCategories?.length > 0) {
       onChangeCategory(filterCategories[0])
     }
-  }, [filterCategories, onChangeCategory])
+  }, [filterCategories])
 
   if (loading) return <h1>Loading...</h1>
 
@@ -58,10 +58,12 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
           id="dd52content"
           className="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-category-toggle"
         >
-          <div className="text-14 y-gap-15 js-dropdown-list">
-            <div
+          <div
+            className="text-14 y-gap-15 js-dropdown-list"
+            // onClick={() => handleFilterCategories("all")}
+          >
+            {/* <div
               onClick={() => {
-                setFilterCategories([])
                 document
                   ?.getElementById("dd52button")
                   ?.classList.toggle("-is-dd-active")
@@ -77,7 +79,7 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
               >
                 All
               </span>
-            </div>
+            </div> */}
             {categories.map((elm, i) => (
               <div key={i} onClick={() => handleFilterCategories(elm.title)}>
                 <span

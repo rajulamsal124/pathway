@@ -6,8 +6,8 @@ import SessionProvider from "@/components/adminComponents/SessionProvider"
 import { Toaster } from "react-hot-toast"
 
 export const metadata: Metadata = {
-  title: "Gippsland Pathway Explore",
-  description: "Get pathway information in one place",
+  title: "Food Production and Processing",
+  description: "Shape your bright future with us",
 }
 
 export default async function AdminLayout({

@@ -11,19 +11,19 @@ export async function POST(request: NextRequest) {
   const validataion = schema.safeParse(body)
   if (!validataion.success)
     return NextResponse.json(validataion.error, { status: 400 })
-  const decision = await prisma.decisionPoint.findUnique({
-    where: { title: body.title },
+  const category = await prisma.courseCategory.findUnique({
+    where: { id: body.id },
   })
-  if (decision)
+  if (category)
     return NextResponse.json(
       { message: "Decision already exists" },
       { status: 400 }
     )
-  const newDecision = await prisma.decisionPoint.create({
+  const newCategory = await prisma.decisionPoint.create({
     data: {
       title: body.title,
       description: body.description,
     },
   })
-  return NextResponse.json(newDecision, { status: 201 })
+  return NextResponse.json(newCategory, { status: 201 })
 }

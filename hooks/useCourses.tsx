@@ -14,9 +14,12 @@ export function useCourseData(allFilters: any[]) {
     if (allFilters && allFilters?.length > 0) {
       newFilter = allFilters
         .map((item) => {
+          if (Object.values(item)[0] === "all") {
+            return
+          }
           return `${Object.keys(item)[0]}=${Object.values(item)[0]}`
         })
-        .join("&&")
+        .join("&")
     }
 
     let url = "http://localhost:3000/api/courses"
@@ -27,7 +30,10 @@ export function useCourseData(allFilters: any[]) {
     fetch(url)
       .then((response) => response.json())
       .then((data: ICourseResponse) => {
-        setCourseData(data?.courses)
+        // Check if data.courses is defined before setting the state
+        if (data?.courses !== undefined) {
+          setCourseData(data?.courses)
+        }
         setLoading(false)
       })
       .catch((error) => {
@@ -52,7 +58,10 @@ export function useCourseById(courseId: number) {
     fetch(`http://localhost:3000/api/courses/${courseId}`)
       .then((response) => response.json())
       .then((data: ICourseResponse) => {
-        setCourse(data?.courses)
+        // Check if data.courses is defined before setting the state
+        if (data?.courses !== undefined) {
+          setCourse(data?.courses[0])
+        }
         setLoading(false)
       })
       .catch((error) => {
@@ -64,5 +73,42 @@ export function useCourseById(courseId: number) {
   return {
     course,
     loading,
+  }
+}
+// for admin panel mutation hooks to create a course
+export function useCreateCourse() {
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const createCourse = async (course: ICourse) => {
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch("http://localhost:3000/api/courses", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(course),
+      })
+
+      if (response.ok) {
+        setLoading(false)
+        return true
+      } else {
+        throw new Error("Something went wrong while creating the course")
+      }
+    } catch (error) {
+      console.error(error)
+      setLoading(false)
+      return false
+    }
+  }
+
+  return {
+    loading,
+    error,
+    createCourse,
   }
 }

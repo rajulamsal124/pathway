@@ -117,7 +117,7 @@ export default function HeaderDashboard() {
                       src="/assets/img/general/logo-dark.svg"
                       alt="logo"
                     /> */}
-                    <h3>Gippsland Pathway Expoler</h3>
+                    <h3>Food Production and Processing Expoler</h3>
                   </Link>
                 </div>
               </div>

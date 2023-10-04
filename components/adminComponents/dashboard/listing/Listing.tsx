@@ -1,11 +1,58 @@
 "use client"
 
-import React from "react"
+import { useCreateCourse } from "@/hooks/useCourses"
+import { useCategoryData } from "@/hooks/useCourseCategory"
+import { ICourse } from "@/types/types"
+import toast from "react-hot-toast"
+import { useState } from "react"
 
-export default function Listing() {
-  const handleSubmit = (e: any) => {
+const CreateCourse: React.FC = () => {
+  const { createCourse } = useCreateCourse() // Use the custom hook
+  const { categories } = useCategoryData()
+
+  const [courseData, setCourseData] = useState<ICourse>({
+    title: "",
+    shortDescription: "",
+    description: "",
+    level: "",
+    duration: "",
+    providerName: "", // Optional properties can be initialized as needed
+    providerDescription: "",
+    providerUrl: "",
+    rolesName: [],
+    rolesDescription: "",
+    courseCategoryId: "", // Initialize with a suitable default value
+    decisionPointId: "", // Initialize with a suitable default value
+    rolesId: "", // Initialize with a suitable default value
+    image: Buffer.from([]), // Initialize with an empty Buffer or as needed
+  })
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
+
+    // Call the createCourse function from the custom hook
+    const success = await createCourse(courseData)
+    console.log(courseData)
+
+    if (success) {
+      // Handle successful course creation, e.g., redirect to a success page
+      toast.success("Hurray, Course created successfully!")
+      console.log("Course created successfully!")
+    } else {
+      // Handle error case
+      toast.error("Failed to create course.")
+      console.error("Failed to create course.")
+    }
   }
+
+  const handleInputChange = (e: any) => {
+    const { name, value } = e.target
+    setCourseData({
+      ...courseData,
+      [name]: value,
+    })
+  }
+
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4">
@@ -28,8 +75,8 @@ export default function Listing() {
               <div className="py-30 px-30">
                 <form
                   onSubmit={handleSubmit}
+                  action="http://localhost:3000/api/courses"
                   className="contact-form row y-gap-30"
-                  action="#"
                 >
                   <div className="col-12">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
@@ -39,8 +86,31 @@ export default function Listing() {
                     <input
                       required
                       type="text"
-                      placeholder="Learn Figma - UI/UX Design Essential Training"
+                      name="title"
+                      value={courseData.title}
+                      onChange={handleInputChange}
+                      placeholder="Course Title"
                     />
+                  </div>
+                  <div className="col-12">
+                    <label htmlFor="category">Category:</label>
+                    <select
+                      id="category"
+                      onChange={(e: any) => {
+                        setCourseData({
+                          ...courseData,
+                          courseCategoryId: e.target.value,
+                        })
+                      }}
+                    >
+                      <option value="">All Categories</option>
+                      {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                          {category.title}
+                          {console.log(category.title)}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div className="col-12">
@@ -50,7 +120,10 @@ export default function Listing() {
 
                     <textarea
                       required
-                      placeholder="Description"
+                      placeholder="Short Description"
+                      name="shortDescription"
+                      value={courseData.shortDescription}
+                      onChange={handleInputChange}
                       rows={7}
                     ></textarea>
                   </div>
@@ -62,89 +135,48 @@ export default function Listing() {
 
                     <textarea
                       required
+                      name="description"
+                      value={courseData.description}
+                      onChange={handleInputChange}
                       placeholder="Description"
                       rows={7}
                     ></textarea>
                   </div>
-
-                  <div className="col-md-6">
-                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                      What will students learn in your course?*
-                    </label>
-
-                    <textarea
-                      required
-                      placeholder="Description"
-                      rows={7}
-                    ></textarea>
-                  </div>
-
-                  <div className="col-md-6">
-                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                      Requirements*
-                    </label>
-
-                    <textarea
-                      required
-                      placeholder="Description"
-                      rows={7}
-                    ></textarea>
-                  </div>
-
                   <div className="col-md-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       Course Level*
                     </label>
-
-                    <input required type="text" placeholder="Select" />
+                    <input
+                      required
+                      type="text"
+                      name="level"
+                      value={courseData.level}
+                      onChange={handleInputChange}
+                      placeholder="Course Level"
+                    />
                   </div>
-
                   <div className="col-md-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                      Audio Language*
+                      Course Level*
                     </label>
-
-                    <input required type="text" placeholder="Select" />
+                    <input
+                      required
+                      type="text"
+                      name="duration"
+                      value={courseData.duration}
+                      onChange={handleInputChange}
+                      placeholder="Course Duration"
+                    />
                   </div>
-
-                  <div className="col-md-6">
-                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                      Close Caption*
-                    </label>
-
-                    <input required type="text" placeholder="Select" />
-                  </div>
-
-                  <div className="col-md-6">
-                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                      Course Category*
-                    </label>
-
-                    <input required type="text" placeholder="Select" />
+                  <div className="col-12">
+                    <button
+                      type="submit" // This makes it a submit button
+                      className="button -md -purple-1 text-white"
+                    >
+                      Submit
+                    </button>
                   </div>
                 </form>
-
-                <div className="row y-gap-20 justify-between pt-15">
-                  <div className="col-auto">
-                    <button className="button -md -outline-purple-1 text-purple-1">
-                      Prev
-                    </button>
-                  </div>
-
-                  <div className="col-auto">
-                    <button className="button -md -purple-1 text-white">
-                      Next
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-12">
-            <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
-              <div className="d-flex items-center py-20 px-30 border-bottom-light">
-                <h2 className="text-17 lh-1 fw-500">Curriculum</h2>
               </div>
             </div>
           </div>
@@ -153,3 +185,5 @@ export default function Listing() {
     </div>
   )
 }
+
+export default CreateCourse

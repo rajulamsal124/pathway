@@ -16,11 +16,9 @@ const CourseFilter: React.FC<{
   onFilterChange,
   onSearchChange,
 }) => {
-  console.log("categories", categories)
   return (
     <div>
       <h2>Course Filters</h2>
-      {/* Category Filter */}
       <label htmlFor="category">Category:</label>
       <select
         id="category"

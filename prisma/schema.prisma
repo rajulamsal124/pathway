@@ -70,8 +70,8 @@ model DecisionPoint {
 
 model CourseCategory {
   id              String           @id @default(cuid())
-  title           String?
-  type            CategoryType
+  title           String
+  type            CategoryType 
   courses         Course[]
   decisionPointId String
   decisionPoint   DecisionPoint @relation(fields: [decisionPointId], references: [id])
@@ -81,19 +81,19 @@ model CourseCategory {
 
 model Course {
   id                  String          @id @default(cuid())
-  title               String
+  title               String          
   shortDescription    String
-  description         String // Optional field for course description
+  description         String 
   level               String
   duration            String
-  providerName        String
-  providerUrl         String
-  providerDescription String
-  courseCategoryId    String 
-  decisionPointId     String
+  providerName        String?
+  providerUrl         String?
+  providerDescription String?
+  courseCategoryId    String? 
+  decisionPointId     String?
   decisionPoint       DecisionPoint? @relation(fields: [decisionPointId], references: [id])
   image               Bytes?
-  category            CourseCategory @relation(fields: [courseCategoryId], references: [id])
+  category            CourseCategory? @relation(fields: [courseCategoryId], references: [id])
   roleId              String?
   role                CourseRole?          @relation(fields: [roleId], references: [id])
   createdAt           DateTime       @default(now())
