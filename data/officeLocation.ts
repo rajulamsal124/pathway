@@ -13,11 +13,4 @@ export const locationData = [
     phoneNumber: "+(1) 123 456 7890",
     email: "hi@Gippsland.com",
   },
-  {
-    id: 3,
-    location: "Los Angeles",
-    address: "328 Queensberry Street, North Melbourne VIC 3051, Australia.",
-    phoneNumber: "+(1) 123 456 7890",
-    email: "hi@Gippsland.com",
-  },
 ]
