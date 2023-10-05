@@ -48,16 +48,9 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    const coursesWithImage = courses.map((course) => {
-      return {
-        ...course,
-        image: course.image ? course.image.toString("base64") : undefined,
-      }
-    })
-
     return NextResponse.json({
-      count: coursesWithImage?.length,
-      courses: coursesWithImage,
+      count: courses?.length,
+      courses: courses,
     })
   } catch (error) {
     console.error(error)
