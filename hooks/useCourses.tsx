@@ -57,10 +57,10 @@ export function useCourseById(courseId: number) {
     // Replace this with your actual API endpoint
     fetch(`http://localhost:3000/api/courses/${courseId}`)
       .then((response) => response.json())
-      .then((data: ICourseResponse) => {
+      .then((data: any) => {
         // Check if data.courses is defined before setting the state
         if (data?.courses !== undefined) {
-          setCourse(data?.courses[0])
+          setCourse(data?.courses)
         }
         setLoading(false)
       })

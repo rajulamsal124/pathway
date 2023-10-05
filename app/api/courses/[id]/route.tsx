@@ -4,10 +4,10 @@ import schema from "../schema"
 import { prisma } from "@/prisma/client"
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: any } }
 ) {
   try {
-    const course = await prisma.course.findUnique({
+    const course = await prisma.course.findFirst({
       where: { id: params.id },
       include: {
         category: true,
@@ -18,10 +18,10 @@ export async function GET(
 
     if (!course)
       return NextResponse.json({ error: "course not found" }, { status: 404 })
-    const courseWithImage = course.image
-      ? { ...course, image: course.image.toString("base64") }
-      : undefined
-    return NextResponse.json({ courses: courseWithImage })
+    // const courseWithImage = course.image
+    //   ? { ...course, image: course.image.toString("base64") }
+    //   : undefined
+    return NextResponse.json({ courses: course })
   } catch (error) {
     return NextResponse.json({ message: "error on server" }, { status: 500 })
   }
