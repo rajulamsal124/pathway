@@ -47,13 +47,10 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
             <div className="row x-gap-20 y-gap-20">
               <CategoryFilter
                 onChangeCategory={(value: any) => {
-                  // if value is equal to all then remove category filters
                   if (value === "all") {
                     onApplyFilter(null, "category")
                   } else {
                     onApplyFilter(value, "category")
-                    // const filterValue = [...allFilters, { category: value }]
-                    // setAllFilters(filterValue)
                   }
                   // const filterValue = [...allFilters, { category: value }]
                   // setAllFilters(filterValue)

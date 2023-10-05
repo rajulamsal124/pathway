@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { ICourse, ICourseResponse, ICourseForm } from "@/types/types"
 
-export function useCourseData(allFilters: any[]) {
+export function useCourseData(allFilters?: any[]) {
   const [courseData, setCourseData] = useState<ICourse[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error] = useState<string | null>(null)

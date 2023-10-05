@@ -10,43 +10,37 @@ export default function CourseList() {
   const [allFilters, setAllFilters] = useState<any[]>([])
 
   const { courseData, loading } = useCourseData(allFilters)
-  if (loading) return <div>Loading...</div>
 
-  const onApplyFilter = (filter: any, type: any) => {
-    console.log("filter", allFilters)
-    // const allType = allFilters.filter((item) => item.type !== type)
-    if (allFilters.length === 0) {
-      setAllFilters([...allFilters, { [type]: filter }])
-    } else {
-      allFilters.map((item) => {
-        if (item.type === type) {
-          item[type] = filter
-        }
+  const onApplyFilter = (value: any, type: any) => {
+    if (!value) {
+      const newFilters = allFilters?.filter((item) => {
+        return !Object.keys(item).includes(type)
       })
+      setAllFilters(newFilters)
+    } else {
+      let exists = false
+      for (const item of allFilters) {
+        if (Object.keys(item).includes(type)) {
+          exists = true
+          break
+        }
+      }
+      if (!exists) {
+        const newFilters = [...allFilters, { [type]: value }]
+        setAllFilters(newFilters)
+        return
+      } else {
+        const newFilters = allFilters?.map((item) => {
+          if (Object.keys(item).includes(type)) {
+            return { [type]: value }
+          }
+          return item
+        })
+        setAllFilters(newFilters)
+      }
     }
-
-    // if (allType.includes(type)) {
-    //   //update the value
-    //   const obj = {
-    //     [type]: filter,
-    //   }
-    //   setAllFilters([...allFilters, obj])
-    // } else {
-    //   // add the value
-    //   const obj = {
-    //     [type]: filter,
-    //   }
-    //   setAllFilters([...allFilters, obj])
-    // }
-
-    // console.log("filters", filters)
-    // // if filters.item.key is already in all filter then update it else add it
-    // const filterValue = [...allFilters, ...filters]
-
-    // setAllFilters(filterValue)
-
-    //  call api again wthi this value
   }
+
   return (
     <>
       <section className="page-header -type-1">
@@ -74,7 +68,7 @@ export default function CourseList() {
 
         <div className="container">
           <div className="row y-gap-30">
-            {courseData?.map((course, i) => (
+            {courseData?.map((course: any, i: number) => (
               <div key={i} className="col-xl-3 col-lg-4 col-md-6">
                 <div className="coursesCard -type-1 ">
                   <div className="relative">

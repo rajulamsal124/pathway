@@ -12,23 +12,11 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
 
   const handleFilterCategories = (item: any) => {
     setFilterCategories(item)
-    // if (filterCategories.includes(item)) {
-    //   setFilterCategories([])
-    // } else {
-    //   setFilterCategories([item])
-    // }
     document?.getElementById("dd52button")?.classList.toggle("-is-dd-active")
     document?.getElementById("dd52content")?.classList.toggle("-is-el-visible")
   }
 
   const { categories, loading, error } = useCategoryData()
-
-  useEffect(() => {
-    console.log("filterCategories", filterCategories)
-    if (filterCategories) {
-      onChangeCategory(filterCategories)
-    }
-  }, [filterCategories])
 
   if (loading) return <h1>Loading...</h1>
 
@@ -52,7 +40,6 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
         >
           <span className="js-dropdown-title">
             {filterCategories !== "" ? filterCategories : "Category"}
-            {/* {filterCategories} */}
           </span>
           <i className="icon text-9 ml-40 icon-chevron-down"></i>
         </div>
@@ -68,6 +55,7 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
             <div
               onClick={() => {
                 handleFilterCategories("all")
+                onChangeCategory("all")
 
                 document
                   ?.getElementById("dd52button")
@@ -82,11 +70,14 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
                   filterCategories == "all" ? "activeMenu" : ""
                 } `}
               >
-                All Categories
+                All
               </span>
             </div>
             {categories.map((elm, i) => (
-              <div key={i} onClick={() => handleFilterCategories(elm.title)}>
+              <div key={i} onClick={() => {
+                handleFilterCategories(elm.title)
+                onChangeCategory(elm.title)
+              }}>
                 <span
                   className={`d-block js-dropdown-link cursor ${
                     filterCategories == elm.title ? "activeMenu" : ""
