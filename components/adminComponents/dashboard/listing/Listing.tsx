@@ -2,50 +2,61 @@
 
 import { useCreateCourse } from "@/hooks/useCourses"
 import { useCategoryData } from "@/hooks/useCourseCategory"
-import { ICourse } from "@/types/types"
+import { ICourseForm } from "@/types/types"
 import toast from "react-hot-toast"
 import { useState } from "react"
 
 const CreateCourse: React.FC = () => {
-  const { createCourse } = useCreateCourse() // Use the custom hook
+  const { createCourse } = useCreateCourse()
   const { categories } = useCategoryData()
 
-  const [courseData, setCourseData] = useState<ICourse>({
+  const [courseData, setCourseData] = useState<ICourseForm>({
     title: "",
     shortDescription: "",
     description: "",
     level: "",
     duration: "",
-    providerName: "", // Optional properties can be initialized as needed
-    providerDescription: "",
-    providerUrl: "",
-    rolesName: [],
-    rolesDescription: "",
-    courseCategoryId: "", // Initialize with a suitable default value
-    decisionPointId: "", // Initialize with a suitable default value
-    rolesId: "", // Initialize with a suitable default value
-    image: Buffer.from([]), // Initialize with an empty Buffer or as needed
+    courseCategoryId: "",
+    image: null, // Initialize the image as null
   })
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null
+    setCourseData({
+      ...courseData,
+      image: file,
+    })
+  }
 
-    // Call the createCourse function from the custom hook
-    const success = await createCourse(courseData)
-    console.log(courseData)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append("title", courseData.title)
+    formData.append("shortDescription", courseData.shortDescription)
+    formData.append("description", courseData.description)
+    formData.append("level", courseData.level)
+    formData.append("duration", courseData.duration)
+    formData.append("courseCategoryId", courseData.courseCategoryId)
+
+    // Add the image if it's selected
+    if (courseData.image) {
+      formData.append("image", courseData.image)
+    }
+
+    const success = await createCourse(formData)
 
     if (success) {
-      // Handle successful course creation, e.g., redirect to a success page
       toast.success("Hurray, Course created successfully!")
       console.log("Course created successfully!")
     } else {
-      // Handle error case
       toast.error("Failed to create course.")
       console.error("Failed to create course.")
     }
   }
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
     setCourseData({
       ...courseData,
@@ -166,6 +177,17 @@ const CreateCourse: React.FC = () => {
                       value={courseData.duration}
                       onChange={handleInputChange}
                       placeholder="Course Duration"
+                    />
+                  </div>
+                  <div className="col-12">
+                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                      Upload Image*
+                    </label>
+
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
                     />
                   </div>
                   <div className="col-12">

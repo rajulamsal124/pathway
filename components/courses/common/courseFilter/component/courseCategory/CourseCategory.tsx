@@ -8,14 +8,15 @@ interface IProps {
 }
 
 const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
-  const [filterCategories, setFilterCategories] = useState<any>([])
+  const [filterCategories, setFilterCategories] = useState<any>("")
 
   const handleFilterCategories = (item: any) => {
-    if (filterCategories.includes(item)) {
-      setFilterCategories([])
-    } else {
-      setFilterCategories([item])
-    }
+    setFilterCategories(item)
+    // if (filterCategories.includes(item)) {
+    //   setFilterCategories([])
+    // } else {
+    //   setFilterCategories([item])
+    // }
     document?.getElementById("dd52button")?.classList.toggle("-is-dd-active")
     document?.getElementById("dd52content")?.classList.toggle("-is-el-visible")
   }
@@ -23,8 +24,9 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
   const { categories, loading, error } = useCategoryData()
 
   useEffect(() => {
-    if (filterCategories && filterCategories?.length > 0) {
-      onChangeCategory(filterCategories[0])
+    console.log("filterCategories", filterCategories)
+    if (filterCategories) {
+      onChangeCategory(filterCategories)
     }
   }, [filterCategories])
 
@@ -49,7 +51,8 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
           data-el-toggle-active=".js-category-active"
         >
           <span className="js-dropdown-title">
-            {filterCategories.length ? filterCategories[0] : "Category"}
+            {filterCategories !== "" ? filterCategories : "Category"}
+            {/* {filterCategories} */}
           </span>
           <i className="icon text-9 ml-40 icon-chevron-down"></i>
         </div>
@@ -62,8 +65,10 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
             className="text-14 y-gap-15 js-dropdown-list"
             // onClick={() => handleFilterCategories("all")}
           >
-            {/* <div
+            <div
               onClick={() => {
+                handleFilterCategories("all")
+
                 document
                   ?.getElementById("dd52button")
                   ?.classList.toggle("-is-dd-active")
@@ -74,17 +79,17 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
             >
               <span
                 className={`d-block js-dropdown-link cursor ${
-                  filterCategories.length == 0 ? "activeMenu" : ""
+                  filterCategories == "all" ? "activeMenu" : ""
                 } `}
               >
-                All
+                All Categories
               </span>
-            </div> */}
+            </div>
             {categories.map((elm, i) => (
               <div key={i} onClick={() => handleFilterCategories(elm.title)}>
                 <span
                   className={`d-block js-dropdown-link cursor ${
-                    filterCategories[0] == elm.title ? "activeMenu" : ""
+                    filterCategories == elm.title ? "activeMenu" : ""
                   } `}
                 >
                   {elm.title}

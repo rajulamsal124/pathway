@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { ICourse, ICourseResponse } from "@/types/types"
+import { ICourse, ICourseResponse, ICourseForm } from "@/types/types"
 
 export function useCourseData(allFilters: any[]) {
   const [courseData, setCourseData] = useState<ICourse[]>([])
@@ -80,7 +80,7 @@ export function useCreateCourse() {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
 
-  const createCourse = async (course: ICourse) => {
+  const createCourse = async (course: ICourseForm) => {
     setLoading(true)
     setError(null)
 

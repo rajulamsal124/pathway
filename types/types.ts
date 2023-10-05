@@ -1,4 +1,5 @@
 export interface ICourse {
+  id?: string
   title: string
   shortDescription: string
   description: string
@@ -8,15 +9,15 @@ export interface ICourse {
   providerDescription?: string
   providerUrl?: string
   rolesName?: string[]
-  rolesDescription?: string
-  courseCategoryId?: string
-  decisionPointId?: string
-  rolesId?: string
-  image: Buffer
-  roles?: IRole[]
-  provider?: IProvider[]
-  decisionPoints?: IDecisionPoint[]
-  courseCategories?: ICourseCategory[]
+  // rolesDescription?: string
+  // courseCategoryId?: string
+  // decisionPointId?: string
+  // rolesId?: string
+  image: File | null
+  // roles?: IRole[]
+  // provider?: IProvider[]
+  // decisionPoints?: IDecisionPoint[]
+  // courseCategories?: ICourseCategory[]
 }
 export interface ICourseResponse {
   courses?: ICourse[]
@@ -45,4 +46,14 @@ export interface IDecisionPoint {
 }
 export interface IError {
   error: string
+}
+// Types definitions for the admin
+export interface ICourseForm {
+  title: string
+  shortDescription: string
+  description: string
+  level: string
+  duration: string
+  courseCategoryId: string
+  image: File | null
 }

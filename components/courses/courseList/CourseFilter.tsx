@@ -20,17 +20,17 @@ import {
 
 interface IProps {
   courseData: any[]
-  onApplyFilter: (filters: any[]) => void
+  onApplyFilter: (filter: any, type: any) => void
 }
 
 const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
-  const [allFilters, setAllFilters] = useState<any[]>([])
+  // const [allFilters, setAllFilters] = useState<any[]>([])
 
-  useEffect(() => {
-    if (allFilters && allFilters?.length > 0) {
-      onApplyFilter(allFilters)
-    }
-  }, [allFilters, onApplyFilter])
+  // useEffect(() => {
+  //   if (allFilters && allFilters?.length > 0) {
+  //     onApplyFilter(allFilters)
+  //   }
+  // }, [allFilters])
   return (
     <>
       <section className="">
@@ -46,17 +46,25 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
           <div className="col-12">
             <div className="row x-gap-20 y-gap-20">
               <CategoryFilter
-                onChangeCategory={(value) => {
-                  const filterValue = [...allFilters, { categories: value }]
-                  setAllFilters(filterValue)
+                onChangeCategory={(value: any) => {
+                  // if value is equal to all then remove category filters
+                  if (value === "all") {
+                    onApplyFilter(null, "category")
+                  } else {
+                    onApplyFilter(value, "category")
+                    // const filterValue = [...allFilters, { category: value }]
+                    // setAllFilters(filterValue)
+                  }
+                  // const filterValue = [...allFilters, { category: value }]
+                  // setAllFilters(filterValue)
                 }}
               />
-              <DecisionPointFilter
+              {/* <DecisionPointFilter
                 onChangeDecisionPoint={(value) => {
                   const filterValue = [...allFilters, { decisionPoint: value }]
                   setAllFilters(filterValue)
                 }}
-              />
+              /> */}
             </div>
           </div>
         </div>

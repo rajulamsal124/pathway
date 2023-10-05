@@ -12,9 +12,38 @@ export default function CourseList() {
   const { courseData, loading } = useCourseData(allFilters)
   if (loading) return <div>Loading...</div>
 
-  const onApplyFilter = (filters: any[]) => {
-    // make a loop over list of filters, eg: [{decisionPoint: value}]
-    setAllFilters(filters)
+  const onApplyFilter = (filter: any, type: any) => {
+    console.log("filter", allFilters)
+    // const allType = allFilters.filter((item) => item.type !== type)
+    if (allFilters.length === 0) {
+      setAllFilters([...allFilters, { [type]: filter }])
+    } else {
+      allFilters.map((item) => {
+        if (item.type === type) {
+          item[type] = filter
+        }
+      })
+    }
+
+    // if (allType.includes(type)) {
+    //   //update the value
+    //   const obj = {
+    //     [type]: filter,
+    //   }
+    //   setAllFilters([...allFilters, obj])
+    // } else {
+    //   // add the value
+    //   const obj = {
+    //     [type]: filter,
+    //   }
+    //   setAllFilters([...allFilters, obj])
+    // }
+
+    // console.log("filters", filters)
+    // // if filters.item.key is already in all filter then update it else add it
+    // const filterValue = [...allFilters, ...filters]
+
+    // setAllFilters(filterValue)
 
     //  call api again wthi this value
   }
@@ -84,7 +113,7 @@ export default function CourseList() {
                     <div className="text-20 lh-15 fw-500 text-dark-1 mt-10">
                       <a
                         className="linkCustom"
-                        href={`${process.env.NEXT_PUBLIC_URL}/courses/${course.id}`}
+                        href={`${process.env.NEXT_PUBLIC_URL}/courses/${course?.id}`}
                       >
                         {course.title}
                       </a>
