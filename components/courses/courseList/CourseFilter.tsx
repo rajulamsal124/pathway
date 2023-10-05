@@ -56,12 +56,21 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                   // setAllFilters(filterValue)
                 }}
               />
-              {/* <DecisionPointFilter
-                onChangeDecisionPoint={(value) => {
-                  const filterValue = [...allFilters, { decisionPoint: value }]
-                  setAllFilters(filterValue)
+              <DecisionPointFilter
+                onChangeDecisionPoint={(value: any) => {
+                  if (value === "all") {
+                    onApplyFilter(null, "decisionPoint")
+                  } else {
+                    onApplyFilter(value, "decisionPoint")
+                  }
+                  // const filterValue = [...allFilters, { category: value }]
+                  // setAllFilters(filterValue)
                 }}
-              /> */}
+                // onChangeDecisionPoint={(value) => {
+                //   const filterValue = [...allFilters, { decisionPoint: value }]
+                //   setAllFilters(filterValue)
+                // }}
+              />
             </div>
           </div>
         </div>

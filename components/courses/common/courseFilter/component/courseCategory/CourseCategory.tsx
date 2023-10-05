@@ -17,6 +17,8 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
   }
 
   const { categories, loading, error } = useCategoryData()
+//   const { decisionPoint, loading, error } = useDecisionPointData()
+
 
   if (loading) return <h1>Loading...</h1>
 

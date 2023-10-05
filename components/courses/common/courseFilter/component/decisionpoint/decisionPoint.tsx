@@ -24,12 +24,6 @@ const DecisionPointFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
 
   const { decisionPoint, loading, error } = useDecisionPointData()
 
-  useEffect(() => {
-    if (filterDecisionPoint) {
-      onChangeDecisionPoint(filterDecisionPoint)
-    }
-  }, [filterDecisionPoint])
-
   if (loading) return <h1>Loading...</h1>
 
   if (error) return <h1>Error happened....</h1>
@@ -61,10 +55,11 @@ const DecisionPointFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
           className="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-ratings-toggle"
         >
           <div className="text-14 y-gap-15 js-dropdown-list">
-            {/* <div
+            <div
               onClick={() => {
                 setFilterDecisionPoint("")
                 handleFilterDecisionPoint("all")
+                onChangeDecisionPoint("all")
                 const ddButton = document?.getElementById("dd53button")
                 const ddContent = document?.getElementById("dd53content")
                 ddButton?.classList.toggle("-is-dd-active")
@@ -78,9 +73,15 @@ const DecisionPointFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
               >
                 All
               </span>
-            </div> */}
+            </div>
             {decisionPoint.map((elm, i) => (
-              <div key={i} onClick={() => handleFilterDecisionPoint(elm.title)}>
+              <div
+                key={i}
+                onClick={() => {
+                  onChangeDecisionPoint(elm.title)
+                  handleFilterDecisionPoint(elm.title)
+                }}
+              >
                 <span
                   className={`d-block js-dropdown-link cursor ${
                     filterDecisionPoint === elm.title ? "activeMenu" : ""
