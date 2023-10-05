@@ -16,7 +16,7 @@ export default function page() {
       <div className="main-content overflow-hidden">
         <Hero />
         <Courses />
-        {/* <CourseList /> */}
+        <CourseList />
         <FindLearningPath />
         <LearningSolutions />
         <CategoriesTwo />
