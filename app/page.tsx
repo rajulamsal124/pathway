@@ -7,6 +7,7 @@ import CourseList from "@/components/courses/courseList/CourseList"
 import LearningSolutions from "@/components/LearningPath/LearningSolutions"
 import CategoriesTwo from "@/components/categories/CategoriesThree"
 import FindLearningPath from "@/components/LearningPath/FindLearningPath"
+import Courses from "@/components/courses/Courses"
 
 export default function page() {
   return (
@@ -14,7 +15,8 @@ export default function page() {
       <Headers />
       <div className="main-content overflow-hidden">
         <Hero />
-        <CourseList />
+        <Courses />
+        {/* <CourseList /> */}
         <FindLearningPath />
         <LearningSolutions />
         <CategoriesTwo />
