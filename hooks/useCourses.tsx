@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { ICourse, ICourseResponse, ICourseForm } from "@/types/types"
+import { useMutation } from "@tanstack/react-query"
 
 export function useCourseData(allFilters?: any[]) {
   const [courseData, setCourseData] = useState<ICourse[]>([])
@@ -112,3 +113,17 @@ export function useCreateCourse() {
     createCourse,
   }
 }
+// export async function useCreateCourse() {
+//   return useMutation(async (formData) => {
+//     const response = await fetch("http://localhost:3000/api/courses", {
+//       method: "POST",
+//       body: JSON.stringify(formData),
+//     })
+
+//     if (!response.ok) {
+//       throw new Error("Something went wrong while creating the course")
+//     }
+
+//     return response.json()
+//   })
+// }

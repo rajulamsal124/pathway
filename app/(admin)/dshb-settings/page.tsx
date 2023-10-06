@@ -1,11 +1,11 @@
 import Settings from "@/components/adminComponents/dashboard/Settings/Settings"
 import React from "react"
-export const metadata = {
-  title:
-    "Dashboard-settings || Tafegippsland - Professional LMS Online Education Course NextJS Template",
-  description:
-    "Elevate your e-learning content with Tafegippsland, the most impressive LMS template for online courses, education and LMS platforms.",
-}
-export default function page() {
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
+export default async function page() {
+  const session = await getServerSession()
+  if (!session) {
+    redirect("/login")
+  }
   return <Settings />
 }

@@ -1,3 +1,4 @@
+import { useQuery, QueryKey } from "@tanstack/react-query"
 import { useState, useEffect } from "react"
 
 export function useCategoryData() {
@@ -33,4 +34,15 @@ export function useCategoryData() {
     loading,
     error,
   }
+}
+
+export function useCourseCategories() {
+  const queryKey = ["categories"] // Define your query key as an array of strings
+  return useQuery(queryKey, async () => {
+    const response = await fetch("http://localhost:3000/api/category")
+    if (!response.ok) {
+      throw new Error("Something went wrong")
+    }
+    return response.json()
+  })
 }
