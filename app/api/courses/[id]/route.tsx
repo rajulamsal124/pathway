@@ -18,9 +18,7 @@ export async function GET(
 
     if (!course)
       return NextResponse.json({ error: "course not found" }, { status: 404 })
-    // const courseWithImage = course.image
-    //   ? { ...course, image: course.image.toString("base64") }
-    //   : undefined
+
     return NextResponse.json({ courses: course })
   } catch (error) {
     return NextResponse.json({ message: "error on server" }, { status: 500 })
@@ -51,7 +49,6 @@ export async function PUT(
       { message: "course category not found" },
       { status: 400 }
     )
-  const imageBuffer = body.image ? Buffer.from(body.image, "base64") : undefined
 
   const updatedcourse = await prisma.course.update({
     where: { id: course.id },
@@ -60,7 +57,7 @@ export async function PUT(
       shortDescription: body.shortDescription,
       description: body.description,
       courseCategoryId: body.courseCategoryId,
-      image: imageBuffer,
+      image: body.image,
     },
   })
 

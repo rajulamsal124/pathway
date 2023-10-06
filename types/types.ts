@@ -13,7 +13,7 @@ export interface ICourse {
   // courseCategoryId?: string
   // decisionPointId?: string
   // rolesId?: string
-  image: File | null
+  image?: string
   // roles?: IRole[]
   // provider?: IProvider[]
   // decisionPoints?: IDecisionPoint[]

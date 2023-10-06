@@ -48,16 +48,9 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    const coursesWithImage = courses.map((course) => {
-      return {
-        ...course,
-        image: course.image ? course.image.toString("base64") : undefined,
-      }
-    })
-
     return NextResponse.json({
-      count: coursesWithImage?.length,
-      courses: coursesWithImage,
+      count: courses?.length,
+      courses: courses,
     })
   } catch (error) {
     console.error(error)
@@ -97,11 +90,9 @@ export async function POST(request: NextRequest) {
       { status: 400 }
     )
 
-  const imageBuffer = body.image ? Buffer.from(body.image, "base64") : undefined
   const newCourse = await prisma.course.create({
     data: {
       ...newBody,
-      image: imageBuffer,
     },
   })
   return NextResponse.json(newCourse, { status: 201 })

@@ -15,11 +15,11 @@ export default function page() {
       <Headers />
       <div className="main-content overflow-hidden">
         <Hero />
-        <Courses />
+        {/* <Courses /> */}
         <CourseList />
         <FindLearningPath />
         <LearningSolutions />
-        <CategoriesTwo />
+        {/* <CategoriesTwo /> */}
         <Footer />
       </div>
     </>

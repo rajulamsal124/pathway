@@ -29,7 +29,7 @@ const Headers: React.FC<HeaderProps> = () => {
         scrollPosition > 40 ? "bg-dark-1" : ""
       } `}
     >
-      <div className="d-flex items-center bg-green-8 py-10">
+      <div className="d-flex items-center py-10">
         <div className="container">
           <div className="row y-gap-5 justify-between items-center">
             <div className="col-auto">

@@ -92,7 +92,7 @@ model Course {
   courseCategoryId    String? 
   decisionPointId     String?
   decisionPoint       DecisionPoint? @relation(fields: [decisionPointId], references: [id])
-  image               Bytes?
+  image               String?
   category            CourseCategory? @relation(fields: [courseCategoryId], references: [id])
   roleId              String?
   role                CourseRole?          @relation(fields: [roleId], references: [id])

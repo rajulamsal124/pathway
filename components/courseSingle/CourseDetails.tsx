@@ -24,11 +24,11 @@ const menuItems = [
   // { id: 4, href: "#reviews", text: "", isActive: false },
 ]
 
-export default function CourseDetails({id}) {
+export default function CourseDetails({ id }: any) {
   const [pageItem, setPageItem] = useState(null) // Initialize as null
   const [isOpen, setIsOpen] = useState(false) // Fix useState syntax
   const [activeTab, setActiveTab] = useState(1)
-  
+
   const { course, loading } = useCourseById(id)
 
   if (loading) {
@@ -124,7 +124,7 @@ export default function CourseDetails({id}) {
                     width={510}
                     height={360}
                     className="w-1/1"
-                    src={`data:image/jpeg;base64,${course.image}`}
+                    src={course?.image}
                     alt="image"
                   />
                 </div>

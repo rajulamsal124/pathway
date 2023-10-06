@@ -65,7 +65,7 @@ CREATE TABLE "DecisionPoint" (
 -- CreateTable
 CREATE TABLE "CourseCategory" (
     "id" TEXT NOT NULL,
-    "title" TEXT,
+    "title" TEXT NOT NULL,
     "type" "CategoryType" NOT NULL,
     "decisionPointId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -82,12 +82,12 @@ CREATE TABLE "Course" (
     "description" TEXT NOT NULL,
     "level" TEXT NOT NULL,
     "duration" TEXT NOT NULL,
-    "providerName" TEXT NOT NULL,
-    "providerUrl" TEXT NOT NULL,
-    "providerDescription" TEXT NOT NULL,
-    "courseCategoryId" TEXT NOT NULL,
-    "decisionPointId" TEXT NOT NULL,
-    "image" BYTEA,
+    "providerName" TEXT,
+    "providerUrl" TEXT,
+    "providerDescription" TEXT,
+    "courseCategoryId" TEXT,
+    "decisionPointId" TEXT,
+    "image" TEXT,
     "roleId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -137,10 +137,10 @@ ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId"
 ALTER TABLE "CourseCategory" ADD CONSTRAINT "CourseCategory_decisionPointId_fkey" FOREIGN KEY ("decisionPointId") REFERENCES "DecisionPoint"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Course" ADD CONSTRAINT "Course_decisionPointId_fkey" FOREIGN KEY ("decisionPointId") REFERENCES "DecisionPoint"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Course" ADD CONSTRAINT "Course_decisionPointId_fkey" FOREIGN KEY ("decisionPointId") REFERENCES "DecisionPoint"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Course" ADD CONSTRAINT "Course_courseCategoryId_fkey" FOREIGN KEY ("courseCategoryId") REFERENCES "CourseCategory"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Course" ADD CONSTRAINT "Course_courseCategoryId_fkey" FOREIGN KEY ("courseCategoryId") REFERENCES "CourseCategory"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Course" ADD CONSTRAINT "Course_roleId_fkey" FOREIGN KEY ("roleId") REFERENCES "CourseRole"("id") ON DELETE SET NULL ON UPDATE CASCADE;

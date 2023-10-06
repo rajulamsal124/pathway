@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation"
 interface IMenuProps {
   allClasses: any
   headerPosition: any
+  links: any
 }
 
 const Menu: React.FC<IMenuProps> = ({ allClasses, headerPosition }) => {
@@ -20,7 +21,7 @@ const Menu: React.FC<IMenuProps> = ({ allClasses, headerPosition }) => {
         if (elm2.href?.split("/")[1] == pathname.split("/")[1]) {
           setMenuItem(elm.title)
         } else {
-          elm2?.links?.map((elm3) => {
+          elm2?.links?.map((elm3: any) => {
             if (elm3.href?.split("/")[1] == pathname.split("/")[1]) {
               setMenuItem(elm.title)
             }

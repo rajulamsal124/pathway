@@ -9,7 +9,7 @@ import CourseFilter from "./CourseFilter"
 export default function CourseList() {
   const [allFilters, setAllFilters] = useState<any[]>([])
 
-  const { courseData, loading } = useCourseData(allFilters)
+  const { courseData } = useCourseData(allFilters)
 
   const onApplyFilter = (value: any, type: any) => {
     if (!value) {
@@ -77,7 +77,7 @@ export default function CourseList() {
                         width={510}
                         height={360}
                         className="w-1/1"
-                        src={`data:image/jpeg;base64,${course.image}`}
+                        src={course?.image}
                         alt="image"
                       />
                       <div className="coursesCard__image_overlay rounded-8"></div>
