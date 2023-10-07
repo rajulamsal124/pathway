@@ -88,18 +88,18 @@ export default function HeaderDashboard() {
           <div className="row justify-between items-center">
             <div className="col-auto">
               <div className="d-flex items-center">
-                <div className="header__explore text-dark-1">
-                  {/* <button
+                {/* <div className="header__explore text-dark-1">
+                  <button
                     onClick={() => {
                       document
                         .getElementById("dashboardOpenClose")
-                        .classList.toggle("-is-sidebar-hidden");
+                        .classList.toggle("-is-sidebar-hidden")
                     }}
                     className="d-flex items-center js-dashboard-home-9-sidebar-toggle"
                   >
                     <i className="icon -dark-text-white icon-explore"></i>
-                  </button> */}
-                </div>
+                  </button>
+                </div> */}
 
                 <div className="header__logo ml-30 md:ml-20">
                   <Link href="/dashboard">
@@ -117,7 +117,7 @@ export default function HeaderDashboard() {
                       src="/assets/img/general/logo-dark.svg"
                       alt="logo"
                     /> */}
-                    <h3>Food Production and Processing Expoler</h3>
+                    <h3> Pathway Admin Panel</h3>
                   </Link>
                 </div>
               </div>

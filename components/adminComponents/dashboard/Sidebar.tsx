@@ -12,7 +12,13 @@ export default function Sidebar() {
   const sidebarItems = [
     { href: "/dashboard", text: "Dashboard", iconClass: "icon-dashboard" },
     { href: "/dshb-courses", text: "Create Course", iconClass: "icon-profile" },
+    {
+      href: "/dshb-courselists",
+      text: "Course Lists",
+      iconClass: "icon-settings",
+    },
     { href: "/dshb-settings", text: "Settings", iconClass: "icon-settings" },
+
     // Add more links as needed
   ]
 

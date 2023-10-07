@@ -9,15 +9,16 @@ export interface ICourse {
   providerDescription?: string
   providerUrl?: string
   rolesName?: string[]
-  // rolesDescription?: string
-  // courseCategoryId?: string
-  // decisionPointId?: string
-  // rolesId?: string
+  rolesDescription?: string
+  courseCategoryId?: string
+  decisionPointId?: string
+  rolesId?: string
   image?: string
   // roles?: IRole[]
   // provider?: IProvider[]
   // decisionPoints?: IDecisionPoint[]
   // courseCategories?: ICourseCategory[]
+  value?: number
 }
 export interface ICourseResponse {
   courses?: ICourse[]

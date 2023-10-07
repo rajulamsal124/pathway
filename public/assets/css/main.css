@@ -8772,7 +8772,8 @@ h6 {
 }
 
 .dashboard__content {
-  width: 100%;
+  width: 95%;
+  height: auto;
   padding: 60px;
   border-radius: 16px;
 }
