@@ -2,66 +2,92 @@
 
 import { useCreateCourse } from "@/hooks/useCourses"
 import { useCategoryData } from "@/hooks/useCourseCategory"
-import { ICourseForm } from "@/types/types"
 import toast from "react-hot-toast"
 import { useState } from "react"
+import { ICourseForm } from "@/types/types"
 
 const CreateCourse: React.FC = () => {
-  const { createCourse } = useCreateCourse()
   const { categories } = useCategoryData()
-
-  const [courseData, setCourseData] = useState<ICourseForm>({
+  const { createCourse } = useCreateCourse()
+  const [formData, setFormData] = useState<ICourseForm>({
     title: "",
     shortDescription: "",
     description: "",
     level: "",
     duration: "",
+    image: "",
     courseCategoryId: "",
-    image: null, // Initialize the image as null
+    category: {
+      id: "", // Initial values for categoryId and title
+      title: "",
+    },
   })
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null
-    setCourseData({
-      ...courseData,
-      image: file,
-    })
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const formData = new FormData()
-    formData.append("title", courseData.title)
-    formData.append("shortDescription", courseData.shortDescription)
-    formData.append("description", courseData.description)
-    formData.append("level", courseData.level)
-    formData.append("duration", courseData.duration)
-    formData.append("courseCategoryId", courseData.courseCategoryId)
-
-    // Add the image if it's selected
-    if (courseData.image) {
-      formData.append("image", courseData.image)
-    }
-
     const success = await createCourse(formData)
-
     if (success) {
-      toast.success("Hurray, Course created successfully!")
-      console.log("Course created successfully!")
+      toast.success("Course created successfully")
+      setFormData({
+        title: "",
+        shortDescription: "",
+        description: "",
+        level: "",
+        duration: "",
+        image: "",
+        courseCategoryId: "",
+        category: {
+          id: "",
+          title: "",
+        },
+      })
     } else {
-      toast.error("Failed to create course.")
-      console.error("Failed to create course.")
+      toast.error("Error creating course")
     }
   }
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target
-    setCourseData({
-      ...courseData,
-      [name]: value,
-    })
+
+    if (name === "courseCategoryId") {
+      // When the category dropdown changes, set the category.id
+      setFormData({
+        ...formData,
+        courseCategoryId: value,
+      })
+    } else if (name === "category") {
+      // Assuming you have a 'categories' array that holds the available categories.
+      const selectedCategory = categories.find(
+        (category) => category.title === value
+      )
+
+      if (selectedCategory) {
+        setFormData({
+          ...formData,
+          category: {
+            id: selectedCategory.id, // Set category.id to the selected category's id
+            title: value,
+          },
+        })
+      } else {
+        // Category not found, set both properties to null
+        setFormData({
+          ...formData,
+          courseCategoryId: "",
+          category: {
+            id: "",
+            title: "",
+          },
+        })
+        console.log("Category not found in the 'categories' array.")
+      }
+    } else {
+      setFormData({ ...formData, [name]: value })
+    }
   }
 
   return (
@@ -85,9 +111,8 @@ const CreateCourse: React.FC = () => {
 
               <div className="py-30 px-30">
                 <form
-                  onSubmit={handleSubmit}
-                  action="http://localhost:3000/api/courses"
                   className="contact-form row y-gap-30"
+                  onSubmit={handleSubmit}
                 >
                   <div className="col-12">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
@@ -98,27 +123,23 @@ const CreateCourse: React.FC = () => {
                       required
                       type="text"
                       name="title"
-                      value={courseData.title}
-                      onChange={handleInputChange}
                       placeholder="Course Title"
+                      value={formData.title}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="col-12">
                     <label htmlFor="category">Category:</label>
                     <select
-                      id="category"
-                      onChange={(e: any) => {
-                        setCourseData({
-                          ...courseData,
-                          courseCategoryId: e.target.value,
-                        })
-                      }}
+                      id="courseCategoryId"
+                      name="categoryCategoryId"
+                      value={formData.category ? formData.category.id : ""}
+                      onChange={handleChange}
                     >
                       <option value="">All Categories</option>
                       {categories.map((category) => (
-                        <option key={category.id} value={category.id}>
+                        <option key={category.id} value={category.title}>
                           {category.title}
-                          {console.log(category.title)}
                         </option>
                       ))}
                     </select>
@@ -133,8 +154,8 @@ const CreateCourse: React.FC = () => {
                       required
                       placeholder="Short Description"
                       name="shortDescription"
-                      value={courseData.shortDescription}
-                      onChange={handleInputChange}
+                      value={formData.shortDescription}
+                      onChange={handleChange}
                       rows={7}
                     ></textarea>
                   </div>
@@ -147,9 +168,9 @@ const CreateCourse: React.FC = () => {
                     <textarea
                       required
                       name="description"
-                      value={courseData.description}
-                      onChange={handleInputChange}
                       placeholder="Description"
+                      value={formData.description}
+                      onChange={handleChange}
                       rows={7}
                     ></textarea>
                   </div>
@@ -161,21 +182,21 @@ const CreateCourse: React.FC = () => {
                       required
                       type="text"
                       name="level"
-                      value={courseData.level}
-                      onChange={handleInputChange}
                       placeholder="Course Level"
+                      value={formData.level}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="col-md-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                      Course Level*
+                      Course Duration*
                     </label>
                     <input
                       required
                       type="text"
                       name="duration"
-                      value={courseData.duration}
-                      onChange={handleInputChange}
+                      value={formData.duration}
+                      onChange={handleChange}
                       placeholder="Course Duration"
                     />
                   </div>
@@ -183,11 +204,13 @@ const CreateCourse: React.FC = () => {
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       Upload Image*
                     </label>
-
                     <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
+                      required
+                      type="text"
+                      name="image"
+                      value={formData.image}
+                      onChange={handleChange}
+                      placeholder="Course Image Url"
                     />
                   </div>
                   <div className="col-12">

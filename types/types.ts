@@ -1,5 +1,5 @@
 export interface ICourse {
-  id?: string
+  id: string
   title: string
   shortDescription: string
   description: string
@@ -34,10 +34,8 @@ export interface IProvider {
   providerUrl: string
 }
 export interface ICourseCategory {
-  id: number
-  categoryName: string
-  categoryDescription: string
-  type: string
+  id: string
+  title: string
 }
 export interface IDecisionPoint {
   id: number
@@ -54,6 +52,7 @@ export interface ICourseForm {
   description: string
   level: string
   duration: string
+  image: string
   courseCategoryId: string
-  image: File | null
+  category: ICourseCategory
 }
