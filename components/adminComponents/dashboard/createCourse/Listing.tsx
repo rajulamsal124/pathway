@@ -1,111 +1,11 @@
 "use client"
 
-import { useCreateCourse } from "@/hooks/useCourses"
-import { useCategoryData } from "@/hooks/useCourseCategory"
-import toast from "react-hot-toast"
-import { useState } from "react"
-import { ICourseForm } from "@/types/types"
-
 const CreateCourse: React.FC<any> = ({
   formData,
-  setFormData,
   handleChange,
   handleSubmit,
   categories,
 }) => {
-  // const { categories } = useCategoryData()
-  // const { createCourse } = useCreateCourse()
-  // const [formData, setFormData] = useState<ICourseForm>({
-  //   title: "",
-  //   shortDescription: "",
-  //   description: "",
-  //   level: "",
-  //   duration: "",
-  //   image: "",
-  //   courseCategoryId: "",
-  //   category: {
-  //     id: "", // Initial values for categoryId and title
-  //     title: "",
-  //   },
-  // })
-
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault()
-  //   const data = {
-  //     title: formData.title,
-  //     shortDescription: formData.shortDescription,
-  //     description: formData.description,
-  //     image: formData.image,
-  //     level: formData.level,
-  //     duration: formData.duration,
-  //     courseCategoryId: formData.courseCategoryId,
-  //   }
-  //   const success = await createCourse(data as any)
-  //   if (success) {
-  //     toast.success("Course created successfully")
-  //     setFormData({
-  //       title: "",
-  //       shortDescription: "",
-  //       description: "",
-  //       level: "",
-  //       duration: "",
-  //       image: "",
-  //       courseCategoryId: "",
-  //       category: {
-  //         id: "",
-  //         title: "",
-  //       },
-  //     })
-  //   } else {
-  //     toast.error("Error creating course")
-  //   }
-  // }
-
-  // const handleChange = (
-  //   e: React.ChangeEvent<
-  //     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-  //   >
-  // ) => {
-  //   console.log(e.target.value)
-  //   const { name, value } = e.target
-
-  //   if (name === "courseCategoryId") {
-  //     // When the category dropdown changes, set the category.id
-  //     setFormData({
-  //       ...formData,
-  //       courseCategoryId: value,
-  //     })
-  //   } else if (name === "category") {
-  //     // Assuming you have a 'categories' array that holds the available categories.
-  //     const selectedCategory = categories.find(
-  //       (category) => category.title === value
-  //     )
-
-  //     if (selectedCategory) {
-  //       setFormData({
-  //         ...formData,
-  //         category: {
-  //           id: selectedCategory.id, // Set category.id to the selected category's id
-  //           title: value,
-  //         },
-  //       })
-  //     } else {
-  //       // Category not found, set both properties to null
-  //       setFormData({
-  //         ...formData,
-  //         courseCategoryId: "",
-  //         category: {
-  //           id: "",
-  //           title: "",
-  //         },
-  //       })
-  //       console.log("Category not found in the 'categories' array.")
-  //     }
-  //   } else {
-  //     setFormData({ ...formData, [name]: value })
-  //   }
-  // }
-
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4">
@@ -219,6 +119,46 @@ const CreateCourse: React.FC<any> = ({
                       onChange={handleChange}
                       placeholder="Course Duration"
                     />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                      Povider Name*
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      name="providerName"
+                      value={formData.providerName}
+                      onChange={handleChange}
+                      placeholder="Provider Name"
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                      Provider Url*
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      name="providerUrl"
+                      value={formData.providerUrl}
+                      onChange={handleChange}
+                      placeholder="Provider Url"
+                    />
+                  </div>
+                  <div className="col-12">
+                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                      Provider Description*
+                    </label>
+
+                    <textarea
+                      required
+                      name="providerDescription"
+                      placeholder="Provider Description"
+                      value={formData.providerDescription}
+                      onChange={handleChange}
+                      rows={7}
+                    ></textarea>
                   </div>
                   <div className="col-12">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">

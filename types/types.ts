@@ -53,6 +53,9 @@ export interface ICourseForm {
   description: string
   level: string
   duration: string
+  providerName: string
+  providerDescription: string
+  providerUrl: string
   image: string
   courseCategoryId: string
   category: ICourseCategory

@@ -17,6 +17,9 @@ export default function Page() {
     description: "",
     level: "",
     duration: "",
+    providerName: "",
+    providerUrl: "",
+    providerDescription: "",
     image: "",
     courseCategoryId: "",
     category: {
@@ -34,8 +37,12 @@ export default function Page() {
       image: formData.image,
       level: formData.level,
       duration: formData.duration,
+      providerName: formData.providerName,
+      providerUrl: formData.providerUrl,
+      providerDescription: formData.providerDescription,
       courseCategoryId: formData.courseCategoryId,
     }
+
     const success = await createCourse(data as any)
     if (success) {
       toast.success("Course created successfully")
@@ -45,6 +52,9 @@ export default function Page() {
         description: "",
         level: "",
         duration: "",
+        providerName: "",
+        providerUrl: "",
+        providerDescription: "",
         image: "",
         courseCategoryId: "",
         category: {

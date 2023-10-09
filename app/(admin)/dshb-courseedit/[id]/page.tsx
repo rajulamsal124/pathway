@@ -1,6 +1,6 @@
 "use client"
 import CreateCourse from "@/components/adminComponents/dashboard/createCourse/Listing"
-import React, { use, useEffect } from "react"
+import React, { useEffect } from "react"
 
 import toast from "react-hot-toast"
 import { useState } from "react"
@@ -13,12 +13,16 @@ export default function Page({ params }: any) {
   const { categories } = useCategoryData()
   const { course, loading } = useCourseById(id)
   const { editCourse } = useCreateCourse()
+
   const [formData, setFormData] = useState<ICourseForm>({
     title: "",
     shortDescription: "",
     description: "",
     level: "",
     duration: "",
+    providerName: "",
+    providerUrl: "",
+    providerDescription: "",
     image: "",
     courseCategoryId: "",
     category: {
@@ -36,6 +40,9 @@ export default function Page({ params }: any) {
         description: course?.description,
         level: course?.level,
         duration: course?.duration,
+        providerName: course?.providerName,
+        providerUrl: course?.providerUrl,
+        providerDescription: course?.providerDescription,
         image: course?.image,
         courseCategoryId: course?.courseCategoryId,
         category: {
@@ -57,17 +64,23 @@ export default function Page({ params }: any) {
       image: formData.image,
       level: formData.level,
       duration: formData.duration,
+      providerName: formData.providerName,
+      providerUrl: formData.providerUrl,
+      providerDescription: formData.providerDescription,
       courseCategoryId: formData.courseCategoryId,
     }
     const success = await editCourse(data as any, id)
     if (success) {
-      toast.success("Course created successfully")
+      toast.success("Course Updated successfully")
       setFormData({
         title: "",
         shortDescription: "",
         description: "",
         level: "",
         duration: "",
+        providerName: "",
+        providerUrl: "",
+        providerDescription: "",
         image: "",
         courseCategoryId: "",
         category: {
@@ -123,6 +136,9 @@ export default function Page({ params }: any) {
     } else {
       setFormData({ ...formData, [name]: value })
     }
+  }
+  if (loading) {
+    return <div>Loading...</div>
   }
   return (
     <CreateCourse

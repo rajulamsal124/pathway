@@ -47,7 +47,13 @@ export default function Listing() {
         <div className="row pb-50">
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Course List</h1>
-            <div className="mt-10"></div>
+            <div className="mt-10">
+              <button>
+                <a href="/dshb-courses" className="btn btn-primary">
+                  Create New Course
+                </a>
+              </button>
+            </div>
             <table className="table table-hover">
               <thead>
                 <tr>
