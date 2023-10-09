@@ -81,7 +81,7 @@ export default function Hero() {
                 Shape your bright future with us
               </p>
 
-              <div className="mainSlider__form">
+              {/* <div className="mainSlider__form">
                 <input
                   required
                   type="text"
@@ -95,7 +95,7 @@ export default function Hero() {
                   <i className="icon icon-search mr-15"></i>
                   Search
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
