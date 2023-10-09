@@ -5,10 +5,7 @@ import Hero from "@/components/heros/Heors"
 import Footer from "@/components/layout/footers/Footer"
 import CourseList from "@/components/courses/courseList/CourseList"
 import LearningSolutions from "@/components/LearningPath/LearningSolutions"
-import CategoriesTwo from "@/components/categories/CategoriesThree"
 import FindLearningPath from "@/components/LearningPath/FindLearningPath"
-import Courses from "@/components/courses/Courses"
-
 export default function page() {
   return (
     <>
