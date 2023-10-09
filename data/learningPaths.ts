@@ -5,7 +5,7 @@ export const learningPath = [
     iconSrc: "/assets/img/home-2/learning/icons/1.svg",
     title: "School Leaver",
     description:
-      " and tools to help students make informed decisions about their careers and education.",
+      " We offer a wide range of resources and tools to help students make informed decisions about their careers and education.",
   },
   {
     id: "item2",
