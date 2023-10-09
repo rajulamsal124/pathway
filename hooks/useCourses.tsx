@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { ICourse, ICourseResponse, ICourseForm } from "@/types/types"
+import toast from "react-hot-toast"
 
 export function useCourseData(allFilters?: any[]) {
   const [courseData, setCourseData] = useState<ICourse[]>([])
@@ -146,6 +147,7 @@ export function useCreateCourse() {
 
       if (response.ok) {
         setLoading(false)
+        toast.error("Course deleted successfully")
         return true
       } else {
         throw new Error("Something went wrong while deleting the course")
