@@ -2,13 +2,18 @@
 import FooterCopyright from "@/components/layout/footers/FooterCopyright"
 import { useCategoryData } from "@/hooks/useCourseCategory"
 import { useDecisionPointData } from "@/hooks/useCourseDecisionPoint"
-import { useCourseData } from "@/hooks/useCourses"
+import { useCourseData, useCreateCourse } from "@/hooks/useCourses"
 import React from "react"
 import { FaEdit, FaTrash } from "react-icons/fa"
+// import { useRouter } from "next/router"
+
 export default function Listing() {
   const { courseData } = useCourseData()
+  const { deleteCourse } = useCreateCourse()
   const { categories } = useCategoryData()
   const { decisionPoint } = useDecisionPointData()
+  // const router = useRouter()
+
   const getCategoryTitle = (categoryId: any) => {
     const category = categories.find((c) => c.id === categoryId)
     return category ? category.title : ""
@@ -19,6 +24,21 @@ export default function Listing() {
       (dp: any) => dp.id === decisionPointId
     )
     return decisionpoint ? decisionpoint.title : ""
+  }
+
+  const handleDelete = async (id: string) => {
+    try {
+      const res: any = await deleteCourse(id)
+    } catch (err) {
+      console.log("Errorroror", err)
+    }
+  }
+
+  const handleEdit = async (id: string) => {
+    // if (window) {
+    // window?.href.location = `/dshb-courseedit/${id}`
+    // }
+    // router.push(`/dshb-courseedit/${id}`)
   }
 
   return (
@@ -50,8 +70,12 @@ export default function Listing() {
                     <td>{course.duration}</td>
                     <td>{course.level}</td>
                     <td>
-                      <FaEdit />
-                      <FaTrash />
+                      <>
+                        <a href={`/dshb-courseedit/${course?.id}`}>
+                          <FaEdit onClick={() => handleEdit(course?.id)} />
+                        </a>
+                        <FaTrash onClick={() => handleDelete(course?.id)} />
+                      </>
                     </td>
                   </tr>
                 ))}

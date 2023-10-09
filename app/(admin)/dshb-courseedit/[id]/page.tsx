@@ -1,16 +1,18 @@
 "use client"
 import CreateCourse from "@/components/adminComponents/dashboard/createCourse/Listing"
-import React from "react"
+import React, { use, useEffect } from "react"
 
 import toast from "react-hot-toast"
 import { useState } from "react"
 import { ICourseForm } from "@/types/types"
 import { useCategoryData } from "@/hooks/useCourseCategory"
-import { useCreateCourse } from "@/hooks/useCourses"
+import { useCreateCourse, useCourseById } from "@/hooks/useCourses"
 
-export default function Page() {
+export default function Page({ params }: any) {
+  const id = params.id
   const { categories } = useCategoryData()
-  const { createCourse } = useCreateCourse()
+  const { course, loading } = useCourseById(id)
+  const { editCourse } = useCreateCourse()
   const [formData, setFormData] = useState<ICourseForm>({
     title: "",
     shortDescription: "",
@@ -25,8 +27,29 @@ export default function Page() {
     },
   })
 
+  useEffect(() => {
+    console.log(course)
+    if (course) {
+      const data: any = {
+        title: course?.title,
+        shortDescription: course?.shortDescription,
+        description: course?.description,
+        level: course?.level,
+        duration: course?.duration,
+        image: course?.image,
+        courseCategoryId: course?.courseCategoryId,
+        category: {
+          id: "", // Initial values for categoryId and title
+          title: "",
+        },
+      }
+      setFormData(data)
+    }
+  }, [course])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const id = params.id
     const data = {
       title: formData.title,
       shortDescription: formData.shortDescription,
@@ -36,7 +59,7 @@ export default function Page() {
       duration: formData.duration,
       courseCategoryId: formData.courseCategoryId,
     }
-    const success = await createCourse(data as any)
+    const success = await editCourse(data as any, id)
     if (success) {
       toast.success("Course created successfully")
       setFormData({

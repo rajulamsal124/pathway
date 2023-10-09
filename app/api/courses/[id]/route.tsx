@@ -68,7 +68,7 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const course = await prisma.course.findUnique({
+  const course = await prisma.course.findFirst({
     where: { id: params.id },
   })
 

@@ -2,10 +2,11 @@
 
 import React from "react"
 import { locationData } from "@/data/officeLocation"
+import { sendEmail } from "@/services/sendEmail"
 export default function ContactTwo() {
-  const handleSubmit = (e: any) => {
-    e.preventDefault()
-  }
+  //   const handleSubmit = (e: any) => {
+  //     e.preventDefault()
+  //   }
   return (
     <>
       <section className="page-header -type-4">
@@ -66,7 +67,9 @@ export default function ContactTwo() {
 
                 <form
                   className="contact-form row y-gap-30 pt-60 lg:pt-40"
-                  onSubmit={handleSubmit}
+                  action={async (formData) => {
+                    await sendEmail(formData)
+                  }}
                 >
                   <div className="col-12">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">

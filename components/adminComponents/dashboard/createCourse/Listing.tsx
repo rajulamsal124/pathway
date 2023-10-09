@@ -6,89 +6,105 @@ import toast from "react-hot-toast"
 import { useState } from "react"
 import { ICourseForm } from "@/types/types"
 
-const CreateCourse: React.FC = () => {
-  const { categories } = useCategoryData()
-  const { createCourse } = useCreateCourse()
-  const [formData, setFormData] = useState<ICourseForm>({
-    title: "",
-    shortDescription: "",
-    description: "",
-    level: "",
-    duration: "",
-    image: "",
-    courseCategoryId: "",
-    category: {
-      id: "", // Initial values for categoryId and title
-      title: "",
-    },
-  })
+const CreateCourse: React.FC<any> = ({
+  formData,
+  setFormData,
+  handleChange,
+  handleSubmit,
+  categories,
+}) => {
+  // const { categories } = useCategoryData()
+  // const { createCourse } = useCreateCourse()
+  // const [formData, setFormData] = useState<ICourseForm>({
+  //   title: "",
+  //   shortDescription: "",
+  //   description: "",
+  //   level: "",
+  //   duration: "",
+  //   image: "",
+  //   courseCategoryId: "",
+  //   category: {
+  //     id: "", // Initial values for categoryId and title
+  //     title: "",
+  //   },
+  // })
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const success = await createCourse(formData)
-    if (success) {
-      toast.success("Course created successfully")
-      setFormData({
-        title: "",
-        shortDescription: "",
-        description: "",
-        level: "",
-        duration: "",
-        image: "",
-        courseCategoryId: "",
-        category: {
-          id: "",
-          title: "",
-        },
-      })
-    } else {
-      toast.error("Error creating course")
-    }
-  }
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault()
+  //   const data = {
+  //     title: formData.title,
+  //     shortDescription: formData.shortDescription,
+  //     description: formData.description,
+  //     image: formData.image,
+  //     level: formData.level,
+  //     duration: formData.duration,
+  //     courseCategoryId: formData.courseCategoryId,
+  //   }
+  //   const success = await createCourse(data as any)
+  //   if (success) {
+  //     toast.success("Course created successfully")
+  //     setFormData({
+  //       title: "",
+  //       shortDescription: "",
+  //       description: "",
+  //       level: "",
+  //       duration: "",
+  //       image: "",
+  //       courseCategoryId: "",
+  //       category: {
+  //         id: "",
+  //         title: "",
+  //       },
+  //     })
+  //   } else {
+  //     toast.error("Error creating course")
+  //   }
+  // }
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target
+  // const handleChange = (
+  //   e: React.ChangeEvent<
+  //     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+  //   >
+  // ) => {
+  //   console.log(e.target.value)
+  //   const { name, value } = e.target
 
-    if (name === "courseCategoryId") {
-      // When the category dropdown changes, set the category.id
-      setFormData({
-        ...formData,
-        courseCategoryId: value,
-      })
-    } else if (name === "category") {
-      // Assuming you have a 'categories' array that holds the available categories.
-      const selectedCategory = categories.find(
-        (category) => category.title === value
-      )
+  //   if (name === "courseCategoryId") {
+  //     // When the category dropdown changes, set the category.id
+  //     setFormData({
+  //       ...formData,
+  //       courseCategoryId: value,
+  //     })
+  //   } else if (name === "category") {
+  //     // Assuming you have a 'categories' array that holds the available categories.
+  //     const selectedCategory = categories.find(
+  //       (category) => category.title === value
+  //     )
 
-      if (selectedCategory) {
-        setFormData({
-          ...formData,
-          category: {
-            id: selectedCategory.id, // Set category.id to the selected category's id
-            title: value,
-          },
-        })
-      } else {
-        // Category not found, set both properties to null
-        setFormData({
-          ...formData,
-          courseCategoryId: "",
-          category: {
-            id: "",
-            title: "",
-          },
-        })
-        console.log("Category not found in the 'categories' array.")
-      }
-    } else {
-      setFormData({ ...formData, [name]: value })
-    }
-  }
+  //     if (selectedCategory) {
+  //       setFormData({
+  //         ...formData,
+  //         category: {
+  //           id: selectedCategory.id, // Set category.id to the selected category's id
+  //           title: value,
+  //         },
+  //       })
+  //     } else {
+  //       // Category not found, set both properties to null
+  //       setFormData({
+  //         ...formData,
+  //         courseCategoryId: "",
+  //         category: {
+  //           id: "",
+  //           title: "",
+  //         },
+  //       })
+  //       console.log("Category not found in the 'categories' array.")
+  //     }
+  //   } else {
+  //     setFormData({ ...formData, [name]: value })
+  //   }
+  // }
 
   return (
     <div className="dashboard__main">
@@ -132,13 +148,17 @@ const CreateCourse: React.FC = () => {
                     <label htmlFor="category">Category:</label>
                     <select
                       id="courseCategoryId"
-                      name="categoryCategoryId"
-                      value={formData.category ? formData.category.id : ""}
+                      name="courseCategoryId"
+                      value={
+                        formData.courseCategoryId
+                          ? formData.courseCategoryId
+                          : ""
+                      }
                       onChange={handleChange}
                     >
                       <option value="">All Categories</option>
-                      {categories.map((category) => (
-                        <option key={category.id} value={category.title}>
+                      {categories.map((category: any) => (
+                        <option key={category.id} value={category.id}>
                           {category.title}
                         </option>
                       ))}

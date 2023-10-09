@@ -106,9 +106,62 @@ export function useCreateCourse() {
     }
   }
 
+  const editCourse = async (course: any, id: string) => {
+    // setLoading(true)
+    // setError(null)
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/courses/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(course),
+      })
+
+      if (response.ok) {
+        // setLoading(false)
+        return true
+      } else {
+        throw new Error("Something went wrong while editing the course")
+      }
+    } catch (error) {
+      console.error(error)
+      // setLoading(false)
+      return false
+    }
+  }
+
+  const deleteCourse = async (courseId: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/courses/${courseId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      if (response.ok) {
+        setLoading(false)
+        return true
+      } else {
+        throw new Error("Something went wrong while deleting the course")
+      }
+    } catch (error) {
+      console.error(error)
+      setLoading(false)
+      return false
+    }
+  }
+
   return {
     loading,
     error,
     createCourse,
+    deleteCourse,
+    editCourse,
   }
 }
