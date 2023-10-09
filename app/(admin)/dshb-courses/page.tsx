@@ -1,16 +1,17 @@
 "use client"
 import CreateCourse from "@/components/adminComponents/dashboard/createCourse/Listing"
-import React from "react"
 
 import toast from "react-hot-toast"
 import { useState } from "react"
 import { ICourseForm } from "@/types/types"
 import { useCategoryData } from "@/hooks/useCourseCategory"
+import { useDecisionPointData } from "@/hooks/useCourseDecisionPoint"
 import { useCreateCourse } from "@/hooks/useCourses"
 
 export default function Page() {
   const { categories } = useCategoryData()
   const { createCourse } = useCreateCourse()
+  const { decisionPoint } = useDecisionPointData()
   const [formData, setFormData] = useState<ICourseForm>({
     title: "",
     shortDescription: "",
@@ -22,8 +23,13 @@ export default function Page() {
     providerDescription: "",
     image: "",
     courseCategoryId: "",
+    decisionPointId: "",
     category: {
       id: "", // Initial values for categoryId and title
+      title: "",
+    },
+    decisionPoint: {
+      id: "",
       title: "",
     },
   })
@@ -41,6 +47,7 @@ export default function Page() {
       providerUrl: formData.providerUrl,
       providerDescription: formData.providerDescription,
       courseCategoryId: formData.courseCategoryId,
+      decisionPointId: formData.decisionPointId,
     }
 
     const success = await createCourse(data as any)
@@ -57,7 +64,12 @@ export default function Page() {
         providerDescription: "",
         image: "",
         courseCategoryId: "",
+        decisionPointId: "",
         category: {
+          id: "",
+          title: "",
+        },
+        decisionPoint: {
           id: "",
           title: "",
         },
@@ -83,15 +95,21 @@ export default function Page() {
       })
     } else if (name === "category") {
       // Assuming you have a 'categories' array that holds the available categories.
+      const selectedDecisionPoint = decisionPoint.find(
+        (decisionPoint) => decisionPoint.title === value
+      )
       const selectedCategory = categories.find(
         (category) => category.title === value
       )
-
-      if (selectedCategory) {
+      if (selectedCategory && selectedDecisionPoint) {
         setFormData({
           ...formData,
           category: {
             id: selectedCategory.id, // Set category.id to the selected category's id
+            title: value,
+          },
+          decisionPoint: {
+            id: selectedDecisionPoint.id,
             title: value,
           },
         })
@@ -118,6 +136,7 @@ export default function Page() {
       formData={formData}
       setFormData={setFormData}
       categories={categories}
+      decisionPoint={decisionPoint}
     />
   )
 }

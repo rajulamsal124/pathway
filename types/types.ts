@@ -39,9 +39,9 @@ export interface ICourseCategory {
   title: string
 }
 export interface IDecisionPoint {
-  id: number
-  decisionPointName: string
-  decisionPointDescription: string
+  id: string
+  title: string
+  description?: string
 }
 export interface IError {
   error: string
@@ -58,5 +58,7 @@ export interface ICourseForm {
   providerUrl: string
   image: string
   courseCategoryId: string
+  decisionPointId: string
   category: ICourseCategory
+  decisionPoint: IDecisionPoint
 }

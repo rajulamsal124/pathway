@@ -5,6 +5,7 @@ const CreateCourse: React.FC<any> = ({
   handleChange,
   handleSubmit,
   categories,
+  decisionPoint,
 }) => {
   return (
     <div className="dashboard__main">
@@ -43,6 +44,24 @@ const CreateCourse: React.FC<any> = ({
                       value={formData.title}
                       onChange={handleChange}
                     />
+                  </div>
+                  <div className="col-12">
+                    <label htmlFor="category">Decisionpoint:</label>
+                    <select
+                      id="decisionPointId"
+                      name="decisionPointId"
+                      value={
+                        formData.decisionPointId ? formData.decisionPointId : ""
+                      }
+                      onChange={handleChange}
+                    >
+                      <option value="">All Decisionpoints</option>
+                      {decisionPoint.map((descisonpoint: any) => (
+                        <option key={descisonpoint.id} value={descisonpoint.id}>
+                          {descisonpoint.title}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                   <div className="col-12">
                     <label htmlFor="category">Category:</label>

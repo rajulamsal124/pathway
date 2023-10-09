@@ -15,6 +15,7 @@ export function useDecisionPointData() {
             return {
               id: item?.id,
               title: item?.title,
+              discription: item?.discription,
             }
           })
           setDecisionPoint(newData)
