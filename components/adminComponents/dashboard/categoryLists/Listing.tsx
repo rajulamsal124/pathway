@@ -1,38 +1,12 @@
 "use client"
 import FooterCopyright from "@/components/layout/footers/FooterCopyright"
 import { useCategoryData } from "@/hooks/useCourseCategory"
-import { useDecisionPointData } from "@/hooks/useCourseDecisionPoint"
+
 import React from "react"
 import { FaEdit, FaTrash } from "react-icons/fa"
-// import { useRouter } from "next/router"
 
 export default function Listing() {
-  // const { courseData } = useCourseData()
-  // const { deleteCourse } = useCreateCourse()
   const { categories } = useCategoryData()
-
-  // const router = useRouter()
-
-  // const getCategoryTitle = (categoryId: any) => {
-  //   const category = categories.find((c) => c.id === categoryId)
-  //   return category ? category.title : ""
-  // }
-
-  // const handleDelete = async (id: string) => {
-  //   try {
-  //     const res: any = await deleteCourse(id)
-  //   } catch (err) {
-  //     console.log("Errorroror", err)
-  //   }
-  // }
-
-  // const handleEdit = async (id: string) => {
-  //   // if (window) {
-  //   // window?.href.location = `/dshb-courseedit/${id}`
-  //   // }
-  //   // router.push(`/dshb-courseedit/${id}`)
-  // }
-
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4 ">
