@@ -1,3 +1,5 @@
+import { type } from "os"
+
 export interface ICourse {
   id: string
   title: string
@@ -37,6 +39,7 @@ export interface IProvider {
 export interface ICourseCategory {
   id: string
   title: string
+  type?: string
 }
 export interface IDecisionPoint {
   id: string
@@ -61,4 +64,11 @@ export interface ICourseForm {
   decisionPointId: string
   category: ICourseCategory
   decisionPoint: IDecisionPoint
+}
+export interface ICategoryForm {
+  title: string
+  type?: string
+  courseCategoryId?: string
+  decisionPointId?: string
+  decisionPoint?: IDecisionPoint
 }

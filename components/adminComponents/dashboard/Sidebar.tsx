@@ -17,6 +17,17 @@ export default function Sidebar() {
       text: "Course Lists",
       iconClass: "icon-settings",
     },
+    {
+      href: "/dshb-category",
+      text: "Create Category",
+      iconClass: "icon-profile",
+    },
+    {
+      href: "/dshb-catgorylitst",
+      text: "Category List",
+      iconClass: "icon-profile",
+    },
+
     { href: "/dshb-settings", text: "Settings", iconClass: "icon-settings" },
 
     // Add more links as needed
