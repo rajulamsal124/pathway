@@ -23,7 +23,7 @@ export default function Sidebar() {
       iconClass: "icon-profile",
     },
     {
-      href: "/dshb-catgorylitst",
+      href: "/dshb-categorylist",
       text: "Category List",
       iconClass: "icon-profile",
     },
