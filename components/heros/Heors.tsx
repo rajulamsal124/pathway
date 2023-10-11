@@ -1,17 +1,15 @@
 "use client"
 
 import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Pagination } from "swiper"
 
 import "swiper/css"
 import "swiper/css/pagination"
 import { useEffect, useState } from "react"
 
 import React from "react"
-
-import { useRouter } from "next/navigation"
 import { slidesData } from "@/data/hero"
 export default function Hero() {
-  const router = useRouter()
   const [showSlider, setShowSlider] = useState(false)
 
   useEffect(() => {
@@ -23,12 +21,11 @@ export default function Hero() {
         {showSlider && (
           <Swiper
             // {...setting}
-
-            // modules={[Navigation, Pagination]}
-            // navigation={{
-            //   nextEl: ".hero-slider-next",
-            //   prevEl: ".hero-slider-prev",
-            // }}
+            modules={[Navigation, Pagination]}
+            navigation={{
+              nextEl: ".hero-slider-next",
+              prevEl: ".hero-slider-prev",
+            }}
             spaceBetween={0}
             slidesPerView={1}
             breakpoints={{
