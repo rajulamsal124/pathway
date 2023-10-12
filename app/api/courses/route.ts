@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
     const categories = searchParams.get("categories")
     const decisionPoint = searchParams.get("decisionPoint")
     const level = searchParams.get("level")
+    const duration = searchParams.get("duration")
 
     let FilteredData: any = {}
 
@@ -33,7 +34,13 @@ export async function GET(request: NextRequest) {
         },
       }
     }
-
+    if (duration) {
+      FilteredData = {
+        duration: {
+          equals: duration,
+        },
+      }
+    }
     let courses = null
     if (FilteredData) {
       courses = await prisma.course.findMany({

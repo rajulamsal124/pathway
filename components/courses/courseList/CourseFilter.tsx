@@ -1,22 +1,12 @@
 /* eslint-disable no-unused-vars */
 "use client"
 
-// import {
-//   categories,
-//   coursesData,
-//   duration,
-//   instractorNames,
-//   languages,
-//   levels,
-//   prices,
-//   rating,
-//   sortingOptions,
-// } from "@/data/courses"
 import React, { useState, useEffect } from "react"
 import {
   CategoryFilter,
   DecisionPointFilter,
   CourseLevelFilter,
+  CourseDurationFilter,
 } from "../common/courseFilter/component"
 
 interface IProps {
@@ -71,13 +61,16 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                   } else {
                     onApplyFilter(value, "level")
                   }
-                  // const filterValue = [...allFilters, { category: value }]
-                  // setAllFilters(filterValue)
                 }}
-                // onChangeDecisionPoint={(value) => {
-                //   const filterValue = [...allFilters, { decisionPoint: value }]
-                //   setAllFilters(filterValue)
-                // }}
+              />
+              <CourseDurationFilter
+                onChangeCourseDuration={(value: any) => {
+                  if (value === "all") {
+                    onApplyFilter(null, "duration")
+                  } else {
+                    onApplyFilter(value, "duration")
+                  }
+                }}
               />
             </div>
           </div>
