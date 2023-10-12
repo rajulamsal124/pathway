@@ -1,5 +1,3 @@
-import { type } from "os"
-
 export interface ICourse {
   id: string
   title: string
@@ -30,6 +28,7 @@ export interface IRole {
   rolesName: string
   rolesDescription: string
 }
+
 export interface IProvider {
   id: number
   providerName: string

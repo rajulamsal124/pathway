@@ -121,3 +121,4 @@ enum CategoryType {
   CAREERCHANGER
   LIFELONGLEARNER
 }
+

@@ -7,6 +7,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const categories = searchParams.get("categories")
     const decisionPoint = searchParams.get("decisionPoint")
+    const level = searchParams.get("level")
 
     let FilteredData: any = {}
 
@@ -22,6 +23,13 @@ export async function GET(request: NextRequest) {
       FilteredData.decisionPoint = {
         title: {
           contains: decisionPoint,
+        },
+      }
+    }
+    if (level) {
+      FilteredData = {
+        level: {
+          equals: level,
         },
       }
     }

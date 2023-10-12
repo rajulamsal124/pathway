@@ -16,6 +16,7 @@ import React, { useState, useEffect } from "react"
 import {
   CategoryFilter,
   DecisionPointFilter,
+  CourseLevelFilter,
 } from "../common/courseFilter/component"
 
 interface IProps {
@@ -52,8 +53,6 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                   } else {
                     onApplyFilter(value, "category")
                   }
-                  // const filterValue = [...allFilters, { category: value }]
-                  // setAllFilters(filterValue)
                 }}
               />
               <DecisionPointFilter
@@ -62,6 +61,15 @@ const CourseFilter: React.FC<IProps> = ({ courseData, onApplyFilter }) => {
                     onApplyFilter(null, "decisionPoint")
                   } else {
                     onApplyFilter(value, "decisionPoint")
+                  }
+                }}
+              />
+              <CourseLevelFilter
+                onChangeCourseLevels={(value: any) => {
+                  if (value === "all") {
+                    onApplyFilter(null, "level")
+                  } else {
+                    onApplyFilter(value, "level")
                   }
                   // const filterValue = [...allFilters, { category: value }]
                   // setAllFilters(filterValue)

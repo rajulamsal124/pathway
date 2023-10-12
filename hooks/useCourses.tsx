@@ -44,7 +44,7 @@ export function useCourseData(allFilters?: any[]) {
   }, [allFilters])
 
   return {
-    courseData,
+    courseData: courseData,
     loading,
     error,
   }
