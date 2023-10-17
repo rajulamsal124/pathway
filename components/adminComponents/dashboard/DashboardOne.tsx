@@ -16,7 +16,7 @@ export default function DashboardOne() {
         </div>
 
         <div className="row y-gap-30">
-          {states.map((elm, i) => (
+          {/* {states.map((elm, i) => (
             <div key={i} className="col-xl-3 col-md-6">
               <div className="d-flex justify-between items-center py-35 px-30 rounded-16 bg-white -dark-bg-dark-1 shadow-4">
                 <div>
@@ -32,7 +32,7 @@ export default function DashboardOne() {
                 <i className={`text-40 ${elm.iconClass} text-purple-1`}></i>
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
 
         {/* <div className="row y-gap-30 pt-30">
