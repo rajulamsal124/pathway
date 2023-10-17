@@ -6,12 +6,15 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const category = await prisma.courseCategory.findUnique({
+  const category = await prisma.courseCategory.findFirst({
     where: { id: params.id },
   })
 
   if (!category)
-    return NextResponse.json({ error: "Decision not found" }, { status: 404 })
+    return NextResponse.json(
+      { error: "Course Category not found" },
+      { status: 404 }
+    )
 
   return NextResponse.json(category)
 }
@@ -49,15 +52,18 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const decision = await prisma.decisionPoint.findUnique({
+  const category = await prisma.courseCategory.findFirst({
     where: { id: params.id },
   })
 
-  if (!decision)
-    return NextResponse.json({ error: "decision not found" }, { status: 404 })
+  if (!category)
+    return NextResponse.json(
+      { error: "Course Category not found" },
+      { status: 404 }
+    )
 
-  await prisma.decisionPoint.delete({
-    where: { id: decision.id },
+  await prisma.courseCategory.delete({
+    where: { id: category.id },
   })
 
   return NextResponse.json({})

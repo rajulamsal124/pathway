@@ -65,6 +65,7 @@ export interface ICourseForm {
   decisionPoint: IDecisionPoint
 }
 export interface ICategoryForm {
+  id?: string
   title: string
   type?: string
   courseCategoryId?: string

@@ -1,12 +1,27 @@
 "use client"
 import FooterCopyright from "@/components/layout/footers/FooterCopyright"
-import { useCategoryData } from "@/hooks/useCourseCategory"
+import { useCategoryData, useCreateCategory } from "@/hooks/useCourseCategory"
 
 import React from "react"
 import { FaEdit, FaTrash } from "react-icons/fa"
 
 export default function Listing() {
   const { categories } = useCategoryData()
+  const { deleteCategory } = useCreateCategory()
+
+  const handleDelete = async (id: string) => {
+    try {
+      const res: any = await deleteCategory(id)
+    } catch (err) {
+      console.log("Errorroror", err)
+    }
+  }
+  const handelEdit = async (id: string) => {
+    // if (window) {
+    // window?.href.location = `/dshb-courseedit/${id}`
+    // }
+    // router.push(`/dshb-courseedit/${id}`)
+  }
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4 ">
@@ -44,7 +59,7 @@ export default function Listing() {
                         <a href="#">
                           <FaEdit />
                         </a>
-                        <FaTrash />
+                        <FaTrash onClick={() => handleDelete(category?.id)} />
                       </>
                     </td>
                   </tr>

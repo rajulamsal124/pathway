@@ -28,7 +28,7 @@ export default function Sidebar() {
       iconClass: "icon-profile",
     },
 
-    { href: "/dshb-settings", text: "Settings", iconClass: "icon-settings" },
+    // { href: "/dshb-settings", text: "Settings", iconClass: "icon-settings" },
 
     // Add more links as needed
   ]

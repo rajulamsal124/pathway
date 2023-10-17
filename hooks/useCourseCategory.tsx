@@ -95,7 +95,7 @@ export function useCreateCategory() {
   const deleteCategory = async (categoryId: string) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/courses/${categoryId}`,
+        `http://localhost:3000/api/category/${categoryId}`,
         {
           method: "DELETE",
           headers: {
