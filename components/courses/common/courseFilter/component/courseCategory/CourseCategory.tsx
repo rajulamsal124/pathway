@@ -17,8 +17,7 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
   }
 
   const { categories, loading, error } = useCategoryData()
-//   const { decisionPoint, loading, error } = useDecisionPointData()
-
+  //   const { decisionPoint, loading, error } = useDecisionPointData()
 
   if (loading) return <h1>Loading...</h1>
 
@@ -41,7 +40,7 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
           data-el-toggle-active=".js-category-active"
         >
           <span className="js-dropdown-title">
-            {filterCategories !== "" ? filterCategories : "Category"}
+            {filterCategories !== "" ? filterCategories : "I am"}
           </span>
           <i className="icon text-9 ml-40 icon-chevron-down"></i>
         </div>
@@ -76,10 +75,13 @@ const CategoryFilter: React.FC<IProps> = ({ onChangeCategory }) => {
               </span>
             </div>
             {categories.map((elm, i) => (
-              <div key={i} onClick={() => {
-                handleFilterCategories(elm.title)
-                onChangeCategory(elm.title)
-              }}>
+              <div
+                key={i}
+                onClick={() => {
+                  handleFilterCategories(elm.title)
+                  onChangeCategory(elm.title)
+                }}
+              >
                 <span
                   className={`d-block js-dropdown-link cursor ${
                     filterCategories == elm.title ? "activeMenu" : ""

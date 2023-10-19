@@ -45,7 +45,7 @@ const DecisionPointFilter: React.FC<IProps> = ({ onChangeDecisionPoint }) => {
           <span className="js-dropdown-title">
             {filterDecisionPoint
               ? `${filterDecisionPoint} to ${filterDecisionPoint}`
-              : "Decision Point"}
+              : "I want"}
           </span>
           <i className="icon text-9 ml-40 icon-chevron-down"></i>
         </div>

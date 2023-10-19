@@ -13,7 +13,7 @@ export const learningPath = [
     iconSrc: "/assets/img/home-2/learning/icons/2.svg",
     title: "Lifelong learning",
     description:
-      "Individuals can be driven by technological advancements, changing job markets, to adapt and thrive in a rapidly evolving society.",
+      "Navigate your way through technological advancements and changing job markets and learn to adapt and thrive in a rapidly changing world.",
   },
   {
     id: "item3",
