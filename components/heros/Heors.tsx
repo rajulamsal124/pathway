@@ -71,7 +71,7 @@ export default function Hero() {
             >
               <h1 className="mainSlider__title text-white">
                 Your future in
-                <span className="text-green-5 underline">Food Production</span>
+                <span className="text-green-5"> Food Production and Processing</span>
               </h1>
 
               <p className="mainSlider__text text-white">

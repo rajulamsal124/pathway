@@ -10,7 +10,7 @@ export const footerLinks = [
   {
     title: "CATEGORIES",
     links: [
-      { href: "#", label: "Food Procutions" },
+      { href: "#", label: "Food Productions" },
       { href: "#", label: "Robotics/Drones" },
       { href: "#", label: "Numbers" },
       { href: "#", label: "People" },

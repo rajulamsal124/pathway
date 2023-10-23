@@ -13,7 +13,7 @@ export default function CategoriesTwo() {
               <h2 className="sectionTitle__title ">Top Categories</h2>
 
               <p className="sectionTitle__text ">
-                Lorem ipsum dolor sit amet, consectetur.
+               These are the top categories
               </p>
             </div>
           </div>

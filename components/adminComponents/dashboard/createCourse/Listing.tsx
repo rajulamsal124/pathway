@@ -14,7 +14,7 @@ const CreateCourse: React.FC<any> = ({
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Create New Course</h1>
             <div className="mt-10">
-              Lorem ipsum dolor sit amet, consectetur.
+             Please create a new course
             </div>
           </div>
         </div>

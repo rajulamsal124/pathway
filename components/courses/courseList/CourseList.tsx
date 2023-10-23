@@ -54,7 +54,7 @@ export default function CourseList() {
 
                 <div>
                   <p className="page-header__text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Find Popular Courses 
                   </p>
                 </div>
                 <CourseFilter
