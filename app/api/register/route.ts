@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import bcrypt from "bcrypt"
 import { prisma } from "@/prisma/client"
+import toast from "react-hot-toast"
 
 const schema = z.object({
   email: z.string().email(),
