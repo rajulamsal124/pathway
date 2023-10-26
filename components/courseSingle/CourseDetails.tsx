@@ -20,7 +20,7 @@ const menuItems = [
     text: "Provider Information",
     isActive: false,
   },
-  { id: 3, href: "#career", text: "Career", isActive: false },
+  // { id: 3, href: "#career", text: "Career", isActive: false },
   // { id: 4, href: "#reviews", text: "", isActive: false },
 ]
 
@@ -174,7 +174,7 @@ export default function CourseDetails({ id }: any) {
                         {course.providerName}
                         {course.providerDescription}
                         <button className="btn btn-primary">
-                          <a href={course?.providerUrl}>
+                          <a href={course?.providerUrl} target="__blank">
                             View {course.providerName}
                           </a>
                         </button>
